@@ -1,0 +1,118 @@
+---
+// CaseStudySection component that displays multiple case studies in a grid layout
+import CaseStudyCard from './CaseStudyCard.astro';
+import StyledLink from './StyledLink.astro';
+
+interface CaseStudy {
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+  link: string;
+  color?: 'black' | 'primary' | 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'highlight';
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  caseStudies: CaseStudy[];
+  ctaText?: string;
+  ctaLink?: string;
+  color?: 'purple' | 'mint' | 'coral' | 'blue' | 'lime' | 'highlight';
+}
+
+const { 
+  title = "Featured Case Studies",
+  subtitle,
+  description = "Real-world results for local businesses. See how my websites help bring in more customers, bookings, and sales.",
+  caseStudies,
+  ctaText,
+  ctaLink,
+  color = 'purple' // Default theme color for this section
+} = Astro.props;
+
+// Map the color to the secondary button variant
+const buttonVariant = `secondary-${color}`;
+---
+
+<div class="case-studies-container">
+  <!-- Decorative element in top corner matching the ServiceSection style -->
+  <div class={`absolute -top-3 -right-3 h-6 w-6 bg-${color} border-3 border-black`}></div>
+  
+  <!-- Section title using the same styling as ServiceSection -->
+  <h2 class="case-studies-title">{title}</h2>
+  
+  {subtitle && <h3 class="case-studies-subtitle">{subtitle}</h3>}
+  {description && <p class="neo-text text-lg mb-8 max-w-3xl">{description}</p>}
+  
+  <!-- Case Studies Grid -->
+  <div class="case-studies-grid">
+    {caseStudies.map(study => (
+      <CaseStudyCard
+        image={study.image}
+        imageAlt={study.imageAlt}
+        title={study.title}
+        description={study.description}
+        link={study.link}
+        color={study.color}
+      />
+    ))}
+  </div>
+  
+  <!-- Optional CTA Button -->
+  {ctaText && ctaLink && (
+    <div class="flex justify-center mt-12">
+      <StyledLink href={ctaLink} variant={buttonVariant} size="md">{ctaText}</StyledLink>
+    </div>
+  )}
+</div>
+
+<style>
+  /* Additional custom styles for playful elements */
+  .case-studies-container {
+    position: relative;
+    z-index: 1;
+    border: 3px solid black;
+    padding: 2rem 3rem;
+    background-color: white;
+  }
+  
+  .case-studies-container::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 40%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--purple-color, #9B5DE5);
+    border: 3px solid black;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+  
+  :root {
+    --purple-color: #9B5DE5;
+  }
+  
+  /* Match the ServiceSection title styling */
+  .case-studies-title {
+    font-family: var(--font-serif);
+    font-weight: bold;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    background-color: white;
+    padding: 0.75rem 1.25rem;
+    display: inline-block;
+    margin-top: -5rem;
+    border: 3px solid black;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  }
+  
+  @media (min-width: 768px) {
+    .case-studies-title {
+      font-size: 3rem;
+    }
+  }
+</style>

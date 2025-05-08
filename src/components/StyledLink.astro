@@ -1,0 +1,51 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'secondary-primary' | 'secondary-mint' | 'secondary-coral' | 
+           'secondary-purple' | 'secondary-blue' | 'secondary-lime' | 'secondary-highlight' | 
+           'black' | 'mint' | 'coral' | 'purple' | 'blue' | 'lime';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  href, 
+  variant = 'black', 
+  size = 'md',
+  className = ''
+} = Astro.props;
+
+// Map variants to their corresponding classes
+const variantClasses = {
+  primary: 'neo-link-primary',
+  secondary: 'neo-link-secondary',
+  'secondary-primary': 'neo-link-secondary-primary',
+  'secondary-mint': 'neo-link-secondary-mint',
+  'secondary-coral': 'neo-link-secondary-coral',
+  'secondary-purple': 'neo-link-secondary-purple',
+  'secondary-blue': 'neo-link-secondary-blue',
+  'secondary-lime': 'neo-link-secondary-lime',
+  'secondary-highlight': 'neo-link-secondary-highlight',
+  black: 'neo-link-black',
+  mint: 'neo-link-mint',
+  coral: 'neo-link-coral',
+  purple: 'neo-link-purple',
+  blue: 'neo-link-bright-blue',
+  lime: 'neo-link-lime'
+};
+
+// Map sizes to their corresponding classes
+const sizeClasses = {
+  sm: 'text-sm py-1 px-3',
+  md: 'text-base py-2 px-4',
+  lg: 'text-lg py-3 px-6'
+};
+
+const linkClass = `neo-link-base ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+<a href={href} class={linkClass}>
+  <slot />
+</a>

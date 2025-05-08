@@ -1,0 +1,250 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import StyledLink from '../components/StyledLink.astro';
+---
+
+<Layout title="About Matt | Web Designer & Developer">
+	<main class="bg-white">
+		<!-- Hero Section with Full-Width Background -->
+		<section class="w-full relative pt-32 pb-20">
+			<!-- Full-width background gradient that spans the entire section width -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-purple/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="flex flex-col md:flex-row gap-12 md:gap-20 items-start">
+					<!-- Text Content -->
+					<div class="md:w-2/3">
+						<h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text">About Matt</h1>
+						
+						<div class="neo-card-base py-10 px-8 md:px-12 mt-8 mb-12 relative">
+							<h2 class="neo-heading text-3xl md:text-4xl mb-4 text-text">Husband. Dog Dad. Runner.</h2>
+							
+							<p class="neo-text text-lg mb-8">
+								I'm a simple guy: I love spending time with my wife and dog, learning new things, tackling fitness challenges, and tasting my way through all the pizza Portland, Oregon has to offer. I make short films in my spare time — and you might catch me on stage or screen now and again.
+							</p>
+							
+							<div class="absolute -top-6 -right-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-base uppercase rotate-3">
+								Portland, OR
+							</div>
+						</div>
+					</div>
+					
+					<!-- Image -->
+					<div class="md:w-1/3 flex justify-center">
+						<div class="relative w-full max-w-xs">
+							<div class="aspect-ratio-1/1 overflow-hidden border-3 border-black bg-white">
+								<img src="/images/matt-whitfield-bloomsday-2021-400x400.png" alt="Matt Whitfield" class="w-full h-full object-cover" />
+							</div>
+							<div class="absolute -bottom-4 -right-4 p-2 bg-purple border-3 border-black text-white font-medium rotate-6">
+								That's me!
+							</div>
+							
+							<!-- Box shadow added via CSS -->
+							<style>
+								.aspect-ratio-1/1 {
+									aspect-ratio: 1/1;
+									box-shadow: 8px 8px 0 0 rgba(0, 0, 0, 1);
+								}
+							</style>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Design Story Section with Full-Width Background -->
+		<section class="w-full relative py-20">
+			<!-- Full-width background gradient with different direction -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-mint/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-mint border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						My story
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-6 text-text">My Design Story: Hospitality —> Storytelling —> Marketing</h2>
+					
+					<div class="max-w-prose space-y-6 text-lg">
+						<p class="neo-text">
+							I started out as a trained actor, balancing scripts and service trays as I built my career in New York City. Like many of us, the pandemic pushed me to pivot. My wife and I relocated to Walla Walla, Washington, where I led marketing for a well-known winery—and unexpectedly fell in love with digital product design.
+						</p>
+						
+						<p class="neo-text">
+							I've worked in small agencies, freelanced as a copywriter, managed social media accounts, set up email marketing automations, and navigated the messiness of plugins, integrations, and client funnels. I know the frustration of tools that don't work—and the relief when they <em>finally do</em>.
+						</p>
+						
+						<p class="neo-text">
+							That's what I bring to the table: a clear process, marketing-savvy thinking, and modern design and development skills. Whether you need a beautiful brochure site or a custom build with thoughtful integrations, <strong>I help small businesses and creative teams create websites that actually <em>work</em>—not just look good.</strong>
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- What Makes Me Different Section -->
+		<section class="w-full relative py-20">
+			<!-- Full-width background gradient with a unique direction -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-coral/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-coral border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						My approach
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-6 text-text">What Makes Me Different</h2>
+					
+					<div class="neo-card-base p-6 md:p-8 mb-8 border-coral">
+						<blockquote class="font-serif text-2xl md:text-3xl font-medium italic">
+							"Lots of freelancers promise pretty websites. I go deeper."
+						</blockquote>
+					</div>
+					
+					<p class="neo-text text-xl font-medium mb-6">Here's how I stand out:</p>
+					
+					<ul class="mb-8 text-lg space-y-4">
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow"><strong>Hybrid skill set:</strong> Designer <em>and</em> modern frontend developer</span>
+						</li>
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-0 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow"><strong>Built for the real world:</strong> I understand marketing tools, email automation, and platform quirks</span>
+						</li>
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-[135deg] bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow"><strong>Smart tech decisions:</strong> Custom code where it counts, intuitive CMS where it matters</span>
+						</li>
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow"><strong>Form + function:</strong> You get both polish and performance</span>
+						</li>
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-0 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow"><strong>Clear process:</strong> Transparency, client education, and support from start to finish</span>
+						</li>
+					</ul>
+					
+					<p class="neo-text text-lg font-medium">I've been on both sides of the screen — building and marketing small businesses.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Creative Side Section -->
+		<section class="w-full relative py-20">
+			<!-- Full-width background gradient with radial direction -->
+			<div class="absolute inset-0 w-full h-full bg-radial-blue"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-xl uppercase">
+						Beyond websites
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-6 text-text">Still a Creative at Heart</h2>
+					
+					<div class="max-w-prose space-y-6 text-lg">
+						<p class="neo-text">
+							While I build websites professionally, I still act, write, and direct for fun. (Yes, I'll probably be working on a short film this year.)
+						</p>
+						
+						<p class="neo-text">
+							I share blog posts on:
+						</p>
+						
+						<ul class="ml-8 list-disc space-y-2">
+							<li class="neo-text">Small business marketing & digital strategy</li>
+							<li class="neo-text">Creative process & web design insights</li>
+							<li class="neo-text">Life updates & things I'm learning</li>
+						</ul>
+						
+						<div class="mt-8 flex flex-wrap gap-4">
+							<StyledLink href="/blog" variant="secondary-blue">Blog</StyledLink>
+							<StyledLink href="https://youtube.com" variant="secondary-blue">YouTube</StyledLink>
+							<StyledLink href="https://instagram.com" variant="secondary-blue">Instagram</StyledLink>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Personal Things Section -->
+		<section class="w-full relative py-20">
+			<!-- Full-width background gradient -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-lime/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-lime border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						Personal
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-6 text-text">A Few Personal Things</h2>
+					
+					<p class="neo-text text-lg mb-6">
+						I live in <strong>Portland, Oregon</strong>—but I bring a <strong>New York City hustle</strong> and <strong>L.A. chill</strong> to everything I do.
+					</p>
+					
+					<p class="neo-text text-lg mb-6">
+						When I'm not designing or building, you can find me:
+					</p>
+					
+					<ul class="mb-8 text-lg space-y-4">
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow">Running city trails</span>
+						</li>
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-0 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow">Throwing frisbee with my dog</span>
+						</li>
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-[135deg] bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow">Sipping a cup of craft coffee</span>
+						</li>
+						<li class="neo-text flex items-start">
+							<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+							<span class="flex-grow">Traveling (ideally somewhere with strong espresso and Wi-Fi)</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Contact CTA Section with Full-Width Background -->
+		<section class="w-full relative py-28">
+			<!-- Full-width background gradient that spans the entire section width -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ContactCTA
+					title="Ready for a website that actually works for your business?"
+					description="No pressure, no sales pitch — just a conversation to see how I can help."
+					ctaText="get in touch"
+					ctaLink="/contact"
+					boxTitle="Let's talk"
+					color="primary"
+				/>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+  /* Additional styles specific to the about page */
+  blockquote {
+    position: relative;
+    line-height: 1.3;
+  }
+  
+  blockquote::before {
+    content: '"';
+    position: absolute;
+    left: -0.6em;
+    top: -0.2em;
+    font-size: 2em;
+    color: var(--coral);
+  }
+</style>

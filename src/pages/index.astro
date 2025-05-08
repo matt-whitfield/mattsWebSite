@@ -1,16 +1,183 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import CalloutSection from '../components/CalloutSection.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+import CaseStudySection from '../components/CaseStudySection.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import AboutSection from '../components/AboutSection.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Matt's Website">
+	<main class="bg-white">
+		<!-- Hero Section with Full-Width Background -->
+		<section class="w-full relative min-h-screen">
+			<!-- Full-width background gradient that spans the entire section width -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<div class="mx-auto max-w-content px-4 md:px-8 lg:px-12 relative z-1">
+				<HeroSection 
+					title="Websites That Do More"
+					description="I design and build custom websites for small businesses that want results—whether that's more bookings, quote requests, or online sales. My work blends visual design, modern web development, and thoughtful user experience to create sites that look great and work even better."
+					quote="Restaurants, wineries, contractors—if your work is local and hands-on, your website should be, too."
+					ctaText="explore the work"
+					ctaLink="/blog"
+				/>
+			</div>
+		</section>
+		
+		<!-- Design Callout Section with Full-Width Background -->
+		<section class="w-full relative py-24">
+			<!-- Full-width background gradient with different direction for Callout section -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-mint/10"></div>
+			
+			<div class="page-container relative z-1">
+				<CalloutSection
+					label="Design"
+					title="Design that connects. Development that performs."
+					listTitle="I design and build custom websites that blend:"
+					listItems={[
+						"Clean, intuitive design",
+						"Modern, performance-first code",
+						"Real UX thinking that supports your goals"
+					]}
+					paragraphs={[
+						"With a background in hospitality, marketing, and the performing arts, as well as experience across both design and development, I build sites that look great and work even better.",
+						"Whether you're a neighborhood café, family-owned winery, or independent contractor, I'll help you create a digital home that feels as welcoming as your real one."
+					]}
+					ctaText="more about me"
+					ctaLink="/about"
+					color="mint"
+				/>
+			</div>
+		</section>
+		
+		<!-- Services Section with Full-Width Background -->
+		<section class="w-full relative py-28">
+			<!-- Full-width background gradient with a unique direction (bottom-left to top-right) -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-coral/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ServiceSection
+					title="Your Website Shouldn't Slow You Down."
+					subtitle="Here's what I offer:"
+					description="You're already juggling a hundred things. Your site should work for you—bringing in bookings, quote requests, calls, and new customers while you focus on your craft."
+					services={[
+						{
+							icon: "i-carbon-code",
+							title: "design + development",
+							description: "Custom websites built with clean code, modern frameworks (Astro/Next.js), and your audience in mind."
+						},
+						{
+							icon: "i-carbon-calendar",
+							title: "booking, menus, quotes",
+							description: "Integrated tools for online reservations, quote requests, menus, or service forms—whatever your business needs."
+						},
+						{
+							icon: "i-carbon-location",
+							title: "local SEO & Google support",
+							description: "Get found on Google with smart local SEO, Google Business help, and conversion-focused site structure."
+						},
+						{
+							icon: "i-carbon-tool-kit",
+							title: "performance optimization + ongoing support",
+							description: "Optional care plans and training so you're not left in the dark after launch."
+						}
+					]}
+					features={[
+						{ text: "Fast, responsive design (works beautifully on any screen)" },
+						{ text: "SEO-ready & conversion-focused structure" },
+						{ text: "Built on flexible platforms like Astro, Next.js, or Webflow, Framer, or WordPress" },
+						{ text: "Designed around your audience—not just for designers" }
+					]}
+					ctaText="see all services"
+					ctaLink="/services"
+					color="coral"
+				/>
+			</div>
+		</section>
+		
+		 <!-- Case Studies Section with Full-Width Background -->
+		<section class="w-full relative py-28">
+			<!-- Full-width background gradient with radial direction -->
+			<div class="absolute inset-0 w-full h-full bg-radial-purple"></div>
+			
+			<div class="page-container relative z-1">
+				<CaseStudySection
+					title="Featured Client Success Stories"
+					description="Real-world results for local businesses. Here's how my websites have helped bring in more customers, bookings, and sales."
+					caseStudies={[
+						{
+							image: "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg",
+							imageAlt: "Coastal Winery website on multiple devices",
+							title: "Coastal Winery",
+							description: "A complete rebrand and website for a family-owned winery focusing on online reservations and wine club memberships.",
+							link: "/case-studies/coastal-winery",
+							color: "mint"
+						},
+						{
+							image: "/images/matt-b-and-rbd-oregon-coast-2024.webp",
+							imageAlt: "Fresh Bistro responsive website design",
+							title: "Fresh Bistro",
+							description: "Mobile-optimized menu and online ordering system that increased takeout orders by 45% within three months.",
+							link: "/case-studies/fresh-bistro",
+							color: "coral"
+						},
+						{
+							image: "/images/mw-headshots-2024.webp",
+							imageAlt: "Handyman Services website design",
+							title: "Quality Contractors",
+							description: "Lead generation website with quote request forms that helped double monthly inquiries within the first quarter.",
+							link: "/case-studies/quality-contractors",
+							color: "blue"
+						}
+					]}
+					ctaText="view all case studies"
+					ctaLink="/case-studies"
+					color="purple"
+				/>
+			</div>
+		</section>
+		
+		<!-- About Section with Full-Width Background -->
+		<section class="w-full relative py-28">
+			<!-- Full-width background gradient using top-left to bottom-right -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-blue/10"></div>
+			
+			<div class="page-container relative z-1">
+				<AboutSection
+					title="You won't find a big agency here."
+					description="Just me—working closely with you to build a site that reflects your story, solves real problems, and feels like a true extension of your business."
+					listItems={[
+						"A decade of hands-on hospitality experience",
+						"Fifteen years of professional storytelling experience as an actor, writer, and director for stage and screen.",
+						"Product and full-service marketing experience.",
+						"A sharp eye for design and usability",
+						"The latest in modern web dev (Astro, Next.js, Tailwind, and more)"
+					]}
+					ctaText="Want to see if we're a good fit?"
+					ctaLink="/contact"
+					imagePath="/images/matt-whitfield-bloomsday-2021-400x400.png"
+					color="blue"
+				/>
+			</div>
+		</section>
+		
+		<!-- Contact CTA Section with Full-Width Background -->
+		<section class="w-full relative py-28">
+			<!-- Full-width background gradient that spans the entire section width -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ContactCTA
+					title="Ready for a website that actually works for your business?"
+					description="No pressure, no sales pitch — just a conversation to see how I can help."
+					ctaText="schedule a call"
+					ctaLink="/contact"
+					boxTitle="Get in touch"
+					color="primary"
+				/>
+			</div>
+		</section>
+	</main>
+</Layout>

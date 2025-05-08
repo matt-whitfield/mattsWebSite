@@ -1,0 +1,50 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'highlight' | 'black';
+  className?: string;
+  size?: 'sm' | 'md' | 'lg';
+  shadow?: boolean;
+}
+
+const { 
+  href, 
+  variant = 'primary', 
+  className = "",
+  size = 'md',
+  shadow = true
+} = Astro.props;
+
+// Base Neo Brutalist button style
+const baseStyles = "inline-block font-serif font-bold uppercase tracking-wider border-3 border-black transition-all duration-200";
+
+// Size variations
+const sizeStyles = {
+  sm: "px-3 py-1 text-sm",
+  md: "px-4 py-2",
+  lg: "px-6 py-3 text-lg"
+};
+
+// Color variations with hover states
+const variantStyles = {
+  primary: "bg-primary text-white hover:bg-white hover:text-primary",
+  secondary: "bg-white text-black hover:bg-black hover:text-white",
+  black: "bg-black text-white hover:bg-white hover:text-black",
+  mint: "bg-mint text-black hover:bg-white hover:text-mint",
+  coral: "bg-coral text-white hover:bg-white hover:text-coral",
+  blue: "bg-blue text-white hover:bg-white hover:text-blue",
+  purple: "bg-purple text-white hover:bg-white hover:text-purple",
+  lime: "bg-lime text-black hover:bg-white hover:text-lime",
+  highlight: "bg-highlight text-black hover:bg-white hover:text-highlight"
+};
+
+// Shadow styling
+const shadowStyle = shadow ? 
+  "shadow-neo hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px]" : "";
+
+const buttonClasses = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${shadowStyle} ${className}`;
+---
+
+<a href={href} class={buttonClasses}>
+  <slot />
+</a>

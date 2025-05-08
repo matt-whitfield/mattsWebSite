@@ -1,0 +1,50 @@
+---
+import StyledLink from './StyledLink.astro';
+
+// CaseStudyCard component that displays a case study with image, title, description, and link
+interface Props {
+  image: string;       // Path to the image file
+  imageAlt: string;    // Alt text for the image
+  title: string;       // Case study title
+  description: string; // Brief description
+  link: string;        // Link to the full case study
+  color?: 'black' | 'primary' | 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'highlight'; // Enhanced color options
+}
+
+const { 
+  image, 
+  imageAlt, 
+  title, 
+  description, 
+  link,
+  color = 'black'
+} = Astro.props;
+
+// Map colors to their corresponding card classes
+const cardColorClass = color === 'black' ? 'neo-card-black' : `neo-card-${color}`;
+
+// Map colors to their corresponding secondary button variants
+const buttonVariant = color === 'black' ? 'secondary' : `secondary-${color}`;
+---
+
+<div class={`neo-card-base ${cardColorClass} overflow-hidden`}>
+  <!-- Card image with border that matches the card border color -->
+  <div class="w-full h-56 overflow-hidden -mx-6 -mt-6 mb-6 relative">
+    <img 
+      src={image} 
+      alt={imageAlt} 
+      class="w-full h-full object-cover border-b-3 border-black"
+    />
+    <!-- Decorative elements in card corners -->
+    <div class={`absolute top-0 right-0 w-6 h-6 bg-${color} border-l-3 border-b-3 border-black`}></div>
+  </div>
+  
+  <!-- Card content -->
+  <h3 class="neo-card-title">{title}</h3>
+  <p class="neo-text mb-8 line-clamp-3">{description}</p>
+  
+  <!-- Button matching the card's color theme -->
+  <div class="mt-auto">
+    <StyledLink href={link} variant={buttonVariant} size="sm">View Case Study</StyledLink>
+  </div>
+</div>

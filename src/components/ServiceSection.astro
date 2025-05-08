@@ -1,0 +1,110 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import StyledLink from './StyledLink.astro';
+
+interface Feature {
+  text: string;
+}
+
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  color?: 'primary' | 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'highlight';
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  description?: string;
+  services: Service[];
+  features?: Feature[];
+  ctaText?: string;
+  ctaLink?: string;
+  color?: 'coral' | 'mint' | 'purple' | 'blue' | 'lime' | 'highlight'; // Add section color property
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  services = [],
+  features = [],
+  ctaText = "View All Services",
+  ctaLink = "/services",
+  color = 'coral' // Default theme color for this section
+} = Astro.props;
+
+// Map the color to the secondary button variant
+const buttonVariant = `secondary-${color}`;
+---
+
+<section class="w-full my-28">
+  <div class="services-container">
+    <!-- Decorative elements -->
+    <div class={`absolute -top-3 -right-3 h-6 w-6 bg-${color} border-3 border-black`}></div>
+    
+    <h2 class="services-title">{title}</h2>
+    
+    {description && <p class="neo-text text-lg mb-8 max-w-3xl">{description}</p>}
+    
+    <h3 class="services-subtitle">{subtitle}</h3>
+    
+    <!-- Service Card Grid - all using the section color for consistency -->
+    <div class="services-grid">
+      {services.map((service) => (
+        <ServiceCard 
+          icon={service.icon} 
+          title={service.title} 
+          description={service.description}
+          color={color}
+        />
+      ))}
+    </div>
+    
+    {features && features.length > 0 && (
+      <div class={`features-box border-${color}`}>
+        <p class="neo-text text-xl mb-6 font-medium">Every site includes:</p>
+        <ul class="mb-8 text-lg grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+          {features.map((feature, index) => {
+            // Use geometric shapes with rotations for visual interest
+            const shapeRotation = index % 3 === 0 ? 'rotate-45' : 
+                                  index % 3 === 1 ? 'rotate-0' : 
+                                  'rotate-[135deg]';
+            return (
+              <li class="neo-text flex items-start mb-4">
+                <!-- Geometric shape instead of icon -->
+                <span class={`h-4 w-4 transform ${shapeRotation} bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+                <span>{feature.text}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    )}
+    
+    <div class="flex justify-center mt-12">
+      <StyledLink href={ctaLink} variant={buttonVariant} size="md">{ctaText}</StyledLink>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Additional patterns and decorations */
+  .services-container::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 40%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--coral-color, #F15BB5);
+    border: 3px solid black;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+  
+  :root {
+    --coral-color: #F15BB5;
+  }
+</style>

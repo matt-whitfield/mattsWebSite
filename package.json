@@ -10,5 +10,11 @@
   },
   "dependencies": {
     "astro": "^5.7.10"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.2.8",
+    "@unocss/preset-icons": "^66.1.0-beta.13",
+    "@unocss/reset": "^66.1.0-beta.13",
+    "unocss": "^66.1.0-beta.13"
   }
 }
