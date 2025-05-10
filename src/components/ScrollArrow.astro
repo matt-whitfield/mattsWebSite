@@ -1,9 +1,10 @@
 ---
 // ScrollArrow component that shows a floating arrow at the bottom of the screen
 // to indicate users can scroll down
+// Now responsive - hidden on small screens and properly positioned on larger screens
 ---
 
-<div class="scroll-arrow-container">
+<div class="scroll-arrow-container hidden md:block">
   <div class="neo-scroll-arrow scroll-arrow">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter">
       <path d="M12 5v14M5 12l7 7 7-7"/>
@@ -36,6 +37,14 @@
   @media (prefers-reduced-motion: no-preference) {
     .scroll-arrow {
       animation: bounce 2s infinite;
+    }
+  }
+  
+  /* Additional responsiveness styles */
+  @media (max-width: 768px) {
+    .scroll-arrow-container {
+      bottom: 3.5rem; /* Position higher on medium screens */
+      opacity: 0.6; /* More subtle appearance */
     }
   }
 </style>

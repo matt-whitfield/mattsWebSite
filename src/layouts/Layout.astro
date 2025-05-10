@@ -6,9 +6,22 @@ import Header from '../components/Header.astro';
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title, 
+  description = "Websites that do more - Matt Whitfield designs and builds custom websites for small businesses that get results.",
+  image = "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg",
+  canonicalURL = Astro.url.href,
+  type = "website"
+} = Astro.props;
+
+// Get current URL for canonical link
+const currentUrl = Astro.url.href;
 ---
 
 <!DOCTYPE html>
@@ -18,10 +31,41 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Websites that do more - Matt Whitfield designs and builds custom websites for small businesses that get results." />
+    <meta name="description" content={description} />
     <meta name="theme-color" content="#E25E3E" />
+    <meta name="author" content="Matt Whitfield" />
+    <meta name="robots" content="index, follow" />
     <title>{title}</title>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL(image, Astro.site || Astro.url.origin).href} />
+    <meta property="og:site_name" content="Matt Whitfield" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site || Astro.url.origin).href} />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Matt Whitfield - Web Design & Development",
+          "url": Astro.url.origin,
+          "description": "Matt Whitfield designs and builds custom websites for small businesses that get results."
+        })
+      }
+    </script>
     <style is:global>
       /* Additional global styles */
       html {
@@ -113,7 +157,10 @@ const { title } = Astro.props;
                   <a href="/services" class="neo-text transition-colors duration-200 hover:text-primary">Services</a>
                 </li>
                 <li>
-                  <a href="/blog" class="neo-text transition-colors duration-200 hover:text-primary">Work</a>
+                  <a href="/work" class="neo-text transition-colors duration-200 hover:text-primary">Work</a>
+                </li>
+                <li>
+                  <a href="/blog" class="neo-text transition-colors duration-200 hover:text-primary">Blog</a>
                 </li>
               </ul>
             </nav>
@@ -123,6 +170,7 @@ const { title } = Astro.props;
           <div>
             <h2 class="font-serif font-bold text-xl uppercase mb-4">Contact</h2>
             <a href="/contact" class="neo-link-base neo-link-primary">Get in Touch</a>
+            <p class="neo-text text-sm mt-4">hello@mattwhitfield.com</p>
           </div>
         </div>
       </div>

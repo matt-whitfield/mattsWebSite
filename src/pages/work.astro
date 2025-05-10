@@ -1,0 +1,307 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StyledLink from '../components/StyledLink.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+
+<Layout 
+    title="Work | Matt Whitfield - Web Designer & Developer"
+    description="Portfolio of web design and development projects by Matt Whitfield. See examples of custom websites created for small businesses, restaurants, wineries, and creative teams."
+    image="/images/david-matos-RYPYbRoZp0o-unsplash.jpg"
+>
+    <main class="bg-white">
+        <!-- Hero Section with Full-Width Background -->
+        <section class="w-full relative pt-32 pb-20">
+            <!-- Full-width background gradient that spans the entire section width -->
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-purple/10"></div>
+            
+            <div class="page-container relative z-1">
+                <h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text">My Work</h1>
+                
+                <div class="neo-card-base py-10 px-8 md:px-12 mt-8 mb-12 relative max-w-prose">
+                    <p class="neo-text text-lg mb-6">
+                        Selected web design and development projects for small businesses, creative teams, and entrepreneurs.
+                    </p>
+                    
+                    <div class="absolute -top-6 -right-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-base uppercase rotate-3">
+                        Portfolio
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <!-- Projects Grid -->
+        <section class="w-full relative py-16">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
+            
+            <div class="page-container relative z-1">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="neo-card-base flex flex-col overflow-hidden p-0 neo-service-card-hover-coral h-full">
+                        <div class="w-full aspect-video overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg" 
+                                alt="Coastal Winery website design" 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="mb-3 flex items-center">
+                                <span class="inline-block bg-coral text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">Winery</span>
+                            </div>
+                            <h3 class="neo-heading text-xl mb-3">Coastal Winery</h3>
+                            <p class="neo-text mb-6 flex-grow">
+                                A complete rebrand and website for a family-owned winery focusing on online reservations and wine club memberships.
+                            </p>
+                            <StyledLink href="/case-studies/coastal-winery" variant="secondary-coral" class="self-start mt-auto">View Project</StyledLink>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="neo-card-base flex flex-col overflow-hidden p-0 neo-service-card-hover-blue h-full">
+                        <div class="w-full aspect-video overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg" 
+                                alt="Quality Contractors website design" 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="mb-3 flex items-center">
+                                <span class="inline-block bg-blue text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">Contractor</span>
+                            </div>
+                            <h3 class="neo-heading text-xl mb-3">Quality Contractors</h3>
+                            <p class="neo-text mb-6 flex-grow">
+                                Lead generation website with quote request forms that helped double monthly inquiries within the first quarter.
+                            </p>
+                            <StyledLink href="/case-studies/quality-contractors" variant="secondary-blue" class="self-start mt-auto">View Project</StyledLink>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="neo-card-base flex flex-col overflow-hidden p-0 neo-service-card-hover-lime h-full">
+                        <div class="w-full aspect-video overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg" 
+                                alt="Mountain Retreat website design" 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="mb-3 flex items-center">
+                                <span class="inline-block bg-lime text-black text-sm font-bold py-1 px-3 border-2 border-black mr-2">Hospitality</span>
+                            </div>
+                            <h3 class="neo-heading text-xl mb-3">Mountain Retreat</h3>
+                            <p class="neo-text mb-6 flex-grow">
+                                A serene Astro.js website with booking integration for a boutique mountain lodging experience.
+                            </p>
+                            <StyledLink href="/case-studies/mountain-retreat" variant="secondary-lime" class="self-start mt-auto">View Project</StyledLink>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="neo-card-base flex flex-col overflow-hidden p-0 neo-service-card-hover-purple h-full">
+                        <div class="w-full aspect-video overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg" 
+                                alt="Creative Agency website design" 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="mb-3 flex items-center">
+                                <span class="inline-block bg-purple text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">Agency</span>
+                            </div>
+                            <h3 class="neo-heading text-xl mb-3">Spark Creative</h3>
+                            <p class="neo-text mb-6 flex-grow">
+                                A dynamic Next.js website with custom animations and CMS integration for a digital creative agency.
+                            </p>
+                            <StyledLink href="/case-studies/spark-creative" variant="secondary-purple" class="self-start mt-auto">View Project</StyledLink>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="neo-card-base flex flex-col overflow-hidden p-0 neo-service-card-hover-primary h-full">
+                        <div class="w-full aspect-video overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg" 
+                                alt="Local Market e-commerce website" 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="mb-3 flex items-center">
+                                <span class="inline-block bg-primary text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">E-commerce</span>
+                            </div>
+                            <h3 class="neo-heading text-xl mb-3">Local Market</h3>
+                            <p class="neo-text mb-6 flex-grow">
+                                An e-commerce site for a local farmers market with inventory management and local delivery options.
+                            </p>
+                            <StyledLink href="/case-studies/local-market" variant="secondary-primary" class="self-start mt-auto">View Project</StyledLink>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="neo-card-base flex flex-col overflow-hidden p-0 neo-service-card-hover-highlight h-full">
+                        <div class="w-full aspect-video overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg" 
+                                alt="Fitness Studio website design" 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="mb-3 flex items-center">
+                                <span class="inline-block bg-highlight text-black text-sm font-bold py-1 px-3 border-2 border-black mr-2">Fitness</span>
+                            </div>
+                            <h3 class="neo-heading text-xl mb-3">Elevate Fitness</h3>
+                            <p class="neo-text mb-6 flex-grow">
+                                A membership site with class scheduling and customer account features for a local fitness studio.
+                            </p>
+                            <StyledLink href="/case-studies/elevate-fitness" variant="secondary-highlight" class="self-start mt-auto">View Project</StyledLink>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="flex justify-center mt-16">
+                    <button class="neo-link-base neo-link-black">Load More Projects</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Process Section -->
+        <section class="w-full relative py-20">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
+            
+            <div class="page-container relative z-1">
+                <div class="neo-card-base py-12 px-8 md:px-12 relative">
+                    <div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-xl uppercase">
+                        How I work
+                    </div>
+                    
+                    <h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">My Design & Development Process</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="relative">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
+                                1
+                            </div>
+                            <div class="neo-card-base p-6 border-blue">
+                                <h3 class="font-serif font-bold text-xl mb-2">Discovery</h3>
+                                <p class="neo-text">Understanding your business goals, audience, and technical requirements</p>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
+                                2
+                            </div>
+                            <div class="neo-card-base p-6 border-blue">
+                                <h3 class="font-serif font-bold text-xl mb-2">UX & Design</h3>
+                                <p class="neo-text">Wireframes, user flows, and visual designs that engage your audience</p>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
+                                3
+                            </div>
+                            <div class="neo-card-base p-6 border-blue">
+                                <h3 class="font-serif font-bold text-xl mb-2">Development</h3>
+                                <p class="neo-text">Clean, efficient code with the right tech for your specific needs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
+                                4
+                            </div>
+                            <div class="neo-card-base p-6 border-blue">
+                                <h3 class="font-serif font-bold text-xl mb-2">Launch & Support</h3>
+                                <p class="neo-text">Thorough testing, smooth deployment, and ongoing maintenance</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 flex justify-center">
+                        <StyledLink href="/services" variant="secondary-blue">Learn About Services</StyledLink>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="w-full relative py-20">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-highlight/10"></div>
+            
+            <div class="page-container relative z-1">
+                <div class="neo-card-base py-12 px-8 md:px-12 relative">
+                    <div class="absolute -top-6 -left-6 p-2 bg-highlight border-3 border-black text-black font-serif font-bold text-xl uppercase">
+                        Testimonials
+                    </div>
+                    
+                    <h2 class="neo-heading text-3xl md:text-4xl mb-10 text-text">What Clients Are Saying</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Testimonial 1 -->
+                        <div class="neo-card-base p-6 border-highlight">
+                            <blockquote class="neo-text text-lg italic mb-6">
+                                "Matt transformed our outdated site into a beautiful, functional hub for our restaurant. Online orders increased dramatically, and customers constantly compliment our new website."
+                            </blockquote>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                    <div class="w-full h-full bg-highlight flex items-center justify-center font-serif font-bold text-xl">JD</div>
+                                </div>
+                                <div>
+                                    <p class="font-serif font-bold">Jamie Davis</p>
+                                    <p class="text-sm">Fresh Bistro, Owner</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="neo-card-base p-6 border-highlight">
+                            <blockquote class="neo-text text-lg italic mb-6">
+                                "Working with Matt was a breeze. He understood our winery's needs immediately and created a site that perfectly represents our brand while making it easy for guests to book tastings."
+                            </blockquote>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                    <div class="w-full h-full bg-coral flex items-center justify-center font-serif font-bold text-xl">MR</div>
+                                </div>
+                                <div>
+                                    <p class="font-serif font-bold">Melissa Roberts</p>
+                                    <p class="text-sm">Coastal Winery, Marketing Director</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact CTA Section -->
+        <section class="w-full relative py-28">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+            
+            <div class="page-container relative z-1">
+                <ContactCTA
+                    title="Ready to create something amazing for your business?"
+                    description="Let's talk about your project goals and how I can help you build a website that delivers real results."
+                    ctaText="start a project"
+                    ctaLink="/contact"
+                    boxTitle="Let's create"
+                    color="primary"
+                />
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .aspect-video {
+        aspect-ratio: 16/9;
+    }
+</style>
