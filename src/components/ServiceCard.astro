@@ -1,5 +1,5 @@
 ---
-// ServiceCard component that displays a card with an icon, title, and description
+// ServiceCard component that displays a card with an icon, title, and description with Neo-Brutalist styling
 interface Props {
   icon: string;  // Icon class name (for example, using UnoCSS icon classes)
   title: string; // Service title
@@ -8,28 +8,29 @@ interface Props {
 }
 
 const { icon, title, description, color = 'mint' } = Astro.props;
+
+// Map colors to their corresponding card classes
+const cardClass = `neo-service-card-hover-${color}`;
 ---
 
-<div class="service-card group" data-color={color}>
-  <div class="flex items-center mb-4">
-    <!-- Neo Brutalist styled icon with border -->
-    <div class="neo-icon-container">
-      <div class={`${icon} w-6 h-6 icon-color-change`}></div>
+<div class="neo-card-base relative flex flex-col h-full group {cardClass}" data-color={color}>
+  <!-- Decorative corner element -->
+  <div class={`absolute -top-2 -right-2 w-6 h-6 bg-${color} border-3 border-black transition-all duration-300`}></div>
+  
+  <div class="p-6 flex-grow">
+    <div class="flex items-start mb-4">
+      <!-- Neo Brutalist styled icon with border -->
+      <div class={`neo-icon-container border-${color}`}>
+        <div class={`${icon} w-6 h-6 icon-color-change`}></div>
+      </div>
+      <h3 class="neo-heading text-xl ml-3 pt-2">{title}</h3>
     </div>
-    <h3 class="neo-card-title ml-3">{title}</h3>
+    
+    <p class="neo-text">{description}</p>
   </div>
-  <p class="neo-text">{description}</p>
 </div>
 
-<style define:vars={{ cardColor: color }}>
-  .service-card {
-    background-color: white;
-    padding: 1.5rem;
-    border: 3px solid black;
-    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
-    transition: all 0.3s ease;
-  }
-  
+<style>
   /* Neo Brutalist icon container */
   .neo-icon-container {
     width: 48px;
@@ -37,70 +38,87 @@ const { icon, title, description, color = 'mint' } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #1a1a1a;
+    border: 3px solid black;
     background-color: white;
     transition: all 0.3s ease;
+    box-shadow: 3px 3px 0px 0px rgba(0,0,0,1);
   }
   
-  /* Icon container color transitions on hover */
-  .service-card[data-color="mint"]:hover .neo-icon-container {
-    border-color: #5CECC6;
+  /* Card hover effects */
+  .neo-service-card-hover-mint:hover {
+    box-shadow: 8px 8px 0px 0px #5CECC6;
   }
   
-  .service-card[data-color="coral"]:hover .neo-icon-container {
-    border-color: #F15BB5;
+  .neo-service-card-hover-coral:hover {
+    box-shadow: 8px 8px 0px 0px #F15BB5;
   }
   
-  .service-card[data-color="primary"]:hover .neo-icon-container {
-    border-color: #FF6B35;
+  .neo-service-card-hover-primary:hover {
+    box-shadow: 8px 8px 0px 0px #FF6B35;
   }
   
-  .service-card[data-color="blue"]:hover .neo-icon-container {
-    border-color: #00BBF9;
+  .neo-service-card-hover-blue:hover {
+    box-shadow: 8px 8px 0px 0px #00BBF9;
   }
   
-  .service-card[data-color="purple"]:hover .neo-icon-container {
-    border-color: #9B5DE5;
+  .neo-service-card-hover-purple:hover {
+    box-shadow: 8px 8px 0px 0px #9B5DE5;
   }
   
-  .service-card[data-color="lime"]:hover .neo-icon-container {
-    border-color: #BAFF29;
+  .neo-service-card-hover-lime:hover {
+    box-shadow: 8px 8px 0px 0px #BAFF29;
   }
   
-  .service-card[data-color="highlight"]:hover .neo-icon-container {
-    border-color: #FEE440;
+  .neo-service-card-hover-highlight:hover {
+    box-shadow: 8px 8px 0px 0px #FEE440;
   }
   
-  /* Icon color transitions on hover */
-  .service-card[data-color="mint"]:hover .icon-color-change {
-    color: #5CECC6;
+  /* Additional transformations on hover */
+  .neo-service-card-hover-mint:hover .neo-icon-container,
+  .neo-service-card-hover-coral:hover .neo-icon-container,
+  .neo-service-card-hover-primary:hover .neo-icon-container,
+  .neo-service-card-hover-blue:hover .neo-icon-container,
+  .neo-service-card-hover-purple:hover .neo-icon-container,
+  .neo-service-card-hover-lime:hover .neo-icon-container,
+  .neo-service-card-hover-highlight:hover .neo-icon-container {
+    transform: translateY(-2px);
   }
   
-  .service-card[data-color="coral"]:hover .icon-color-change {
-    color: #F15BB5;
-  }
-  
-  .service-card[data-color="primary"]:hover .icon-color-change {
-    color: #FF6B35;
-  }
-  
-  .service-card[data-color="blue"]:hover .icon-color-change {
-    color: #00BBF9;
-  }
-  
-  .service-card[data-color="purple"]:hover .icon-color-change {
-    color: #9B5DE5;
-  }
-  
-  .service-card[data-color="lime"]:hover .icon-color-change {
-    color: #BAFF29;
-  }
-  
-  .service-card[data-color="highlight"]:hover .icon-color-change {
-    color: #FEE440;
+  /* Adjust the corner decoration on hover */
+  .group:hover div[class*="-top-2 -right-2"] {
+    transform: rotate(45deg);
   }
   
   .icon-color-change {
     transition: color 0.3s ease;
+  }
+  
+  /* Icon color changes on hover */
+  .neo-service-card-hover-mint:hover .icon-color-change {
+    color: #5CECC6;
+  }
+  
+  .neo-service-card-hover-coral:hover .icon-color-change {
+    color: #F15BB5;
+  }
+  
+  .neo-service-card-hover-primary:hover .icon-color-change {
+    color: #FF6B35;
+  }
+  
+  .neo-service-card-hover-blue:hover .icon-color-change {
+    color: #00BBF9;
+  }
+  
+  .neo-service-card-hover-purple:hover .icon-color-change {
+    color: #9B5DE5;
+  }
+  
+  .neo-service-card-hover-lime:hover .icon-color-change {
+    color: #BAFF29;
+  }
+  
+  .neo-service-card-hover-highlight:hover .icon-color-change {
+    color: #FEE440;
   }
 </style>

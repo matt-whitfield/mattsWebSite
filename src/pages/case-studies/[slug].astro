@@ -1,0 +1,247 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import StyledLink from '../../components/StyledLink.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+
+// Generate pages for all case studies
+export async function getStaticPaths() {
+  const caseStudyEntries = await getCollection('case-studies');
+  
+  return caseStudyEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the case study data for this page
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Get other case studies for the "More Case Studies" section
+const allCaseStudies = await getCollection('case-studies');
+const otherCaseStudies = allCaseStudies
+  .filter(study => study.slug !== entry.slug)
+  .slice(0, 3);
+---
+
+<Layout 
+  title={`${entry.data.client} | Case Study | Matt Whitfield - Web Designer & Developer`}
+  description={`Web design and development case study for ${entry.data.client}. Services provided: ${entry.data.services.join(', ')}.`}
+  image={entry.data.image}
+>
+  <main class="bg-white">
+    <!-- Hero Section with Full-Width Background -->
+    <section class="w-full relative pt-32 pb-20">
+      <!-- Dynamic background gradient based on case study color -->
+      <div class={`absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-${entry.data.color}/10`}></div>
+      
+      <div class="page-container relative z-1">
+        <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 lg:gap-16 items-start">
+          <div>
+            <div class="mb-6">
+              <span class={`inline-block font-serif text-sm font-medium uppercase tracking-wider bg-${entry.data.color} text-white py-1 px-3 border-3 border-black`}>Case Study</span>
+            </div>
+            <h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text">{entry.data.client}</h1>
+            
+            <div class="relative mt-8 mb-12 max-w-prose">
+              <div class="neo-card-base overflow-hidden p-0">
+                <div class="w-full">
+                  <img 
+                    src={entry.data.image} 
+                    alt={`${entry.data.client} case study featured image`} 
+                    class="w-full aspect-video object-cover border-b-3 border-black"
+                  />
+                </div>
+                <div class="p-6">
+                  <p class="neo-text text-lg mb-0">
+                    {entry.data.services.join(' • ')}
+                  </p>
+                </div>
+              </div>
+              
+              {entry.data.featured && (
+                <div class={`absolute -top-6 -right-6 p-2 bg-${entry.data.color} border-3 border-black text-white font-serif font-bold text-base uppercase rotate-3`}>
+                  Featured
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div class="sticky top-24">
+            <div class="neo-card-base">
+              <h2 class="neo-card-title mb-6">Project Overview</h2>
+              <ul class="space-y-4">
+                {entry.data.projectFeatures && entry.data.projectFeatures.map((feature, index) => (
+                  <li class="neo-text flex items-start">
+                    <span class={`h-4 w-4 transform rotate-${(index % 4) * 45} bg-${entry.data.color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+                    <span class="flex-grow">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div class="mt-8">
+                <StyledLink href="/contact" variant={`secondary-${entry.data.color}`} size="md">Start Your Project</StyledLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Case Study Content Section -->
+    <section class="w-full relative py-16">
+      <div class={`absolute inset-0 w-full h-full bg-gradient-to-tl from-white via-white to-${entry.data.color}/10`}></div>
+      
+      <div class="container-narrow relative z-1">
+        <!-- The Challenge -->
+        <div class="mb-20">
+          <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">The Challenge</h2>
+          
+          <div class="neo-text text-lg space-y-6">
+            <p>
+              {entry.data.challenge}
+            </p>
+          </div>
+        </div>
+        
+        <!-- Goals -->
+        <div class="mb-20">
+          <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">Goals</h2>
+          
+          <ul class="space-y-4 neo-text text-lg">
+            {entry.data.goals && entry.data.goals.map((goal, index) => (
+              <li class="neo-text flex items-start">
+                <span class={`h-4 w-4 transform rotate-${(index % 4) * 45} bg-${entry.data.color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+                <span class="flex-grow">{goal}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- The Solution -->
+        <div class="mb-20">
+          <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">The Solution</h2>
+          
+          <div class="neo-text text-lg space-y-6">
+            <p>
+              {entry.data.solution}
+            </p>
+          </div>
+          
+          <!-- Image mockup placeholder -->
+          <div class="my-12 border-3 border-black shadow-neo">
+            <img 
+              src={entry.data.image}
+              alt={`Website design mockup for ${entry.data.client}`}
+              class="w-full"
+            />
+          </div>
+          
+          <h3 class="neo-subheading text-2xl mb-6">Key Features:</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {entry.data.keyFeatures && entry.data.keyFeatures.map(feature => (
+              <div class={`neo-card-base neo-card-${feature.color} p-6`}>
+                <h4 class="neo-card-title">{feature.title}</h4>
+                <p class="neo-text">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Results -->
+        <div class="mb-20">
+          <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">Results</h2>
+          
+          <div class="neo-text text-lg space-y-6">
+            <p>
+              {entry.data.results}
+            </p>
+          </div>
+          
+          <!-- Results metrics in cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
+            {entry.data.resultsMetrics && entry.data.resultsMetrics.map(metric => (
+              <div class={`neo-card-base bg-${metric.color} ${metric.color === 'mint' ? 'text-black' : 'text-white'} shadow-neo-${metric.color} p-6 flex flex-col items-center justify-center text-center`}>
+                <span class="text-5xl font-serif font-bold mb-2">{metric.value}</span>
+                <span class="neo-text">{metric.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Quote/Testimonial -->
+        {entry.data.testimonial && (
+          <div class="my-24 mx-auto max-w-prose bg-white border-3 border-black p-8 shadow-neo relative">
+            <div class="absolute -top-6 -left-6 p-3 bg-highlight border-3 border-black">
+              <span class="text-3xl i-carbon-quotes"></span>
+            </div>
+            
+            <blockquote class="font-serif text-2xl italic mb-6">
+              "{entry.data.testimonial}"
+            </blockquote>
+            
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-lightgray border-3 border-black overflow-hidden">
+                <!-- Client photo placeholder -->
+              </div>
+              <div class="ml-4">
+                <p class="font-serif font-bold mb-0">{entry.data.testimonialAuthor}</p>
+                <p class="neo-text text-sm">{entry.data.testimonialTitle}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+    
+    <!-- More Case Studies Section -->
+    <section class="w-full relative py-16">
+      <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
+      
+      <div class="page-container relative z-1">
+        <h2 class="neo-heading text-3xl md:text-4xl mb-12 text-center">More Case Studies</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {otherCaseStudies.map(study => (
+            <div class={`neo-card-base neo-service-card-hover-${study.data.color} overflow-hidden p-0`}>
+              <div class="h-52 w-full overflow-hidden">
+                <img 
+                  src={study.data.image}
+                  alt={`${study.data.title} website thumbnail`}
+                  class="w-full h-full object-cover border-b-3 border-black"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="neo-card-title">{study.data.title}</h3>
+                <p class="neo-text mb-6">{study.data.description}</p>
+                <StyledLink 
+                  href={`/case-studies/${study.slug}`} 
+                  variant={`secondary-${study.data.color}`} 
+                  size="sm"
+                >
+                  View Case Study
+                </StyledLink>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact CTA -->
+    <ContactCTA
+      title="Ready to build your custom website?"
+      description="Let's talk about how we can create a site that works hard for your business."
+      ctaText="Start a Conversation"
+      ctaLink="/contact"
+    />
+  </main>
+</Layout>
+
+<style>
+  /* This style block is now empty as we're using direct HTML structure and classes instead of styling markdown content */
+</style>

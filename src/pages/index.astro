@@ -110,34 +110,10 @@ import AboutSection from '../components/AboutSection.astro';
 				<CaseStudySection
 					title="Featured Client Success Stories"
 					description="Real-world results for local businesses. Here's how my websites have helped bring in more customers, bookings, and sales."
-					caseStudies={[
-						{
-							image: "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg",
-							imageAlt: "Coastal Winery website on multiple devices",
-							title: "Coastal Winery",
-							description: "A complete rebrand and website for a family-owned winery focusing on online reservations and wine club memberships.",
-							link: "/case-studies/coastal-winery",
-							color: "mint"
-						},
-						{
-							image: "/images/matt-b-and-rbd-oregon-coast-2024.webp",
-							imageAlt: "Fresh Bistro responsive website design",
-							title: "Fresh Bistro",
-							description: "Mobile-optimized menu and online ordering system that increased takeout orders by 45% within three months.",
-							link: "/case-studies/fresh-bistro",
-							color: "coral"
-						},
-						{
-							image: "/images/mw-headshots-2024.webp",
-							imageAlt: "Handyman Services website design",
-							title: "Quality Contractors",
-							description: "Lead generation website with quote request forms that helped double monthly inquiries within the first quarter.",
-							link: "/case-studies/quality-contractors",
-							color: "blue"
-						}
-					]}
-					ctaText="view all case studies"
-					ctaLink="/case-studies"
+					featuredOnly={true}
+					limit={3}
+					ctaText="View More Work"
+					ctaLink="/work"
 					color="purple"
 				/>
 			</div>
@@ -159,8 +135,8 @@ import AboutSection from '../components/AboutSection.astro';
 						"A sharp eye for design and usability",
 						"The latest in modern web dev (Astro, Next.js, Tailwind, and more)"
 					]}
-					ctaText="Want to see if we're a good fit?"
-					ctaLink="/contact"
+					ctaText="More About Me"
+					ctaLink="/about"
 					imagePath="/images/matt-whitfield-bloomsday-2021-400x400.png"
 					color="blue"
 				/>

@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StyledLink from '../components/StyledLink.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+
+// Define props
+const client = "Morning Light Coffee";
+const services = ["Website Design", "Online Ordering System", "Location Integration"];
+const coverImage = "/images/david-matos-RYPYbRoZp0o-unsplash.jpg"; // Placeholder image
+---
+
+<Layout 
+    title={`${client} | Case Study | Matt Whitfield - Web Designer & Developer`}
+    description={`Web design and development case study for ${client}. Services provided: ${services.join(', ')}.`}
+    image={coverImage}
+>
+    <main class="bg-white">
+        <!-- Hero Section with Full-Width Background -->
+        <section class="w-full relative pt-32 pb-20">
+            <!-- Full-width background gradient that spans the entire section width -->
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
+            
+            <div class="page-container relative z-1">
+                <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 lg:gap-16 items-start">
+                    <div>
+                        <div class="mb-6">
+                            <span class="inline-block font-serif text-sm font-medium uppercase tracking-wider bg-blue text-white py-1 px-3 border-3 border-black">Case Study</span>
+                        </div>
+                        <h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text">{client}</h1>
+                        
+                        <div class="relative mt-8 mb-12 max-w-prose">
+                            <div class="neo-card-base overflow-hidden p-0">
+                                <div class="w-full">
+                                    <img 
+                                        src={coverImage} 
+                                        alt={`${client} case study featured image`} 
+                                        class="w-full aspect-video object-cover border-b-3 border-black"
+                                    />
+                                </div>
+                                <div class="p-6">
+                                    <p class="neo-text text-lg mb-0">
+                                        {services.join(' • ')}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="absolute -top-6 -right-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-base uppercase rotate-3">
+                                Featured
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sticky top-24">
+                        <div class="neo-card-base">
+                            <h2 class="neo-card-title mb-6">Project Overview</h2>
+                            <ul class="space-y-4">
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Mobile-first design for on-the-go customers</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-0 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Online ordering with customizations</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-[135deg] bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Multi-location map integration</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Digital loyalty program</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="mt-8">
+                                <StyledLink href="/contact" variant="secondary-blue" size="md">Start Your Project</StyledLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Case Study Content Section -->
+        <section class="w-full relative py-16">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-tl from-white via-white to-blue/10"></div>
+            
+            <div class="container-narrow relative z-1">
+                <!-- The Challenge -->
+                <div class="mb-20">
+                    <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">The Challenge</h2>
+                    
+                    <div class="neo-text text-lg space-y-6">
+                        <p>
+                            Morning Light Coffee, a boutique coffee shop with two locations, was losing business to larger chains with established mobile ordering. Their existing website was beautiful but purely informational, with no way for customers to order ahead or find location-specific information.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Goals -->
+                <div class="mb-20">
+                    <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">Goals</h2>
+                    
+                    <ul class="space-y-4 neo-text text-lg">
+                        <li class="neo-text flex items-start">
+                            <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                            <span class="flex-grow">Implement mobile ordering for pickup and delivery</span>
+                        </li>
+                        <li class="neo-text flex items-start">
+                            <span class="h-4 w-4 transform rotate-0 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                            <span class="flex-grow">Create a digital loyalty program to compete with chains</span>
+                        </li>
+                        <li class="neo-text flex items-start">
+                            <span class="h-4 w-4 transform rotate-[135deg] bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                            <span class="flex-grow">Showcase the shop's locally-sourced beans and artisanal approach</span>
+                        </li>
+                        <li class="neo-text flex items-start">
+                            <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                            <span class="flex-grow">Improve location information with specific hours and offerings</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- The Solution -->
+                <div class="mb-20">
+                    <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">The Solution</h2>
+                    
+                    <div class="neo-text text-lg space-y-6">
+                        <p>
+                            We designed a mobile-first website with integrated online ordering that highlights the shop's artisanal approach. High-quality photography and a minimalist design reflect the brand's aesthetic, while a custom-built ordering system allows for beverage customizations and store-specific menus.
+                        </p>
+                    </div>
+                    
+                    <!-- Image mockup placeholder -->
+                    <div class="my-12 border-3 border-black shadow-neo">
+                        <img 
+                            src={coverImage}
+                            alt="Website design mockup for Morning Light Coffee"
+                            class="w-full"
+                        />
+                    </div>
+                    
+                    <h3 class="neo-subheading text-2xl mb-6">Key Features:</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="neo-card-base neo-card-blue p-6">
+                            <h4 class="neo-card-title">Mobile Ordering System</h4>
+                            <p class="neo-text">
+                                Custom online ordering with options for pickup timing, drink customizations, and favorite orders.
+                            </p>
+                        </div>
+                        
+                        <div class="neo-card-base neo-card-purple p-6">
+                            <h4 class="neo-card-title">Digital Loyalty Program</h4>
+                            <p class="neo-text">
+                                Points-based reward system integrated with online ordering for free drinks and special offers.
+                            </p>
+                        </div>
+                        
+                        <div class="neo-card-base neo-card-mint p-6">
+                            <h4 class="neo-card-title">Bean Story Section</h4>
+                            <p class="neo-text">
+                                Interactive content about their coffee sourcing, roasting process, and seasonal offerings.
+                            </p>
+                        </div>
+                        
+                        <div class="neo-card-base neo-card-coral p-6">
+                            <h4 class="neo-card-title">Location Finder</h4>
+                            <p class="neo-text">
+                                Store-specific pages with unique menus, hours, and special events for each location.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results -->
+                <div class="mb-20">
+                    <h2 class="neo-heading text-3xl md:text-4xl mb-8 pb-4 border-b-3 border-black inline-block">Results</h2>
+                    
+                    <div class="neo-text text-lg space-y-6">
+                        <p>
+                            Within the first month, online orders accounted for 30% of morning sales, and the loyalty program gained over 500 sign-ups. The average order value increased by 15% due to easier customization options.
+                        </p>
+                    </div>
+                    
+                    <!-- Results metrics in cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
+                        <div class="neo-card-base bg-blue text-white shadow-neo-blue p-6 flex flex-col items-center justify-center text-center">
+                            <span class="text-5xl font-serif font-bold mb-2">30%</span>
+                            <span class="neo-text">Morning Sales Online</span>
+                        </div>
+                        
+                        <div class="neo-card-base bg-purple text-white shadow-neo-purple p-6 flex flex-col items-center justify-center text-center">
+                            <span class="text-5xl font-serif font-bold mb-2">500+</span>
+                            <span class="neo-text">Loyalty Sign-ups</span>
+                        </div>
+                        
+                        <div class="neo-card-base bg-mint text-black shadow-neo-mint p-6 flex flex-col items-center justify-center text-center">
+                            <span class="text-5xl font-serif font-bold mb-2">+15%</span>
+                            <span class="neo-text">Average Order Value</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quote/Testimonial -->
+                <div class="my-24 mx-auto max-w-prose bg-white border-3 border-black p-8 shadow-neo relative">
+                    <div class="absolute -top-6 -left-6 p-3 bg-highlight border-3 border-black">
+                        <span class="text-3xl i-carbon-quotes"></span>
+                    </div>
+                    
+                    <blockquote class="font-serif text-2xl italic mb-6">
+                        "Our new website has completely changed our business. We're competing with major chains now on convenience while still keeping our unique identity. The morning rush is so much smoother with pre-orders, and we're seeing familiar faces come back more often with the loyalty program."
+                    </blockquote>
+                    
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-lightgray border-3 border-black overflow-hidden">
+                            <!-- Client photo placeholder -->
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-serif font-bold mb-0">Eliza Dawn</p>
+                            <p class="neo-text text-sm">Co-owner, Morning Light Coffee</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- More Case Studies Section -->
+        <section class="w-full relative py-16">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
+            
+            <div class="page-container relative z-1">
+                <h2 class="neo-heading text-3xl md:text-4xl mb-12 text-center">More Case Studies</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Case Study 1 -->
+                    <div class="neo-card-base neo-service-card-hover-primary overflow-hidden p-0">
+                        <div class="h-52 w-full overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg"
+                                alt="The Hollow Spoon website thumbnail"
+                                class="w-full h-full object-cover border-b-3 border-black"
+                            />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="neo-card-title">The Hollow Spoon</h3>
+                            <p class="neo-text mb-6">Restaurant website with online menu integration.</p>
+                            <StyledLink href="/case-studies/the-hollow-spoon" variant="secondary-primary" size="sm">View Case Study</StyledLink>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Study 2 -->
+                    <div class="neo-card-base neo-service-card-hover-mint overflow-hidden p-0">
+                        <div class="h-52 w-full overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg"
+                                alt="Laurel Hill Vineyards website thumbnail"
+                                class="w-full h-full object-cover border-b-3 border-black"
+                            />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="neo-card-title">Laurel Hill Vineyards</h3>
+                            <p class="neo-text mb-6">Winery website with e-commerce integration.</p>
+                            <StyledLink href="/case-studies/laurel-hill-vineyards" variant="secondary-mint" size="sm">View Case Study</StyledLink>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Study 3 -->
+                    <div class="neo-card-base neo-service-card-hover-coral overflow-hidden p-0">
+                        <div class="h-52 w-full overflow-hidden">
+                            <img 
+                                src="/images/david-matos-RYPYbRoZp0o-unsplash.jpg"
+                                alt="Ridgeview Renovations website thumbnail"
+                                class="w-full h-full object-cover border-b-3 border-black"
+                            />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="neo-card-title">Ridgeview Renovations</h3>
+                            <p class="neo-text mb-6">Contractor website focused on lead generation.</p>
+                            <StyledLink href="/case-studies/ridgeview-renovations" variant="secondary-coral" size="sm">View Case Study</StyledLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact CTA -->
+        <ContactCTA
+            title="Ready to build your custom website?"
+            description="Let's talk about how we can create a site that works hard for your business."
+            ctaText="Start a Conversation"
+            ctaLink="/contact"
+        />
+    </main>
+</Layout>

@@ -21,7 +21,7 @@ interface Props {
   features?: Feature[];
   ctaText?: string;
   ctaLink?: string;
-  color?: 'coral' | 'mint' | 'purple' | 'blue' | 'lime' | 'highlight'; // Add section color property
+  color?: 'coral' | 'mint' | 'purple' | 'blue' | 'lime' | 'highlight' | 'primary'; // Add section color property
 }
 
 const {
@@ -35,20 +35,38 @@ const {
   color = 'coral' // Default theme color for this section
 } = Astro.props;
 
-// Map the color to the secondary button variant
-const buttonVariant = `secondary-${color}`;
+// Map the color to the valid secondary button variant
+// Make sure this matches the allowed values in StyledLink.astro
+const getButtonVariant = (color: string): 'secondary' | 'secondary-primary' | 'secondary-mint' | 
+                                          'secondary-coral' | 'secondary-purple' | 'secondary-blue' | 
+                                          'secondary-lime' | 'secondary-highlight' => {
+  if (color === 'primary') return 'secondary-primary';
+  if (color === 'mint') return 'secondary-mint';
+  if (color === 'coral') return 'secondary-coral';
+  if (color === 'purple') return 'secondary-purple';
+  if (color === 'blue') return 'secondary-blue';
+  if (color === 'lime') return 'secondary-lime';
+  if (color === 'highlight') return 'secondary-highlight';
+  return 'secondary-coral'; // Default fallback
+};
+
+const buttonVariant = getButtonVariant(color);
 ---
 
 <section class="w-full my-28">
-  <div class="services-container">
+  <!-- Use page-container for consistent width with other sections -->
+  <div class="page-container relative z-1">
     <!-- Decorative elements -->
     <div class={`absolute -top-3 -right-3 h-6 w-6 bg-${color} border-3 border-black`}></div>
+    <div class={`decoration-square bg-${color}`}></div>
     
-    <h2 class="services-title">{title}</h2>
+    <div class="relative mb-16">
+      <h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">{title}</h2>
+    </div>
     
     {description && <p class="neo-text text-lg mb-8 max-w-3xl">{description}</p>}
     
-    <h3 class="services-subtitle">{subtitle}</h3>
+    <h3 class="neo-subheading text-2xl mb-6">{subtitle}</h3>
     
     <!-- Service Card Grid - all using the section color for consistency -->
     <div class="services-grid">
@@ -63,23 +81,27 @@ const buttonVariant = `secondary-${color}`;
     </div>
     
     {features && features.length > 0 && (
-      <div class={`features-box border-${color}`}>
-        <p class="neo-text text-xl mb-6 font-medium">Every site includes:</p>
-        <ul class="mb-8 text-lg grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-          {features.map((feature, index) => {
-            // Use geometric shapes with rotations for visual interest
-            const shapeRotation = index % 3 === 0 ? 'rotate-45' : 
-                                  index % 3 === 1 ? 'rotate-0' : 
-                                  'rotate-[135deg]';
-            return (
-              <li class="neo-text flex items-start mb-4">
-                <!-- Geometric shape instead of icon -->
-                <span class={`h-4 w-4 transform ${shapeRotation} bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
-                <span>{feature.text}</span>
-              </li>
-            );
-          })}
-        </ul>
+      <div class="mt-16 mb-12">
+        <div class={`neo-card-base p-8 relative border-${color} bg-${color}/5`}>
+          <div class={`absolute -top-6 -left-6 p-2 bg-${color} border-3 border-black text-black font-serif font-bold text-xl uppercase`}>
+            Every site includes
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
+            {features.map((feature, index) => {
+              // Calculate rotation angle based on index for visual interest
+              const rotation = index % 3 === 0 ? "rotate-0" : 
+                              index % 3 === 1 ? "rotate-45" : "rotate-[135deg]";
+              
+              return (
+                <div class="flex items-start">
+                  <span class={`inline-block h-4 w-4 bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4 transform ${rotation}`} aria-hidden="true"></span>
+                  <span class="neo-text text-lg">{feature.text}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     )}
     
@@ -90,21 +112,76 @@ const buttonVariant = `secondary-${color}`;
 </section>
 
 <style>
-  /* Additional patterns and decorations */
-  .services-container::after {
+  /* Card grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  
+  /* Decorative elements */
+  .decoration-square {
     content: "";
     position: absolute;
     top: -15px;
     left: 40%;
     width: 30px;
     height: 30px;
-    background-color: var(--coral-color, #F15BB5);
+    background-color: #F15BB5; /* Default to coral */
     border: 3px solid black;
     transform: rotate(45deg);
     z-index: -1;
   }
   
-  :root {
-    --coral-color: #F15BB5;
+  /* Background and border color utilities */
+  .bg-primary\/5 { background-color: rgba(255, 107, 53, 0.05); }
+  .bg-mint\/5 { background-color: rgba(92, 236, 198, 0.05); }
+  .bg-coral\/5 { background-color: rgba(241, 91, 181, 0.05); }
+  .bg-blue\/5 { background-color: rgba(0, 187, 249, 0.05); }
+  .bg-purple\/5 { background-color: rgba(155, 93, 229, 0.05); }
+  .bg-lime\/5 { background-color: rgba(186, 255, 41, 0.05); }
+  .bg-highlight\/5 { background-color: rgba(254, 228, 64, 0.05); }
+  
+  /* Neo-brutalism styling for borders */
+  .border-primary {
+    border-color: #FF6B35;
+  }
+  
+  .border-mint {
+    border-color: #5CECC6;
+  }
+  
+  .border-coral {
+    border-color: #F15BB5;
+  }
+  
+  .border-blue {
+    border-color: #00BBF9;
+  }
+  
+  .border-purple {
+    border-color: #9B5DE5;
+  }
+  
+  .border-lime {
+    border-color: #BAFF29;
+  }
+  
+  .border-highlight {
+    border-color: #FEE440;
   }
 </style>

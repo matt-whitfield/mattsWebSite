@@ -1,22 +1,26 @@
 ---
 // CaseStudySection component that displays multiple case studies in a grid layout
+import { getCollection } from 'astro:content';
 import CaseStudyCard from './CaseStudyCard.astro';
 import StyledLink from './StyledLink.astro';
 
-interface CaseStudy {
-  image: string;
-  imageAlt: string;
-  title: string;
-  description: string;
-  link: string;
-  color?: 'black' | 'primary' | 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'highlight';
-}
-
+// Define props interface
 interface Props {
   title: string;
   subtitle?: string;
   description?: string;
-  caseStudies: CaseStudy[];
+  // caseStudies can be passed as props OR we'll fetch from content collection
+  caseStudies?: Array<{
+    image: string;
+    imageAlt: string;
+    title: string;
+    description: string;
+    link: string;
+    color?: 'black' | 'primary' | 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'highlight';
+  }>;
+  // Filter options for content collection
+  featuredOnly?: boolean;
+  limit?: number;
   ctaText?: string;
   ctaLink?: string;
   color?: 'purple' | 'mint' | 'coral' | 'blue' | 'lime' | 'highlight';
@@ -26,11 +30,48 @@ const {
   title = "Featured Case Studies",
   subtitle,
   description = "Real-world results for local businesses. See how my websites help bring in more customers, bookings, and sales.",
-  caseStudies,
+  caseStudies: propCaseStudies, // Rename to avoid conflict with the derived caseStudies
+  featuredOnly = false,
+  limit = 3,
   ctaText,
   ctaLink,
   color = 'purple' // Default theme color for this section
 } = Astro.props;
+
+// If case studies weren't passed as props, fetch them from the content collection
+let caseStudies = propCaseStudies;
+
+if (!caseStudies) {
+  // Get case studies from the content collection
+  const allCaseStudies = await getCollection('case-studies');
+  
+  // Filter by featured if needed
+  const filteredCaseStudies = featuredOnly 
+    ? allCaseStudies.filter(study => study.data.featured)
+    : allCaseStudies;
+    
+  // Sort by publishDate if available (most recent first)
+  filteredCaseStudies.sort((a, b) => {
+    // If publishDate is available, sort by it
+    if (a.data.publishDate && b.data.publishDate) {
+      return b.data.publishDate.getTime() - a.data.publishDate.getTime();
+    }
+    return 0;
+  });
+  
+  // Limit the number of case studies to display
+  const limitedCaseStudies = filteredCaseStudies.slice(0, limit);
+  
+  // Format case studies to match the component's expected structure
+  caseStudies = limitedCaseStudies.map(study => ({
+    image: study.data.image,
+    imageAlt: `${study.data.client} - ${study.data.title}`,
+    title: study.data.client,
+    description: study.data.description,
+    link: `/case-studies/${study.slug}`,
+    color: study.data.color
+  }));
+}
 
 // Map the color to the secondary button variant
 const buttonVariant = `secondary-${color}`;

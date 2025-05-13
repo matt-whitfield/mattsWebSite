@@ -3,6 +3,7 @@
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -132,48 +133,6 @@ const currentUrl = Astro.url.href;
       <slot />
     </div>
     
-    <footer class="mt-24 border-t-3 border-black pt-8 pb-12 relative">
-      <div class="container-px">
-        <div class="flex flex-col md:flex-row justify-between gap-8">
-          <!-- Logo and Copyright -->
-          <div>
-            <div class="font-serif font-bold text-2xl mb-4">Matt Whitfield</div>
-            <p class="neo-text mb-2">Web Design & Development</p>
-            <p class="neo-text text-sm">&copy; {new Date().getFullYear()}</p>
-          </div>
-          
-          <!-- Navigation -->
-          <div>
-            <h2 class="font-serif font-bold text-xl uppercase mb-4">Site Links</h2>
-            <nav aria-label="Footer Navigation">
-              <ul class="flex flex-col gap-3">
-                <li>
-                  <a href="/" class="neo-text transition-colors duration-200 hover:text-primary">Home</a>
-                </li>
-                <li>
-                  <a href="/about" class="neo-text transition-colors duration-200 hover:text-primary">About</a>
-                </li>
-                <li>
-                  <a href="/services" class="neo-text transition-colors duration-200 hover:text-primary">Services</a>
-                </li>
-                <li>
-                  <a href="/work" class="neo-text transition-colors duration-200 hover:text-primary">Work</a>
-                </li>
-                <li>
-                  <a href="/blog" class="neo-text transition-colors duration-200 hover:text-primary">Blog</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          <!-- Contact -->
-          <div>
-            <h2 class="font-serif font-bold text-xl uppercase mb-4">Contact</h2>
-            <a href="/contact" class="neo-link-base neo-link-primary">Get in Touch</a>
-            <p class="neo-text text-sm mt-4">hello@mattwhitfield.com</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <Footer/>
   </body>
 </html>
