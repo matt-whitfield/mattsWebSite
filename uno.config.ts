@@ -60,7 +60,7 @@ export default defineConfig({
       'neo-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
       'neo-lg': '6px 6px 0px 0px rgba(0,0,0,1)',
       // Adding colored shadows for more playfulness
-      'neo-primary': '4px 4px 0px 0px rgba(226,94,62,1)',
+      'neo-primary': '4px 4px 0px 0px rgba(255,107,53,1)', // Updated to match primary color #FF6B35
       'neo-mint': '4px 4px 0px 0px rgba(92,236,198,1)',
       'neo-purple': '4px 4px 0px 0px rgba(155,93,229,1)',
       'neo-coral': '4px 4px 0px 0px rgba(241,91,181,1)',
@@ -173,9 +173,9 @@ export default defineConfig({
     'neo-link-highlight': 'bg-highlight text-black hover:bg-white hover:text-highlight',
     
     // Neo Brutalist card styles
-    'neo-card-base': 'bg-white p-6 border-3 border-black shadow-neo transition-all duration-200 hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px]',
+    'neo-card-base': 'bg-white p-2 border-3 border-black shadow-neo transition-all duration-200 hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px]',
     'neo-service-card': 'neo-card-base transform-gpu transition-all duration-300',
-    'neo-service-card-hover-primary': 'hover:shadow-neo-primary',
+    'neo-service-card-hover-primary': 'hover:shadow-[4px_4px_0px_0px_rgba(255,107,53,1)]',
     'neo-service-card-hover-mint': 'hover:shadow-neo-mint',
     'neo-service-card-hover-coral': 'hover:shadow-neo-coral',
     'neo-service-card-hover-purple': 'hover:shadow-neo-purple',
@@ -297,6 +297,23 @@ export default defineConfig({
     'bg-pattern-diagonal-blue': 'relative overflow-hidden',
     'bg-pattern-diagonal-lime': 'relative overflow-hidden',
     'bg-pattern-diagonal-highlight': 'relative overflow-hidden',
+    'neo-decoration-square': 'absolute top-[-15px] left-[40%] w-[30px] h-[30px] border-3 border-black rotate-45 -z-1',
+    // Corner decoration for ServiceCard
+    'corner-spin': 'absolute -top-2 -right-2 w-6 h-6 transition-all duration-300',
+    'group-hover:corner-spin-rotate': 'group-hover:rotate-45',
+    
+    // Icon container for ServiceCard
+    'neo-icon-container': 'w-12 h-12 flex items-center justify-center border-3 border-black bg-white transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]',
+    // Icon color transition
+    'icon-color-change': 'transition-colors duration-300',
+    // Icon color on hover for each color
+    'group-hover:icon-mint': 'group-hover:text-mint',
+    'group-hover:icon-coral': 'group-hover:text-coral',
+    'group-hover:icon-primary': 'group-hover:text-primary',
+    'group-hover:icon-blue': 'group-hover:text-blue',
+    'group-hover:icon-purple': 'group-hover:text-purple',
+    'group-hover:icon-lime': 'group-hover:text-lime',
+    'group-hover:icon-highlight': 'group-hover:text-highlight',
   },
   rules: [
     // For radial gradients

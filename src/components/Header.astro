@@ -1,5 +1,15 @@
 ---
 // Header component for site navigation
+interface NavLink {
+  href: string;
+  text: string;
+}
+
+interface Props {
+  links: NavLink[];
+}
+
+const { links } = Astro.props;
 ---
 
 <script>
@@ -30,31 +40,13 @@
     
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-6 font-serif">
-      <a href="/" class="neo-text font-bold uppercase tracking-wider py-1 relative overflow-hidden group">
-        Home
-        <span class="absolute left-0 bottom-0 w-full h-[3px] bg-primary transform translate-x-[-105%] group-hover:translate-x-0 transition-transform duration-300"></span>
-        <span class="absolute right-0 bottom-0 w-[3px] h-[3px] bg-primary transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-300 delay-150"></span>
-      </a>
-      <a href="/about" class="neo-text font-bold uppercase tracking-wider py-1 relative overflow-hidden group">
-        About
-        <span class="absolute left-0 bottom-0 w-full h-[3px] bg-primary transform translate-x-[-105%] group-hover:translate-x-0 transition-transform duration-300"></span>
-        <span class="absolute right-0 bottom-0 w-[3px] h-[3px] bg-primary transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-300 delay-150"></span>
-      </a>
-      <a href="/services" class="neo-text font-bold uppercase tracking-wider py-1 relative overflow-hidden group">
-        Services
-        <span class="absolute left-0 bottom-0 w-full h-[3px] bg-primary transform translate-x-[-105%] group-hover:translate-x-0 transition-transform duration-300"></span>
-        <span class="absolute right-0 bottom-0 w-[3px] h-[3px] bg-primary transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-300 delay-150"></span>
-      </a>
-      <a href="/work" class="neo-text font-bold uppercase tracking-wider py-1 relative overflow-hidden group">
-        Work
-        <span class="absolute left-0 bottom-0 w-full h-[3px] bg-primary transform translate-x-[-105%] group-hover:translate-x-0 transition-transform duration-300"></span>
-        <span class="absolute right-0 bottom-0 w-[3px] h-[3px] bg-primary transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-300 delay-150"></span>
-      </a>
-      <a href="/blog" class="neo-text font-bold uppercase tracking-wider py-1 relative overflow-hidden group">
-        Blog
-        <span class="absolute left-0 bottom-0 w-full h-[3px] bg-primary transform translate-x-[-105%] group-hover:translate-x-0 transition-transform duration-300"></span>
-        <span class="absolute right-0 bottom-0 w-[3px] h-[3px] bg-primary transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-300 delay-150"></span>
-      </a>
+      {links.map(link => (
+        <a href={link.href} class="neo-text font-bold uppercase tracking-wider py-1 relative overflow-hidden group">
+          {link.text}
+          <span class="absolute left-0 bottom-0 w-full h-[3px] bg-primary transform translate-x-[-105%] group-hover:translate-x-0 transition-transform duration-300"></span>
+          <span class="absolute right-0 bottom-0 w-[3px] h-[3px] bg-primary transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-300 delay-150"></span>
+        </a>
+      ))}
       <a href="/contact" class="neo-link-base neo-link-primary ml-4">Contact</a>
     </nav>
     
@@ -84,26 +76,12 @@
       </button>
     </div>
     <nav class="flex flex-col items-center space-y-8 mt-12">
-      <a href="/" class="font-serif font-bold uppercase tracking-wider text-2xl relative group">
-        Home
-        <span class="absolute left-0 -bottom-2 w-full h-[3px] bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-      </a>
-      <a href="/about" class="font-serif font-bold uppercase tracking-wider text-2xl relative group">
-        About
-        <span class="absolute left-0 -bottom-2 w-full h-[3px] bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-      </a>
-      <a href="/services" class="font-serif font-bold uppercase tracking-wider text-2xl relative group">
-        Services
-        <span class="absolute left-0 -bottom-2 w-full h-[3px] bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-      </a>
-      <a href="/work" class="font-serif font-bold uppercase tracking-wider text-2xl relative group">
-        Work
-        <span class="absolute left-0 -bottom-2 w-full h-[3px] bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-      </a>
-      <a href="/blog" class="font-serif font-bold uppercase tracking-wider text-2xl relative group">
-        Blog
-        <span class="absolute left-0 -bottom-2 w-full h-[3px] bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-      </a>
+      {links.map(link => (
+        <a href={link.href} class="font-serif font-bold uppercase tracking-wider text-2xl relative group">
+          {link.text}
+          <span class="absolute left-0 -bottom-2 w-full h-[3px] bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
+        </a>
+      ))}
       <a href="/contact" class="neo-link-base neo-link-primary mt-4">Contact</a>
     </nav>
   </div>

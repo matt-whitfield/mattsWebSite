@@ -13,7 +13,7 @@ interface Props {
   type?: string;
 }
 
-const { 
+const {
   title, 
   description = "Websites that do more - Matt Whitfield designs and builds custom websites for small businesses that get results.",
   image = "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg",
@@ -23,6 +23,13 @@ const {
 
 // Get current URL for canonical link
 const currentUrl = Astro.url.href;
+
+const navLinks = [
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About" },
+  { href: "/what-i-do", text: "The Work" },
+  { href: "/blog", text: "Blog" },
+];
 ---
 
 <!DOCTYPE html>
@@ -128,7 +135,7 @@ const currentUrl = Astro.url.href;
   </head>
   <body class="font-sans min-h-screen bg-background text-text">
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <Header/>
+    <Header links={navLinks}/>
     <div id="main-content" class="pt-4">
       <slot />
     </div>

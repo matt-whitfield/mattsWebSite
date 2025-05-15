@@ -58,7 +58,7 @@ const buttonVariant = getButtonVariant(color);
   <div class="page-container relative z-1">
     <!-- Decorative elements -->
     <div class={`absolute -top-3 -right-3 h-6 w-6 bg-${color} border-3 border-black`}></div>
-    <div class={`decoration-square bg-${color}`}></div>
+    <div class={`neo-decoration-square bg-${color}`}></div>
     
     <div class="relative mb-16">
       <h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">{title}</h2>
@@ -69,7 +69,7 @@ const buttonVariant = getButtonVariant(color);
     <h3 class="neo-subheading text-2xl mb-6">{subtitle}</h3>
     
     <!-- Service Card Grid - all using the section color for consistency -->
-    <div class="services-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-10">
       {services.map((service) => (
         <ServiceCard 
           icon={service.icon} 
@@ -112,76 +112,5 @@ const buttonVariant = getButtonVariant(color);
 </section>
 
 <style>
-  /* Card grid */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-  }
-  
-  @media (min-width: 640px) {
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .services-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-  }
-  
-  /* Decorative elements */
-  .decoration-square {
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: 40%;
-    width: 30px;
-    height: 30px;
-    background-color: #F15BB5; /* Default to coral */
-    border: 3px solid black;
-    transform: rotate(45deg);
-    z-index: -1;
-  }
-  
-  /* Background and border color utilities */
-  .bg-primary\/5 { background-color: rgba(255, 107, 53, 0.05); }
-  .bg-mint\/5 { background-color: rgba(92, 236, 198, 0.05); }
-  .bg-coral\/5 { background-color: rgba(241, 91, 181, 0.05); }
-  .bg-blue\/5 { background-color: rgba(0, 187, 249, 0.05); }
-  .bg-purple\/5 { background-color: rgba(155, 93, 229, 0.05); }
-  .bg-lime\/5 { background-color: rgba(186, 255, 41, 0.05); }
-  .bg-highlight\/5 { background-color: rgba(254, 228, 64, 0.05); }
-  
-  /* Neo-brutalism styling for borders */
-  .border-primary {
-    border-color: #FF6B35;
-  }
-  
-  .border-mint {
-    border-color: #5CECC6;
-  }
-  
-  .border-coral {
-    border-color: #F15BB5;
-  }
-  
-  .border-blue {
-    border-color: #00BBF9;
-  }
-  
-  .border-purple {
-    border-color: #9B5DE5;
-  }
-  
-  .border-lime {
-    border-color: #BAFF29;
-  }
-  
-  .border-highlight {
-    border-color: #FEE440;
-  }
+  /* Styles removed as they are now handled by UnoCSS or moved to uno.config.ts */
 </style>

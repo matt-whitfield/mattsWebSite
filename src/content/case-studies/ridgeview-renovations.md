@@ -25,7 +25,7 @@ keyFeatures:
     color: blue
     description: One-step quote request form with mobile-friendly design and instant submission.
   - title: Local SEO Optimization
-    color: primary
+    color: coral
     description: Neighborhood targeting and local keyword optimization to improve search visibility.
   - title: Trust Builders
     color: purple

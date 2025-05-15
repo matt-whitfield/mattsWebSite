@@ -5,7 +5,7 @@ client: The Hollow Spoon
 image: /images/david-matos-RYPYbRoZp0o-unsplash.jpg
 publishDate: 2024-12-15
 tags: [Restaurant, Mobile Design, Google Business]
-color: primary
+color: coral
 services: [Website Design, Online Menu Integration, Google Business Sync]
 featured: true
 projectFeatures: [Mobile-first design, Easy-to-update daily menu system, Google Maps + Business integration, Prominent call-to-actions]
@@ -18,7 +18,7 @@ goals:
 solution: "We designed a simple but elegant site with a hero video of the restaurant, embedded Google Maps, and large, tappable buttons for menu, reservations, and directions. A custom CMS setup lets the staff update their menu from their phone."
 keyFeatures:
   - title: Embedded Reservations
-    color: primary
+    color: coral
     description: Integrated Resy/OpenTable reservation links allow customers to book tables directly from the website.
   - title: Dynamic Menu Builder
     color: coral
@@ -33,7 +33,7 @@ results: "After launch, mobile engagement doubled, and bounce rate dropped by 35
 resultsMetrics:
   - value: "2x"
     label: Mobile Engagement
-    color: primary
+    color: coral
   - value: "-35%"
     label: Bounce Rate
     color: coral
