@@ -37,7 +37,7 @@ const {
     <div class="cta-box">
       <div class="cta-box-inner">
         <div class="cta-box-title">{boxTitle}</div>
-        <StyledLink href={ctaLink} variant={color}>{ctaText}</StyledLink>
+        <StyledLink href={ctaLink} variant={color === 'highlight' ? 'secondary-highlight' : color}>{ctaText}</StyledLink>
       </div>
     </div>
     <!-- Corner accents on the box -->

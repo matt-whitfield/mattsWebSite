@@ -24,8 +24,27 @@ const {
   color = 'blue'
 } = Astro.props;
 
-// Map the color to the secondary button variant
-const buttonVariant = `secondary-${color}`;
+// Helper function to get a valid StyledLink variant
+function getButtonVariant(
+  color: 'blue' | 'mint' | 'coral' | 'purple' | 'lime' | 'highlight' | undefined
+):
+  | 'secondary-blue'
+  | 'secondary-mint'
+  | 'secondary-coral'
+  | 'secondary-purple'
+  | 'secondary-lime'
+  | 'secondary-highlight'
+  | 'secondary' {
+  switch (color) {
+    case 'blue': return 'secondary-blue';
+    case 'mint': return 'secondary-mint';
+    case 'coral': return 'secondary-coral';
+    case 'purple': return 'secondary-purple';
+    case 'lime': return 'secondary-lime';
+    case 'highlight': return 'secondary-highlight';
+    default: return 'secondary';
+  }
+}
 ---
 
 <div class="about-section relative neo-card-base py-12 px-6 md:px-10">
@@ -56,7 +75,7 @@ const buttonVariant = `secondary-${color}`;
       </ul>
       
       <div class="mt-8">
-        <StyledLink href={ctaLink} variant={buttonVariant}>{ctaText}</StyledLink>
+        <StyledLink href={ctaLink} variant={getButtonVariant(color)}>{ctaText}</StyledLink>
       </div>
     </div>
     
