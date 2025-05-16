@@ -10,6 +10,7 @@ interface Props {
   ctaText?: string;
   ctaLink?: string;
   profileImage?: string;
+  alt?: string;
 }
 
 const {
@@ -18,11 +19,12 @@ const {
   quote,
   ctaText = "explore the work",
   ctaLink = "/blog",
-  profileImage = "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg"
+  profileImage = "/images/matt-whitfield-rpf-on-set-2024-1200x1500.webp",
+  alt = "Matt Whitfield smiling on the set of Resting Pitch Face, a dark comedy short film."
 } = Astro.props;
 ---
 
-<div class="hero-section">
+<div class="hero-section min-h-screen relative">
   <!-- Left column with h1 -->
   <div class="flex items-center justify-start pt-16 md:pt-0">
     <h1 class="hero-title-responsive !leading-[0.9]">{title}</h1>
@@ -30,7 +32,7 @@ const {
   
   <!-- Right column with paragraph, blockquote, and CTA -->
   <div class="flex flex-col justify-center">
-    <ProfileBadge imagePath={profileImage} />
+    <ProfileBadge imagePath={profileImage} alt={alt} />
     <p class="neo-text text-lg mb-8 pr-4">{description}</p>
     {quote && (
       <blockquote class="neo-text italic text-lg font-medium mb-10 pr-4">{quote}</blockquote>
@@ -42,5 +44,7 @@ const {
   </div>
   
   <!-- Scroll Arrow -->
-  <ScrollArrow />
+  <div class="absolute left-1/2 -translate-x-1/2 bottom-10 z-10">
+    <ScrollArrow />
+  </div>
 </div>

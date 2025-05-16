@@ -2,8 +2,9 @@
 // Import UnoCSS reset to ensure consistent styles across browsers
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import RenovationFooter from '../components/RenovationFooter.astro';
+import SiteBanner from '../components/SiteBanner.astro';
+import FloatingMenu from '../components/FloatingMenu.astro';
 
 interface Props {
   title: string;
@@ -39,7 +40,7 @@ const navLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href="https://mattwhitfield.xyz" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#E25E3E" />
@@ -64,15 +65,91 @@ const navLinks = [
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-      {
-        JSON.stringify({
+      {JSON.stringify([
+        {
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "Matt Whitfield - Web Design & Development",
-          "url": Astro.url.origin,
-          "description": "Matt Whitfield designs and builds custom websites for small businesses that get results."
-        })
-      }
+          "url": "https://mattwhitfield.xyz",
+          "description": "Matt Whitfield is a Portland-based web designer and creative building custom websites for small businesses want better online results.",
+          "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
+          "potentialAction": {
+            "@type": "ContactAction",
+            "target": "https://mattwhitfield.xyz/contact",
+            "name": "Contact Matt Whitfield"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/matt--whitfield/",
+            "https://www.instagram.com/_mattwhitfield/",
+            "https://www.youtube.com/@mattwhitfield6331",
+            "https://github.com/matt-whitfield"
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Matt Whitfield",
+          "jobTitle": "Web Designer & Developer",
+          "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Portland",
+            "addressRegion": "OR",
+            "addressCountry": "US"
+          },
+          "areaServed": [
+            "Portland, OR",
+            "Walla Walla, WA"
+          ],
+          "url": "https://mattwhitfield.xyz",
+          "sameAs": [
+            "https://www.linkedin.com/in/matt--whitfield/",
+            "https://www.instagram.com/_mattwhitfield/",
+            "https://www.youtube.com/@mattwhitfield6331",
+            "https://github.com/matt-whitfield"
+          ],
+          "knowsAbout": [
+            "Web Design", "Web Development", "SEO", "Marketing", "Brand Strategy"
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "Matt Whitfield - Web Design & Development",
+          "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
+          "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
+          "url": "https://mattwhitfield.xyz",
+          "description": "Custom websites, web design, development, SEO, and marketing for small businesses in Portland, OR and Walla Walla, WA.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Portland",
+            "addressRegion": "OR",
+            "addressCountry": "US"
+          },
+          "areaServed": [
+            "Portland, OR",
+            "Walla Walla, WA",
+            "Vancouver, WA",
+            "Beaverton, OR"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/matt--whitfield/",
+            "https://www.instagram.com/_mattwhitfield/",
+            "https://www.youtube.com/@mattwhitfield6331",
+            "https://github.com/matt-whitfield"
+          ],
+          "serviceType": [
+            "Web Design",
+            "Web Development",
+            "SEO",
+            "Marketing",
+            "Brand Strategy",
+            "Content Creation"
+          ],
+          "telephone": "+1-208-512-0705", 
+          "email": "hello@mattwhitfield.xyz" 
+        }
+      ])}
     </script>
     <style is:global>
       /* Additional global styles */
@@ -132,14 +209,18 @@ const navLinks = [
         font-weight: bold;
       }
     </style>
+    <link rel="apple-touch-icon" href="/images/matt-logo-v8-black.png" sizes="180x180" />
+    <link rel="manifest" href="/manifest.json" />
   </head>
-  <body class="font-sans min-h-screen bg-background text-text">
+  <body class="bg-background text-text min-h-screen flex flex-col">
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <Header links={navLinks}/>
-    <div id="main-content" class="pt-4">
-      <slot />
-    </div>
-    
-    <Footer/>
+    <SiteBanner />
+    <FloatingMenu />
+    <main class="flex-grow">
+      <div id="main-content" class="pt-4">
+        <slot />
+      </div>
+    </main>
+    <RenovationFooter />
   </body>
 </html>

@@ -9,6 +9,7 @@ interface Props {
   ctaText?: string;
   ctaLink?: string;
   imagePath?: string;
+  alt?: string;
   color?: 'blue' | 'mint' | 'coral' | 'purple' | 'lime' | 'highlight';
 }
 
@@ -18,7 +19,8 @@ const {
   listItems = [],
   ctaText = "Want to see if we're a good fit?",
   ctaLink = "/contact",
-  imagePath = "/images/matt-whitfield-bloomsday-2021-400x400.png",
+  imagePath = "/images/matt-whitfield-bloomsday-2021-400x400.webp",
+  alt = "Matt Whitfield smiling at Bloomsday 2021.",
   color = 'blue'
 } = Astro.props;
 
@@ -61,7 +63,7 @@ const buttonVariant = `secondary-${color}`;
     <div class="md:w-1/3 flex justify-center">
       <div class="relative w-full max-w-xs">
         <div class="aspect-ratio-1/1 overflow-hidden neo-image-frame border-3 border-black bg-white">
-          <img src={imagePath} alt="Matt Whitfield" class="w-full h-full object-cover" />
+          <img src={imagePath} alt={alt} class="w-full h-full object-cover" />
         </div>
         <div class={`absolute -bottom-4 -right-4 p-2 bg-${color} border-3 border-black text-black font-medium rotate-6`}>
           That's me!
