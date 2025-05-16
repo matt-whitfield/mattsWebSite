@@ -64,95 +64,87 @@ const navLinks = [
     <meta name="twitter:image" content={new URL(image, Astro.site || Astro.url.origin).href} />
     
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Matt Whitfield - Web Design & Development",
-        "url": "https://mattwhitfield.xyz",
-        "description": "Matt Whitfield is a Portland-based web designer and creative building custom websites for small businesses want better online results.",
-        "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
-        "potentialAction": {
-          "@type": "ContactAction",
-          "target": "https://mattwhitfield.xyz/contact",
-          "name": "Contact Matt Whitfield"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/matt--whitfield/",
-          "https://www.instagram.com/_mattwhitfield/",
-          "https://www.youtube.com/@mattwhitfield6331",
-          "https://github.com/matt-whitfield"
-        ]
-      })}
-    </script>
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Matt Whitfield",
-        "jobTitle": "Web Designer & Developer",
-        "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Portland",
-          "addressRegion": "OR",
-          "addressCountry": "US"
-        },
-        "areaServed": [
-          "Portland, OR",
-          "Walla Walla, WA"
-        ],
-        "url": "https://mattwhitfield.xyz",
-        "sameAs": [
-          "https://www.linkedin.com/in/matt--whitfield/",
-          "https://www.instagram.com/_mattwhitfield/",
-          "https://www.youtube.com/@mattwhitfield6331",
-          "https://github.com/matt-whitfield"
-        ],
-        "knowsAbout": [
-          "Web Design", "Web Development", "SEO", "Marketing", "Brand Strategy"
-        ]
-      })}
-    </script>
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Matt Whitfield - Web Design & Development",
-        "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
-        "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
-        "url": "https://mattwhitfield.xyz",
-        "description": "Custom websites, web design, development, SEO, and marketing for small businesses in Portland, OR and Walla Walla, WA.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Portland",
-          "addressRegion": "OR",
-          "addressCountry": "US"
-        },
-        "areaServed": [
-          "Portland, OR",
-          "Walla Walla, WA",
-          "Vancouver, WA",
-          "Beaverton, OR"
-        ],
-        "sameAs": [
-          "https://www.linkedin.com/in/matt--whitfield/",
-          "https://www.instagram.com/_mattwhitfield/",
-          "https://www.youtube.com/@mattwhitfield6331",
-          "https://github.com/matt-whitfield"
-        ],
-        "serviceType": [
-          "Web Design",
-          "Web Development",
-          "SEO",
-          "Marketing",
-          "Brand Strategy",
-          "Content Creation"
-        ],
-        "telephone": "+1-208-512-0705", 
-        "email": "hello@mattwhitfield.xyz" 
-      })}
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Matt Whitfield - Web Design & Development",
+      "url": "https://mattwhitfield.xyz",
+      "description": "Matt Whitfield is a Portland-based web designer and creative building custom websites for small businesses want better online results.",
+      "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
+      "potentialAction": {
+        "@type": "ContactAction",
+        "target": "https://mattwhitfield.xyz/contact",
+        "name": "Contact Matt Whitfield"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/matt--whitfield/",
+        "https://www.instagram.com/_mattwhitfield/",
+        "https://www.youtube.com/@mattwhitfield6331",
+        "https://github.com/matt-whitfield"
+      ]
+    })}></script><script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Matt Whitfield",
+      "jobTitle": "Web Designer & Developer",
+      "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Portland",
+        "addressRegion": "OR",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Portland, OR",
+        "Walla Walla, WA"
+      ],
+      "url": "https://mattwhitfield.xyz",
+      "sameAs": [
+        "https://www.linkedin.com/in/matt--whitfield/",
+        "https://www.instagram.com/_mattwhitfield/",
+        "https://www.youtube.com/@mattwhitfield6331",
+        "https://github.com/matt-whitfield"
+      ],
+      "knowsAbout": [
+        "Web Design", "Web Development", "SEO", "Marketing", "Brand Strategy"
+      ]
+    })}></script><script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Matt Whitfield - Web Design & Development",
+      "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
+      "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
+      "url": "https://mattwhitfield.xyz",
+      "description": "Custom websites, web design, development, SEO, and marketing for small businesses in Portland, OR and Walla Walla, WA.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Portland",
+        "addressRegion": "OR",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Portland, OR",
+        "Walla Walla, WA",
+        "Vancouver, WA",
+        "Beaverton, OR"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/matt--whitfield/",
+        "https://www.instagram.com/_mattwhitfield/",
+        "https://www.youtube.com/@mattwhitfield6331",
+        "https://github.com/matt-whitfield"
+      ],
+      "serviceType": [
+        "Web Design",
+        "Web Development",
+        "SEO",
+        "Marketing",
+        "Brand Strategy",
+        "Content Creation"
+      ],
+      "telephone": "+1-208-512-0705", 
+      "email": "hello@mattwhitfield.xyz" 
+    })}></script>
     <style is:global>
       /* Additional global styles */
       html {
