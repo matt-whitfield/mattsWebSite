@@ -208,7 +208,11 @@ const navLinks = [
   </head>
   <body class="bg-background text-text min-h-screen flex flex-col">
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <SiteBanner />
+    <div id="site-banner-wrapper" style="position:fixed;top:0;left:0;width:100%;z-index:1000;pointer-events:none;">
+      <div style="pointer-events:auto;">
+        <SiteBanner />
+      </div>
+    </div>
     <FloatingMenu />
     <main class="flex-grow">
       <div id="main-content">
@@ -216,5 +220,24 @@ const navLinks = [
       </div>
     </main>
     <RenovationFooter />
+    <script>
+      // Hide banner on scroll
+      (function() {
+        const banner = document.getElementById('site-banner-wrapper');
+        function onScroll() {
+          if (!banner) return;
+          if (window.scrollY > 10) {
+            banner.style.transform = 'translateY(-100%)';
+            banner.style.transition = 'transform 0.4s cubic-bezier(.4,0,.2,1)';
+          } else {
+            banner.style.transform = 'translateY(0)';
+            banner.style.transition = 'transform 0.4s cubic-bezier(.4,0,.2,1)';
+          }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Initial state
+        onScroll();
+      })();
+    </script>
   </body>
 </html>

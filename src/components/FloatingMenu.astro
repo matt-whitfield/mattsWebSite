@@ -14,7 +14,7 @@ const sections = [
 const isHome = Astro.url.pathname === '/';
 ---
 <nav id="floating-menu" aria-label="Page sections" class="fixed z-[100] flex items-center bg-white border-3 border-black shadow-neo rounded-full px-4 py-2 gap-2 md:gap-4 font-serif text-base md:text-lg backdrop-blur-sm bg-opacity-95 floating-menu--at-top">
-  <button id="floating-menu-toggle" class="menu-toggle md:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="floating-menu-list" type="button">
+  <button id="floating-menu-toggle" class="menu-toggle md:hidden flex items-center" aria-label="Open menu" aria-expanded="false" aria-controls="floating-menu-list" type="button">
     <span class="sr-only">Open menu</span>
     <svg width="24" height="24" fill="none" viewBox="0 0 24 24" class="inline-block align-middle"><rect y="5" width="24" height="2" rx="1" fill="currentColor"/><rect y="11" width="24" height="2" rx="1" fill="currentColor"/><rect y="17" width="24" height="2" rx="1" fill="currentColor"/></svg>
   </button>
@@ -36,60 +36,6 @@ const isHome = Astro.url.pathname === '/';
   </ul>
 </nav>
 
-<script>
-// Smooth scroll for anchor links
-if (typeof window !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e: Event) {
-        const self = e.currentTarget as HTMLAnchorElement;
-        const targetId = self.getAttribute('href')?.slice(1);
-        if (!targetId) return;
-        const target = document.getElementById(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // Floating menu scroll behavior
-    const menu = document.getElementById('floating-menu');
-    const threshold = 64; // px, adjust as needed
-    function updateMenuPosition() {
-      if (!menu) return;
-      if (window.scrollY > threshold) {
-        menu.classList.remove('floating-menu--at-top');
-        menu.classList.add('floating-menu--scrolled');
-      } else {
-        menu.classList.add('floating-menu--at-top');
-        menu.classList.remove('floating-menu--scrolled');
-      }
-    }
-    updateMenuPosition();
-    window.addEventListener('scroll', updateMenuPosition);
-
-    // Collapsible menu for mobile with text button
-    const toggle = document.getElementById('floating-menu-toggle');
-    const menuList = document.getElementById('floating-menu-list');
-    if (toggle && menuList) {
-      toggle.addEventListener('click', () => {
-        menuList.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', menuList.classList.contains('open') ? 'true' : 'false');
-      });
-      // Close menu when a link is clicked (mobile UX)
-      menuList.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          if (window.innerWidth <= 640) {
-            menuList.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
-    }
-  });
-}
-</script>
 <style is:global>
 .floating-menu--at-top {
   top: 5.5rem; /* ~88px, below banner */
@@ -109,31 +55,39 @@ if (typeof window !== 'undefined') {
   #floating-menu {
     left: auto;
     right: 1.25rem;
-    top: 5.5rem !important;
+    top: 5.5rem; /* Remove !important so class can override */
     bottom: auto;
     transform: none !important;
     border-radius: 1.5rem;
     flex-direction: column;
-    padding: 0.25rem 0.5rem;
+    padding: 0.1rem 1.25rem; /* less vertical, more horizontal */
     gap: 0.25rem;
     width: auto;
-    min-width: 90px;
+    min-width: 0;
     align-items: flex-end;
-    transition: top 0.3s cubic-bezier(.4,2,.6,1);
+    transition: top 0.3s cubic-bezier(.4,2,.6,1), width 0.3s cubic-bezier(.4,2,.6,1);
   }
   #floating-menu.floating-menu--at-top {
-    left: auto;
-    right: 1.25rem;
-    top: 5.5rem !important;
-    bottom: auto;
-    transform: none !important;
+    top: 5.5rem;
   }
   #floating-menu.floating-menu--scrolled {
-    left: auto;
-    right: 1.25rem;
-    top: 1.25rem !important;
-    bottom: auto;
-    transform: none !important;
+    top: 1.5rem;
+  }
+  #floating-menu:not(.open) {
+    width: 2.5rem !important;
+    min-width: 2.5rem !important;
+    max-width: 2.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: flex-end;
+  }
+  #floating-menu.open {
+    width: auto !important;
+    min-width: 90px;
+    max-width: 100vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: flex-end;
   }
   .menu-toggle {
     display: flex;
@@ -179,3 +133,59 @@ if (typeof window !== 'undefined') {
   }
 }
 </style>
+<script>
+// Smooth scroll for anchor links
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const self = e.currentTarget;
+        const targetId = self.getAttribute('href')?.slice(1);
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Floating menu scroll behavior
+    const menu = document.getElementById('floating-menu');
+    const toggle = document.getElementById('floating-menu-toggle');
+    const menuList = document.getElementById('floating-menu-list');
+    const threshold = 64; // px, adjust as needed
+    function updateMenuPosition() {
+      if (!menu) return;
+      if (window.scrollY > threshold) {
+        menu.classList.remove('floating-menu--at-top');
+        menu.classList.add('floating-menu--scrolled');
+      } else {
+        menu.classList.add('floating-menu--at-top');
+        menu.classList.remove('floating-menu--scrolled');
+      }
+    }
+    updateMenuPosition();
+    window.addEventListener('scroll', updateMenuPosition);
+
+    // Collapsible menu for mobile
+    if (toggle && menuList && menu) {
+      toggle.addEventListener('click', () => {
+        menuList.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', menuList.classList.contains('open') ? 'true' : 'false');
+        menu.classList.toggle('open', menuList.classList.contains('open'));
+      });
+      // Close menu when a link is clicked (mobile UX)
+      Array.from(menuList.querySelectorAll('a')).forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 640) {
+            menuList.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('open');
+          }
+        });
+      });
+    }
+  });
+}
+</script>
