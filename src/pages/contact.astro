@@ -90,6 +90,12 @@ import Button from '../components/Button.astro';
 					<h2 id="contact-form" class="neo-heading text-2xl mb-6">Send a Message</h2>
 							
 							<form class="space-y-6" netlify name="contact" method="POST" aria-labelledby="contact-form">
+								<!-- Honeypot field for spam prevention -->
+								<div style="display:none;">
+									<label for="website">Website</label>
+									<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+								</div>
+								
 								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 									<div>
 										<label for="name" class="block font-serif font-bold mb-2">Name</label>
