@@ -11,7 +11,7 @@ import Button from '../components/Button.astro';
 >
 	<main class="bg-white">
 		<!-- Hero Section with Full-Width Background -->
-		<section class="w-full relative pt-32 pb-20">
+		<section class="w-full relative pt-48 pb-20">
 			<!-- Full-width background gradient that spans the entire section width -->
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
 			
@@ -89,7 +89,7 @@ import Button from '../components/Button.astro';
 				<div class="neo-card-base p-8 border-3 border-black bg-white shadow-neo">
 					<h2 id="contact-form" class="neo-heading text-2xl mb-6">Send a Message</h2>
 							
-							<form class="space-y-6" action="https://formspree.io/f/your-form-id" method="POST" aria-labelledby="contact-form">
+							<form class="space-y-6" netlify name="contact" method="POST" aria-labelledby="contact-form">
 								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 									<div>
 										<label for="name" class="block font-serif font-bold mb-2">Name</label>

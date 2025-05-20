@@ -46,8 +46,7 @@ const buttonVariant = `secondary-${color}`;
         <ul class="mb-8 text-lg text-text">
           {listItems.map((item) => (
             <li class="neo-text flex items-start mb-4">
-              <!-- Geometric shape instead of icon -->
-              <span class={`h-4 w-4 transform rotate-45 bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`}></span>
+              <span class={`h-4 w-4 transform rotate-45 bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
               <span class="flex-grow">{item}</span>
             </li>
           ))}

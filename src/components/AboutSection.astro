@@ -59,19 +59,12 @@ function getButtonVariant(
       <p class="neo-text text-lg font-medium mb-4">I combine:</p>
       
       <ul class="mb-8 text-lg text-text">
-        {listItems.map((item, index) => {
-          // Use geometric shapes with rotations for visual interest
-          const shapeRotation = index % 3 === 0 ? 'rotate-45' : 
-                              index % 3 === 1 ? 'rotate-0' : 
-                              'rotate-[135deg]';
-          return (
-            <li class="neo-text flex items-start mb-4">
-              <!-- Geometric shape instead of icon -->
-              <span class={`h-4 w-4 transform ${shapeRotation} bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
-              <span class="flex-grow">{item}</span>
-            </li>
-          );
-        })}
+        {listItems.map((item) => (
+          <li class="neo-text flex items-start mb-4">
+            <span class={`h-4 w-4 transform rotate-45 bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+            <span class="flex-grow">{item}</span>
+          </li>
+        ))}
       </ul>
       
       <div class="mt-8">

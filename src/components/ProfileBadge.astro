@@ -11,7 +11,7 @@ const { imagePath, name = "Matt Whitfield", alt = name } = Astro.props;
 
 <div class="flex items-center justify-start profile-badge-spacing px-4">
   <div class="flex items-center gap-3">
-    <div class="w-7 h-7 rounded-full overflow-hidden">
+    <div class="w-12 h-12 rounded-full overflow-hidden">
       <img src={imagePath} alt={alt} class="w-full h-full object-cover filter grayscale" />
     </div>
     <p class="text font-normal">{name}</p>
