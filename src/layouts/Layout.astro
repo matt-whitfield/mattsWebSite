@@ -47,6 +47,15 @@ const navLinks = [
     <meta name="author" content="Matt Whitfield" />
     <meta name="robots" content="index, follow" />
     <title>{title}</title>
+     <!-- Google Analytics  -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVC7LM73EY"></script>
+        <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JVC7LM73EY');
+        </script>
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content={title} />
@@ -62,6 +71,8 @@ const navLinks = [
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site || Astro.url.origin).href} />
+    
+       
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -145,6 +156,7 @@ const navLinks = [
       "telephone": "+1-208-512-0705", 
       "email": "hello@mattwhitfield.xyz" 
     })}></script>
+
     <style is:global>
       /* Additional global styles */
       html {
