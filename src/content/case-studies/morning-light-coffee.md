@@ -7,7 +7,7 @@ publishDate: 2024-09-10
 tags: [Coffee Shop, Online Ordering, Loyalty Program]
 color: blue
 services: [Website Design, Online Ordering System, Location Integration]
-featured: true
+featured: false
 projectFeatures: [Mobile-first design for on-the-go customers, Online ordering with customizations, Multi-location map integration, Digital loyalty program]
 challenge: "Morning Light Coffee, a boutique coffee shop with two locations, was losing business to larger chains with established mobile ordering. Their existing website was beautiful but purely informational, with no way for customers to order ahead or find location-specific information."
 goals: 

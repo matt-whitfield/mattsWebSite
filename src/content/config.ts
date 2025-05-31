@@ -1,5 +1,26 @@
 import { defineCollection, z } from 'astro:content';
 
+// Define the schema for blog posts collection
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.date(),
+    category: z.enum(['Web Design', 'Development', 'Marketing', 'Updates']),
+    color: z.enum(['primary', 'mint', 'coral', 'blue', 'purple', 'lime', 'highlight']),
+    tags: z.array(z.string()),
+    image: z.string().optional(),
+    featured: z.boolean().default(false),
+    author: z.string().default('Matt Whitfield'),
+    readTime: z.string().optional(),
+    seo: z.object({
+      title: z.string().optional(),
+      description: z.string().optional(),
+    }).optional(),
+  }),
+});
+
 // Define the schema for case studies collection
 const caseStudiesCollection = defineCollection({
   type: 'content',
@@ -41,5 +62,6 @@ const caseStudiesCollection = defineCollection({
 
 // Export collections
 export const collections = {
+  'blog': blogCollection,
   'case-studies': caseStudiesCollection,
 };

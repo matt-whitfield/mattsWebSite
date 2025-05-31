@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StyledLink from '../components/StyledLink.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get blog posts from content collection
+const blogPosts = await getCollection('blog');
+
+// Sort blog posts by publish date (newest first)
+blogPosts.sort((a, b) => {
+  return b.data.publishDate.getTime() - a.data.publishDate.getTime();
+});
+
+// Get featured post (first featured post or most recent)
+const featuredPost = blogPosts.find(post => post.data.featured) || blogPosts[0];
+
+// Get other posts for the grid (excluding featured post)
+const otherPosts = blogPosts.filter(post => post.slug !== featuredPost.slug);
+
+// Get unique categories for filters
+const categories = [...new Set(blogPosts.map(post => post.data.category))];
+
+// Format featured post date
+const featuredDate = featuredPost.data.publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Map category to appropriate text color for the badge
+const textColorMap = {
+  mint: 'text-black',
+  lime: 'text-black', 
+  highlight: 'text-black',
+  primary: 'text-white',
+  coral: 'text-white',
+  blue: 'text-white',
+  purple: 'text-white'
+};
+
+const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
+---
+
+<Layout 
+	title="Blog | Matt Whitfield - Web Designer & Developer"
+	description="Thoughts and insights on web design, development, small business marketing, and creative processes from web designer Matt Whitfield."
+	image="/images/mw-headshots-2024.webp"
+>
+	<main class="bg-white">
+		<!-- Hero Section with Full-Width Background -->
+		<section class="w-full relative pt-32 pb-20">
+			<!-- Full-width background gradient that spans the entire section width -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
+			
+			<div class="page-container relative z-1">
+				<h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text">Blog</h1>
+				
+				<div class="neo-card-base py-10 px-8 md:px-12 mt-8 mb-12 relative max-w-prose">
+					<p class="neo-text text-lg mb-6">
+						Thoughts on web design, development, small business marketing, and creative process.
+					</p>
+					
+					<div class="absolute -top-6 -right-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-base uppercase rotate-3">
+						Insights & Updates
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Featured Post Section -->
+		<section class="w-full relative py-12">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-purple/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="relative mb-8">
+					<h2 class="neo-heading text-3xl md:text-4xl mb-6 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Featured Post</h2>
+				</div>
+				
+				<div class="neo-card-base p-0 overflow-hidden">
+					<div class="grid grid-cols-1 md:grid-cols-2">
+						<div class="aspect-ratio-16/9 md:aspect-auto overflow-hidden">
+							<img 
+								src={featuredPost.data.image || "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg"}
+								alt={`Featured post: ${featuredPost.data.title}`}
+								class="w-full h-full object-cover"
+							/>
+						</div>
+						<div class="p-8 md:p-10 flex flex-col">
+							<div class="mb-4">
+								<span class={`inline-block bg-${featuredPost.data.color} ${featuredTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+									{featuredPost.data.category}
+								</span>
+								<span class="text-sm text-muted">{featuredDate}</span>
+							</div>
+							<h3 class="neo-heading text-2xl md:text-3xl mb-4">{featuredPost.data.title}</h3>
+							<p class="neo-text mb-6 flex-grow">
+								{featuredPost.data.description}
+							</p>
+							{featuredPost.data.readTime && (
+								<p class="text-sm text-muted mb-4">
+									{featuredPost.data.readTime}
+								</p>
+							)}
+							<StyledLink href={`/blog-post/${featuredPost.slug}`} variant={`secondary-${featuredPost.data.color}`} className="self-start">
+								Read Article
+							</StyledLink>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Blog Posts Grid Section -->
+		<section class="w-full relative py-16">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-mint/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+					<h2 class="neo-heading text-3xl md:text-4xl mb-6 md:mb-0 text-text">Latest Articles</h2>
+					
+					<!-- Blog Category Filters -->
+					<div class="flex flex-wrap gap-3">
+						<button class="py-2 px-4 bg-black text-white border-3 border-black font-serif font-bold text-sm">All</button>
+						{categories.map(category => (
+							<button class="py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm">
+								{category}
+							</button>
+						))}
+					</div>
+				</div>
+				
+				<!-- Blog Post Grid -->
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{otherPosts.map(post => (
+						<BlogCard
+							title={post.data.title}
+							description={post.data.description}
+							publishDate={post.data.publishDate}
+							category={post.data.category}
+							color={post.data.color}
+							slug={post.slug}
+							readTime={post.data.readTime}
+						/>
+					))}
+				</div>
+				
+				<!-- Pagination -->
+				<div class="mt-16 flex justify-center">
+					<div class="flex items-center space-x-2">
+						<a href="#" class="w-10 h-10 flex items-center justify-center border-3 border-black bg-white font-serif font-bold hover:bg-black hover:text-white transition-colors">
+							&lt;
+						</a>
+						<a href="#" class="w-10 h-10 flex items-center justify-center border-3 border-black bg-black text-white font-serif font-bold">
+							1
+						</a>
+						<a href="#" class="w-10 h-10 flex items-center justify-center border-3 border-black bg-white font-serif font-bold hover:bg-black hover:text-white transition-colors">
+							2
+						</a>
+						<a href="#" class="w-10 h-10 flex items-center justify-center border-3 border-black bg-white font-serif font-bold hover:bg-black hover:text-white transition-colors">
+							3
+						</a>
+						<a href="#" class="w-10 h-10 flex items-center justify-center border-3 border-black bg-white font-serif font-bold hover:bg-black hover:text-white transition-colors">
+							&gt;
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Newsletter Signup Section -->
+		<section class="w-full relative py-20">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-primary border-3 border-black text-white font-serif font-bold text-xl uppercase">
+						Stay updated
+					</div>
+					
+					<div class="flex flex-col md:flex-row gap-12 items-start">
+						<div class="md:w-2/3">
+							<h2 class="neo-heading text-3xl md:text-4xl mb-4 text-text">Get design and development tips in your inbox</h2>
+							<p class="neo-text mb-6">
+								Join my newsletter for practical advice on web design, development, and marketing for small businesses. No spam, just useful content delivered monthly.
+							</p>
+						</div>
+						
+						<div class="md:w-1/3 w-full">
+							<form class="w-full">
+								<div class="flex flex-col gap-4">
+									<input 
+										type="email" 
+										placeholder="Your email" 
+										class="w-full p-3 border-3 border-black focus:outline-none focus:border-primary"
+									/>
+									<button type="submit" class="neo-link-base neo-link-primary w-full">
+										Subscribe
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.aspect-ratio-16\/9 {
+		aspect-ratio: 16/9;
+	}
+</style>

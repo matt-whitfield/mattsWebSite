@@ -7,7 +7,7 @@ publishDate: 2024-11-20
 tags: [Winery, E-commerce, Events]
 color: mint
 services: [Website Design, E-commerce Integration, Event Calendar]
-featured: true
+featured: false
 projectFeatures: [E-commerce wine store, Membership signup system, Event booking platform, Tasting room promotion]
 challenge: "Laurel Hill Vineyards had a beautiful location and excellent wines but struggled to convert visitors into wine club members. Their website lacked e-commerce functionality and couldn't promote events effectively."
 goals:

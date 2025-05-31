@@ -52,14 +52,14 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
 			</div>
 		</section>
 
-		<!-- Website Design & Development Section (from services.astro) -->
-		<section class="w-full relative py-20">
+		<!-- Website Design & Development Section (MVP) -->
+		<section id="web-design-dev" class="w-full relative py-20">
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-tl from-white via-white to-mint/10"></div>
 			<div class="page-container relative z-1">
 				<div class="relative mb-16">
-					<h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Website Design & Development</h2>
+					<h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Pricing</h2>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+				<div class="grid grid-cols-1 gap-20 md:grid-cols-3 md:gap-10 lg:gap-10">
 					<!-- Starter Site Card -->
 					<div class="neo-card-base relative neo-service-card-hover-mint flex flex-col h-full">
 						<div class="absolute -top-6 -left-6 p-2 bg-mint border-3 border-black text-black font-serif font-bold text-base uppercase z-10">
@@ -95,7 +95,7 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
 							</ul>
 						</div>
 						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/contact?service=starter-site" variant="secondary-mint" className="w-full text-center">Let's Chat</StyledLink>
+							<StyledLink href="/contact" variant="secondary-mint" className="w-full text-center">Get Quote</StyledLink>
 						</div>
 					</div>
 					
@@ -138,7 +138,7 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
 							</ul>
 						</div>
 						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/work" variant="secondary-coral" className="w-full text-center">View Work Examples</StyledLink>
+							<StyledLink href="/contact" variant="secondary-coral" className="w-full text-center">Get Quote</StyledLink>
 						</div>
 					</div>
 					
@@ -177,14 +177,15 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
 							</ul>
 						</div>
 						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/contact?service=custom-build" variant="secondary-blue" className="w-full text-center">Book a Discovery Call</StyledLink>
+							<StyledLink href="/contact" variant="secondary-blue" className="w-full text-center">Get Quote</StyledLink>
 						</div>
 					</div>
 				</div>
+				<p class="neo-text text-sm mt-10 text-muted text-center">* Prices are estimates. Everything is billed at $80/hour.</p>
 			</div>
 		</section>
 
-		<!-- Projects Grid Section (from work.astro) -->
+		<!-- Projects Grid Section -->
 		 <section id="projects-grid-section" class="w-full relative py-16">
             <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
             <div class="page-container relative z-1">
@@ -192,29 +193,10 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
                     <h2 class="neo-heading text-4xl md:text-5xl mb-4 text-text">See It In Action</h2>
                     <p class="neo-text text-lg max-w-prose mx-auto">Here are some examples of how I've helped businesses like yours succeed online.</p>
                 </div>
-
-                <!-- Filter Section -->
-                <div class="flex flex-wrap gap-x-4 gap-y-3 justify-center mb-12">
-                    {industryCategories.map((category) => (
-                        <button 
-                            data-category={category.value} 
-                            class:list={[
-                                "neo-text font-bold uppercase tracking-wider py-2 px-5 border-3 border-black shadow-neo-sm transition-all duration-200",
-                                "hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]",
-                                category.value === 'all' ? 'bg-primary text-white' : 'bg-white text-text'
-                            ]}
-                        >
-                            {category.label}
-                        </button>
-                    ))}
-                </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {caseStudies.map((study) => (
-                        <div
-                            class={`project-card flex flex-col h-full`}
-                            data-tags={study.data.tags ? study.data.tags.join(' ').toLowerCase() : ''}
-                        >
+                        <div class="flex flex-col h-full">
                             <CaseStudyCard
                                 image={study.data.image}
                                 imageAlt={`${study.data.title} case study thumbnail`}
@@ -444,35 +426,4 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
     }
 </style>
 
-<script>
-// Category filtering functionality (from work.astro)
-document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('[data-category]');
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.getAttribute('data-category');
-            
-            // Update active button state
-            filterButtons.forEach(btn => {
-                btn.classList.remove('bg-primary', 'text-white');
-                btn.classList.add('bg-white', 'text-text');
-            });
-            button.classList.add('bg-primary', 'text-white');
-            button.classList.remove('bg-white', 'text-text');
-            
-            projectCards.forEach(card => {
-                const tags = card.getAttribute('data-tags')?.toLowerCase() || '';
-                if (category === 'all' || (tags && tags.includes(category))) {
-                    // Ensure card is a flex container if your layout expects it
-                    // For grid, it might be 'grid' or 'block' depending on CaseStudyCard styles
-                    card.style.display = 'flex'; // Or 'block', check CaseStudyCard display type
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-}); // Added missing closing });
-</script>
+
