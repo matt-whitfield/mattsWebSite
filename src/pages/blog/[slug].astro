@@ -207,57 +207,199 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
   </main>
 </Layout>
 
-<style>
-  /* Prose styling for blog content */
+<style is:global>
+  /* Prose styling using native CSS that matches UnoCSS design system */
   .prose {
-    @apply text-text;
+    color: #1a1a1a !important;
+  }
+  
+  .prose h1 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.1 !important;
+    font-size: 3rem !important;
+    margin-bottom: 2rem !important;
+    margin-top: 4rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid #000 !important;
+    display: inline-block !important;
   }
   
   .prose h2 {
-    @apply neo-heading text-2xl md:text-3xl mb-6 mt-12 border-b-3 border-black pb-4 inline-block;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.1 !important;
+    font-size: 2.25rem !important;
+    margin-bottom: 1.5rem !important;
+    margin-top: 3rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid #000 !important;
+    display: inline-block !important;
   }
   
   .prose h3 {
-    @apply neo-subheading text-xl md:text-2xl mb-4 mt-8;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.2 !important;
+    font-size: 1.875rem !important;
+    margin-bottom: 1rem !important;
+    margin-top: 2rem !important;
   }
   
   .prose h4 {
-    @apply neo-subheading text-lg md:text-xl mb-3 mt-6;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.2 !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    margin-top: 1.5rem !important;
+  }
+  
+  .prose h5, .prose h6 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.2 !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+    margin-top: 1rem !important;
   }
   
   .prose p {
-    @apply neo-text mb-6;
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
   }
   
   .prose ul, .prose ol {
-    @apply mb-6 pl-6;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .prose ul {
+    list-style-type: disc;
+  }
+  
+  .prose ol {
+    list-style-type: decimal;
   }
   
   .prose li {
-    @apply neo-text mb-2;
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
   }
   
   .prose strong {
-    @apply font-bold;
+    font-weight: 700;
   }
   
   .prose em {
-    @apply italic;
+    font-style: italic;
   }
   
   .prose blockquote {
-    @apply border-l-4 border-primary pl-6 italic text-lg my-8;
+    border-left: 4px solid #FF6B35;
+    padding-left: 1.5rem;
+    font-style: italic;
+    font-size: 1.125rem;
+    margin: 2rem 0;
+    background-color: rgba(221, 221, 221, 0.5);
+    padding: 1rem 1.5rem;
   }
   
   .prose code {
-    @apply bg-lightgray px-2 py-1 rounded text-sm font-mono;
+    background-color: #DDDDDD;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    border: 1px solid rgba(0, 0, 0, 0.2);
   }
   
   .prose pre {
-    @apply bg-lightgray p-4 rounded overflow-x-auto mb-6;
+    background-color: #DDDDDD;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border: 2px solid #000;
+  }
+  
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+    border: none;
   }
   
   .prose a {
-    @apply neo-inline-link;
+    color: #FF6B35;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #FF6B35;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+    padding: 0.125rem 0.25rem;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+  
+  .prose a:hover {
+    background-color: #FF6B35;
+    color: white;
+    text-decoration: none;
+    border-color: #000;
+  }
+  
+  .prose hr {
+    border: none;
+    border-top: 2px solid #000;
+    margin: 3rem 0;
+  }
+  
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000;
+    margin: 2rem 0;
+  }
+  
+  .prose th,
+  .prose td {
+    border: 1px solid #000;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .prose th {
+    background-color: #DDDDDD;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .prose h1 {
+      font-size: 2.5rem;
+    }
+    
+    .prose h2 {
+      font-size: 2rem;
+    }
+    
+    .prose h3 {
+      font-size: 1.5rem;
+    }
+    
+    .prose h4 {
+      font-size: 1.25rem;
+    }
+    
+    .prose h5, .prose h6 {
+      font-size: 1.125rem;
+    }
   }
 </style>
