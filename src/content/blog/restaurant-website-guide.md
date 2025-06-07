@@ -7,6 +7,7 @@ color: lime
 tags: [Restaurant Websites, Web Design, User Experience, Local Business]
 featured: true
 readTime: 6 min read
+featuredImage: /images/blogs/ali-inay-y3aP9oo9Pjc-unsplash.jpg
 ---
 
 > **Summary Block:** A website shouldn't be another hassle. It should work in the background to assist all of your marketing efforts in one place. These days, most people use their phones to find the next place they want to eat.

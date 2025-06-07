@@ -3,8 +3,7 @@
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
 import RenovationFooter from '../components/RenovationFooter.astro';
-import SiteBanner from '../components/SiteBanner.astro';
-import FloatingMenu from '../components/FloatingMenu.astro';
+import Header from '../components/Header.astro';
 
 interface Props {
   title: string;
@@ -22,15 +21,16 @@ const {
   type = "website"
 } = Astro.props;
 
-// Get current URL for canonical link
-const currentUrl = Astro.url.href;
-
+// Define navigation links
 const navLinks = [
   { href: "/", text: "Home" },
   { href: "/about", text: "About" },
-  { href: "/what-i-do", text: "The Work" },
+  { href: "/work", text: "The Work" },
   { href: "/blog", text: "Blog" },
 ];
+
+// Get current URL for canonical link
+const currentUrl = Astro.url.href;
 ---
 
 <!DOCTYPE html>
@@ -226,12 +226,8 @@ const navLinks = [
   </head>
   <body class="bg-background text-text min-h-screen flex flex-col">
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <div id="site-banner-wrapper" style="position:fixed;top:0;left:0;width:100%;z-index:1000;pointer-events:none;">
-      <div style="pointer-events:auto;">
-        <SiteBanner />
-      </div>
-    </div>
-    <FloatingMenu />
+    
+    <Header links={navLinks} />
     <main class="flex-grow">
       <div id="main-content">
         <slot />

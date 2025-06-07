@@ -11,6 +11,7 @@ const blogCollection = defineCollection({
     color: z.enum(['primary', 'mint', 'coral', 'blue', 'purple', 'lime', 'highlight']),
     tags: z.array(z.string()),
     image: z.string().optional(),
+    featuredImage: z.string().optional(),
     featured: z.boolean().default(false),
     author: z.string().default('Matt Whitfield'),
     readTime: z.string().optional(),
