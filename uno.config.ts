@@ -12,7 +12,13 @@ export default defineConfig({
     }),
     presetIcons({
       scale: 1.2,
-      cdn: 'https://esm.sh/',
+      collections: {
+        carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default),
+      },
+      extraProperties: {
+        'display': 'inline-block',
+        'vertical-align': 'middle',
+      },
     }),
   ],
   theme: {
@@ -147,6 +153,13 @@ export default defineConfig({
     
     // Neo Brutalist link base style
     'neo-link-base': 'inline-block font-serif font-bold uppercase tracking-wider px-4 py-2 border-3 border-black shadow-neo hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-200',
+    
+    // Inline text links - consistent with New Brutalist theme
+    'neo-inline-link': 'text-primary font-serif font-semibold underline decoration-3 decoration-primary underline-offset-4 hover:bg-primary hover:text-white hover:no-underline px-1 py-0.5 transition-all duration-200 border-2 border-transparent hover:border-black',
+    'neo-inline-link-mint': 'text-mint font-serif font-semibold underline decoration-3 decoration-mint underline-offset-4 hover:bg-mint hover:text-black hover:no-underline px-1 py-0.5 transition-all duration-200 border-2 border-transparent hover:border-black',
+    'neo-inline-link-coral': 'text-coral font-serif font-semibold underline decoration-3 decoration-coral underline-offset-4 hover:bg-coral hover:text-white hover:no-underline px-1 py-0.5 transition-all duration-200 border-2 border-transparent hover:border-black',
+    'neo-inline-link-purple': 'text-purple font-serif font-semibold underline decoration-3 decoration-purple underline-offset-4 hover:bg-purple hover:text-white hover:no-underline px-1 py-0.5 transition-all duration-200 border-2 border-transparent hover:border-black',
+    'neo-inline-link-blue': 'text-blue font-serif font-semibold underline decoration-3 decoration-blue underline-offset-4 hover:bg-blue hover:text-white hover:no-underline px-1 py-0.5 transition-all duration-200 border-2 border-transparent hover:border-black',
     
     // Enhanced color variants for links
     'neo-link-black': 'bg-black text-white hover:bg-white hover:text-black',

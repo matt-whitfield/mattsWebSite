@@ -1,6 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import StyledLink from '../components/StyledLink.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get blog posts from content collection
+const blogPosts = await getCollection('blog');
+
+// Sort blog posts by publish date (newest first)
+blogPosts.sort((a, b) => {
+  return b.data.publishDate.getTime() - a.data.publishDate.getTime();
+});
+
+// Get featured post (first featured post or most recent)
+const featuredPost = blogPosts.find(post => post.data.featured) || blogPosts[0];
+
+// Get other posts for the grid (excluding featured post)
+const otherPosts = blogPosts.filter(post => post.slug !== featuredPost.slug);
+
+// Get unique categories for filters
+const categories = [...new Set(blogPosts.map(post => post.data.category))];
+
+// Format featured post date
+const featuredDate = featuredPost.data.publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Map category to appropriate text color for the badge
+const textColorMap = {
+  mint: 'text-black',
+  lime: 'text-black', 
+  highlight: 'text-black',
+  primary: 'text-white',
+  coral: 'text-white',
+  blue: 'text-white',
+  purple: 'text-white'
+};
+
+const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 ---
 
 <Layout 
@@ -42,21 +81,30 @@ import StyledLink from '../components/StyledLink.astro';
 					<div class="grid grid-cols-1 md:grid-cols-2">
 						<div class="aspect-ratio-16/9 md:aspect-auto overflow-hidden">
 							<img 
-								src="/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg" 
-								alt="Featured post cover image" 
+								src={featuredPost.data.image || "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg"}
+								alt={`Featured post: ${featuredPost.data.title}`}
 								class="w-full h-full object-cover"
 							/>
 						</div>
 						<div class="p-8 md:p-10 flex flex-col">
 							<div class="mb-4">
-								<span class="inline-block bg-purple text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">Web Design</span>
-								<span class="text-sm text-muted">May 5, 2025</span>
+								<span class={`inline-block bg-${featuredPost.data.color} ${featuredTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+									{featuredPost.data.category}
+								</span>
+								<span class="text-sm text-muted">{featuredDate}</span>
 							</div>
-							<h3 class="neo-heading text-2xl md:text-3xl mb-4">Why Small Businesses Need Custom Websites in 2025</h3>
+							<h3 class="neo-heading text-2xl md:text-3xl mb-4">{featuredPost.data.title}</h3>
 							<p class="neo-text mb-6 flex-grow">
-								In an age of templates and AI-generated sites, here's why investing in a custom website still makes sense for small businesses looking to stand out and connect with their audience.
+								{featuredPost.data.description}
 							</p>
-							<StyledLink href="/blog/why-small-businesses-need-custom-websites" variant="secondary-purple" class="self-start">Read Article</StyledLink>
+							{featuredPost.data.readTime && (
+								<p class="text-sm text-muted mb-4">
+									{featuredPost.data.readTime}
+								</p>
+							)}
+							<StyledLink href={`/blog-post/${featuredPost.slug}`} variant={`secondary-${featuredPost.data.color}`} className="self-start">
+								Read Article
+							</StyledLink>
 						</div>
 					</div>
 				</div>
@@ -74,104 +122,27 @@ import StyledLink from '../components/StyledLink.astro';
 					<!-- Blog Category Filters -->
 					<div class="flex flex-wrap gap-3">
 						<button class="py-2 px-4 bg-black text-white border-3 border-black font-serif font-bold text-sm">All</button>
-						<button class="py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm">Web Design</button>
-						<button class="py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm">Development</button>
-						<button class="py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm">Marketing</button>
-						<button class="py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm">Updates</button>
+						{categories.map(category => (
+							<button class="py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm">
+								{category}
+							</button>
+						))}
 					</div>
 				</div>
 				
 				<!-- Blog Post Grid -->
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<!-- Blog Post Card 1 -->
-					<article class="neo-card-base flex flex-col h-full neo-service-card-hover-mint">
-						<div class="p-6 flex-grow flex flex-col">
-							<div class="mb-3 flex items-center">
-								<span class="inline-block bg-mint text-black text-sm font-bold py-1 px-3 border-2 border-black mr-2">Web Design</span>
-								<span class="text-sm text-muted">April 28, 2025</span>
-							</div>
-							<h3 class="neo-heading text-xl mb-3">5 Typography Tips for a More Professional Website</h3>
-							<p class="neo-text mb-6 flex-grow">
-								Good typography can elevate your website from amateur to professional. Here are five simple tips to improve your site's readability and visual appeal.
-							</p>
-							<StyledLink href="/blog/typography-tips" variant="secondary-mint" class="self-start mt-auto">Read Article</StyledLink>
-						</div>
-					</article>
-					
-					<!-- Blog Post Card 2 -->
-					<article class="neo-card-base flex flex-col h-full neo-service-card-hover-coral">
-						<div class="p-6 flex-grow flex flex-col">
-							<div class="mb-3 flex items-center">
-								<span class="inline-block bg-coral text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">Development</span>
-								<span class="text-sm text-muted">April 15, 2025</span>
-							</div>
-							<h3 class="neo-heading text-xl mb-3">Why I'm Using Astro for Most Client Projects in 2025</h3>
-							<p class="neo-text mb-6 flex-grow">
-								Astro has become my go-to framework for small business websites. Here's why it's often the perfect choice for balancing performance and features.
-							</p>
-							<StyledLink href="/blog/why-i-use-astro" variant="secondary-coral" class="self-start mt-auto">Read Article</StyledLink>
-						</div>
-					</article>
-					
-					<!-- Blog Post Card 3 -->
-					<article class="neo-card-base flex flex-col h-full neo-service-card-hover-blue">
-						<div class="p-6 flex-grow flex flex-col">
-							<div class="mb-3 flex items-center">
-								<span class="inline-block bg-blue text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">Marketing</span>
-								<span class="text-sm text-muted">March 30, 2025</span>
-							</div>
-							<h3 class="neo-heading text-xl mb-3">Local SEO Checklist for Small Business Owners</h3>
-							<p class="neo-text mb-6 flex-grow">
-								Want to show up in local searches? This checklist covers the essential steps to improve your local SEO and get found by nearby customers.
-							</p>
-							<StyledLink href="/blog/local-seo-checklist" variant="secondary-blue" class="self-start mt-auto">Read Article</StyledLink>
-						</div>
-					</article>
-					
-					<!-- Blog Post Card 4 -->
-					<article class="neo-card-base flex flex-col h-full neo-service-card-hover-purple">
-						<div class="p-6 flex-grow flex flex-col">
-							<div class="mb-3 flex items-center">
-								<span class="inline-block bg-purple text-white text-sm font-bold py-1 px-3 border-2 border-black mr-2">Updates</span>
-								<span class="text-sm text-muted">March 22, 2025</span>
-							</div>
-							<h3 class="neo-heading text-xl mb-3">What I Learned from Redesigning My Own Website</h3>
-							<p class="neo-text mb-6 flex-grow">
-								Designers often struggle with their own sites. Here's what I learned during my recent website redesign and how it's changed my client approach.
-							</p>
-							<StyledLink href="/blog/redesigning-my-own-website" variant="secondary-purple" class="self-start mt-auto">Read Article</StyledLink>
-						</div>
-					</article>
-					
-					<!-- Blog Post Card 5 -->
-					<article class="neo-card-base flex flex-col h-full neo-service-card-hover-lime">
-						<div class="p-6 flex-grow flex flex-col">
-							<div class="mb-3 flex items-center">
-								<span class="inline-block bg-lime text-black text-sm font-bold py-1 px-3 border-2 border-black mr-2">Web Design</span>
-								<span class="text-sm text-muted">March 10, 2025</span>
-							</div>
-							<h3 class="neo-heading text-xl mb-3">Building Restaurant Websites That Actually Work</h3>
-							<p class="neo-text mb-6 flex-grow">
-								Restaurant websites need to prioritize specific features. This guide covers what to include (and what to avoid) when building a restaurant site.
-							</p>
-							<StyledLink href="/blog/restaurant-website-guide" variant="secondary-lime" class="self-start mt-auto">Read Article</StyledLink>
-						</div>
-					</article>
-					
-					<!-- Blog Post Card 6 -->
-					<article class="neo-card-base flex flex-col h-full neo-service-card-hover-highlight">
-						<div class="p-6 flex-grow flex flex-col">
-							<div class="mb-3 flex items-center">
-								<span class="inline-block bg-highlight text-black text-sm font-bold py-1 px-3 border-2 border-black mr-2">Development</span>
-								<span class="text-sm text-muted">February 28, 2025</span>
-							</div>
-							<h3 class="neo-heading text-xl mb-3">When to Choose a CMS vs. Static Site for Small Businesses</h3>
-							<p class="neo-text mb-6 flex-grow">
-								A practical guide to help small business owners decide between a full CMS or a simpler static site approach based on their actual needs.
-							</p>
-							<StyledLink href="/blog/cms-vs-static-site" variant="secondary-highlight" class="self-start mt-auto">Read Article</StyledLink>
-						</div>
-					</article>
+					{otherPosts.map(post => (
+						<BlogCard
+							title={post.data.title}
+							description={post.data.description}
+							publishDate={post.data.publishDate}
+							category={post.data.category}
+							color={post.data.color}
+							slug={post.slug}
+							readTime={post.data.readTime}
+						/>
+					))}
 				</div>
 				
 				<!-- Pagination -->

@@ -1,0 +1,69 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  category: string;
+  color: 'primary' | 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'highlight';
+  slug: string;
+  readTime?: string;
+}
+
+const { title, description, publishDate, category, color, slug, readTime } = Astro.props;
+
+// Format the date
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Import StyledLink component
+import StyledLink from './StyledLink.astro';
+
+// Map category to appropriate text color for the badge
+const textColorMap = {
+  mint: 'text-black',
+  lime: 'text-black', 
+  highlight: 'text-black',
+  primary: 'text-white',
+  coral: 'text-white',
+  blue: 'text-white',
+  purple: 'text-white'
+};
+
+const textColor = textColorMap[color] || 'text-white';
+---
+
+<article class={`neo-card-base flex flex-col h-full neo-service-card-hover-${color}`}>
+  <div class="p-6 flex-grow flex flex-col">
+    <div class="mb-3 flex items-center justify-between">
+      <div class="flex items-center">
+        <span class={`inline-block bg-${color} ${textColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+          {category}
+        </span>
+      </div>
+      <span class="text-sm text-muted">{formattedDate}</span>
+    </div>
+    
+    <h3 class="neo-heading text-xl mb-3">{title}</h3>
+    
+    <p class="neo-text mb-4 flex-grow">
+      {description}
+    </p>
+    
+    {readTime && (
+      <p class="text-sm text-muted mb-4">
+        {readTime}
+      </p>
+    )}
+    
+    <StyledLink 
+      href={`/blog-post/${slug}`} 
+      variant={`secondary-${color}`} 
+      className="self-start mt-auto"
+    >
+      Read Article
+    </StyledLink>
+  </div>
+</article>

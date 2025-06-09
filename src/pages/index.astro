@@ -1,21 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
-import CalloutSection from '../components/CalloutSection.astro';
 import ServiceSection from '../components/ServiceSection.astro';
-import CaseStudySection from '../components/CaseStudySection.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import AboutSection from '../components/AboutSection.astro';
+import StyledLink from '../components/StyledLink.astro';
 ---
 
 <Layout 
-	title="Matt Whitfield | Web Designer & Developer"
+	title="Matt Whitfield | Web Designer & Developer based in Portland, Oregon"
 	description="Custom websites that do more for small businesses. Matt Whitfield combines thoughtful design, modern web development, and strategic thinking to create sites that get results."
-	image="/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg"
+	image="/images/matt-whitfield-rpf-on-set-2024-1200x1500.webp"
 >
 	<main class="bg-white">
 		<!-- Hero Section with Full-Width Background -->
-		<section class="w-full relative min-h-screen">
+		<section id="hero" class="w-full relative min-h-screen">
 			<!-- Full-width background gradient that spans the entire section width -->
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
 			
@@ -23,41 +22,32 @@ import AboutSection from '../components/AboutSection.astro';
 				<HeroSection 
 					title="Websites That Do More"
 					description="I design and build custom websites for small businesses that want results—whether that's more bookings, quote requests, or online sales. My work blends visual design, modern web development, and thoughtful user experience to create sites that look great and work even better."
-					quote="Restaurants, wineries, contractors—if your work is local and hands-on, your website should be, too."
-					ctaText="see my work"
-					ctaLink="/work"
+					ctaText="Let's Start a Conversation"
+					ctaLink="/contact"
 				/>
 			</div>
 		</section>
 		
-		<!-- Design Callout Section with Full-Width Background -->
-		<section class="w-full relative py-24">
-			<!-- Full-width background gradient with different direction for Callout section -->
-			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-mint/10"></div>
+		<!-- About Section with Full-Width Background -->
+		<section id="about" class="w-full relative py-28">
+			<!-- Full-width background gradient using top-left to bottom-right -->
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-blue/10"></div>
 			
 			<div class="page-container relative z-1">
-				<CalloutSection
-					label="Design"
-					title="Design that connects. Development that performs."
-					listTitle="I design and build custom websites that blend:"
-					listItems={[
-						"Clean, intuitive design",
-						"Modern, performance-first code",
-						"Real UX thinking that supports your goals"
-					]}
-					paragraphs={[
-						"With a background in hospitality, marketing, and the performing arts, as well as experience across both design and development, I build sites that look great and work even better.",
-						"Whether you're a neighborhood café, family-owned winery, or independent contractor, I'll help you create a digital home that feels as welcoming as your real one."
-					]}
-					ctaText="more about me"
-					ctaLink="/about"
-					color="mint"
+				<AboutSection
+					title="You won't find a big agency here."
+					description="Just me—working closely with you to build a site that reflects your story, solves real problems, and feels like a true extension of your business."
+					listItems={["A decade of hands-on hospitality experience","Fifteen years of professional storytelling experience as an actor, writer, and director for stage and screen.","Product and full-service marketing experience.","A sharp eye for design and usability","The latest in modern web dev (Astro, Next.js, Tailwind, and more)"]}
+					ctaText="Let's Connect"
+					ctaLink="/contact"
+					imagePath="/images/matt-whitfield-bloomsday-2021-400x400.webp"
+					color="blue"
 				/>
 			</div>
 		</section>
-		
+
 		<!-- Services Section with Full-Width Background -->
-		<section class="w-full relative py-28">
+		<section id="services" class="w-full relative py-28">
 			<!-- Full-width background gradient with a unique direction (bottom-left to top-right) -->
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-coral/10"></div>
 			
@@ -66,85 +56,275 @@ import AboutSection from '../components/AboutSection.astro';
 					title="Your Website Shouldn't Slow You Down."
 					subtitle="Here's what I offer:"
 					description="You're already juggling a hundred things. Your site should work for you—bringing in bookings, quote requests, calls, and new customers while you focus on your craft."
+					ctaLink ="/contact"
+					ctaText ="Book a Free Consultation"
 					services={[
 						{
 							icon: "i-carbon-code",
-							title: "design + development",
-							description: "Custom websites built with clean code, modern frameworks (Astro/Next.js), and your audience in mind."
+							title: "Design + Development",
+							description: "Custom websites built with modern, flexible technology chosen for your specific needs, not mine."
 						},
 						{
 							icon: "i-carbon-calendar",
-							title: "booking, menus, quotes",
+							title: "Booking, Menus, Quotes",
 							description: "Integrated tools for online reservations, quote requests, menus, or service forms—whatever your business needs."
 						},
 						{
 							icon: "i-carbon-location",
-							title: "local SEO & Google support",
+							title: "Local SEO & Google Support",
 							description: "Get found on Google with smart local SEO, Google Business help, and conversion-focused site structure."
 						},
 						{
+							icon: "i-carbon-flash",
+							title: "Performance Optimization",
+							description: "Fast, responsive design (works beautifully on any screen)"
+						},
+						{
+							icon: "i-carbon-user-speaker",
+							title: "Strategy & Consulting",
+							description: "One-on-one sessions to audit your current site, plan your next move, or get expert guidance on web strategy."
+						},
+						{
 							icon: "i-carbon-tool-kit",
-							title: "performance optimization + ongoing support",
+							title: "Ongoing Support",
 							description: "Optional care plans and training so you're not left in the dark after launch."
 						}
 					]}
-					features={[
-						{ text: "Fast, responsive design (works beautifully on any screen)" },
-						{ text: "SEO-ready & conversion-focused structure" },
-						{ text: "Built with modern, flexible technology chosen for your specific needs" },
-						{ text: "Designed around your audience—not just for designers" }
-					]}
-					ctaText="see all services"
-					ctaLink="/services"
-					color="coral"
 				/>
 			</div>
 		</section>
 		
-		 <!-- Case Studies Section with Full-Width Background -->
-		<section class="w-full relative py-28">
-			<!-- Full-width background gradient with radial direction -->
-			<div class="absolute inset-0 w-full h-full bg-radial-purple"></div>
-			
+		<!-- Website Design & Development Section (MVP) -->
+		<section id="web-design-dev" class="w-full relative py-20">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-tl from-white via-white to-mint/10"></div>
+            <div class="page-container relative z-1">
+                <div class="relative mb-16">
+                    <h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Pricing</h2>
+                </div>
+                <div class="grid grid-cols-1 gap-20 md:grid-cols-3 md:gap-10 lg:gap-10">
+                    <!-- Starter Site Card -->
+                    <div class="neo-card-base relative neo-service-card-hover-mint flex flex-col h-full">
+                        <div class="absolute -top-6 -left-6 p-2 bg-mint border-3 border-black text-black font-serif font-bold text-base uppercase z-10">
+                            Entry level
+                        </div>
+                        <div class="pt-8 pb-4 px-6 flex-grow">
+                            <h3 class="neo-heading text-2xl mb-1 text-text">Starter Site</h3>
+                            <p class="neo-heading text-xl mb-4 text-mint font-medium">from $2,000</p>
+                            <p class="neo-text mb-4">
+                                A simple, stylish site to get your business online fast.
+                            </p>
+                            <p class="neo-text text-sm mb-6">
+                                Perfect for new businesses, solo professionals, or those upgrading from DIY.
+                            </p>
+                            <h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
+                            <ul class="space-y-2">
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">3–5 custom-designed pages</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Mobile-friendly, fast, and SEO-ready</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Built on Webflow, WordPress, or Squarespace</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Email/contact form and Google profile help</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t-3 border-black py-4 px-6 mt-auto">
+                            <StyledLink href="/contact" variant="secondary-mint" className="w-full text-center">Get Quote</StyledLink>
+                        </div>
+                    </div>
+                    <!-- Professional Package Card -->
+                    <div class="neo-card-base relative neo-service-card-hover-coral flex flex-col h-full">
+                        <div class="absolute -top-6 -left-6 p-2 bg-coral border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
+                            Most popular
+                        </div>
+                        <div class="pt-8 pb-4 px-6 flex-grow">
+                            <h3 class="neo-heading text-2xl mb-1 text-text">Professional Package</h3>
+                            <p class="neo-heading text-xl mb-4 text-coral font-medium">from $4,500</p>
+                            <p class="neo-text mb-4">
+                                A more strategic site with content, functionality, and polish.
+                            </p>
+                            <p class="neo-text text-sm mb-6">
+                                Great for growing businesses who want to drive more leads, bookings, or sales.
+                            </p>
+                            <h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
+                            <ul class="space-y-2">
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Up to 8 pages + blog or CMS</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Copywriting support</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Booking, menu, or quote form integrations</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Animations, interactions, and training</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">30-day post-launch support</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t-3 border-black py-4 px-6 mt-auto">
+                            <StyledLink href="/contact" variant="secondary-coral" className="w-full text-center">Get Quote</StyledLink>
+                        </div>
+                    </div>
+                    <!-- Custom Build Card -->
+                    <div class="neo-card-base relative neo-service-card-hover-blue flex flex-col h-full">
+                        <div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
+                            Enterprise
+                        </div>
+                        <div class="pt-8 pb-4 px-6 flex-grow">
+                            <h3 class="neo-heading text-2xl mb-1 text-text">Custom Build</h3>
+                            <p class="neo-heading text-xl mb-4 text-blue font-medium">from $7,500</p>
+                            <p class="neo-text mb-4">
+                                For teams with technical needs, performance goals, or big ideas.
+                            </p>
+                            <p class="neo-text text-sm mb-6">
+                                Fully custom code and modern frameworks—Astro, Next.js, headless CMS, etc.
+                            </p>
+                            <h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
+                            <ul class="space-y-2">
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">UX design and frontend development</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">CMS or headless content models</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Fast, scalable, SEO-optimized</span>
+                                </li>
+                                <li class="neo-text flex items-start">
+                                    <span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+                                    <span class="flex-grow">Hosting and deployment support</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t-3 border-black py-4 px-6 mt-auto">
+                            <StyledLink href="/contact" variant="secondary-blue" className="w-full text-center">Get Quote</StyledLink>
+                        </div>
+                    </div>
+                </div>
+                <p class="neo-text text-sm mt-10 text-muted text-center">* Prices are estimates. Everything is billed at $80/hour.</p>
+            </div>
+        </section>
+		
+		<!-- Support & Consulting Section (from services.astro) -->
+		<section id="support-consulting" class="w-full relative py-20">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-purple/10"></div>
 			<div class="page-container relative z-1">
-				<CaseStudySection
-					title="Featured Client Success Stories"
-					description="Real-world results for local businesses. Here's how my websites have helped bring in more customers, bookings, and sales."
-					featuredOnly={true}
-					limit={3}
-					ctaText="View More Work"
-					ctaLink="/work"
-					color="purple"
-				/>
+				<div class="relative mb-16">
+					<h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Support & Consulting</h2>
+				</div>
+				<div class="grid grid-cols-1 gap-20 md:grid-cols-2 md:gap-10 lg:gap-10">
+					<!-- Website Consulting Card -->
+					<div class="neo-card-base relative neo-service-card-hover-purple flex flex-col h-full">
+						<div class="absolute -top-6 -left-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
+							Hourly 
+						</div>
+						<div class="pt-8 pb-4 px-6 flex-grow">
+							<h3 class="neo-heading text-2xl mb-1 text-text">Website Consulting</h3>
+							<p class="neo-heading text-xl mb-4 text-purple font-medium">$100/hr</p>
+							<p class="neo-text mb-6">
+								Need help improving your current site? Want a second opinion before you rebuild?
+								Let's troubleshoot, ideate, and make a plan.
+							</p>
+							<div class="space-y-4">
+								<div class="flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="neo-text flex-grow">UX, performance, or content audits</span>
+								</div>
+								<div class="flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="neo-text flex-grow">Platform guidance and automation tips</span>
+								</div>
+								<div class="flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="neo-text flex-grow">Small updates or tweaks</span>
+								</div>
+							</div>
+						</div>
+						<div class="border-t-3 border-black py-4 px-6 mt-auto">
+							<StyledLink href="/contact" variant="secondary-purple" className="w-full text-center">Book a Consulting Call</StyledLink>
+						</div>
+					</div>
+					
+					<!-- Ongoing Care Plans Card -->
+					<div class="neo-card-base relative neo-service-card-hover-lime flex flex-col h-full">
+						<div class="absolute -top-6 -left-6 p-2 bg-lime border-3 border-black text-black font-serif font-bold text-base uppercase z-10">
+							Monthly
+						</div>
+						<div class="pt-8 pb-4 px-6 flex-grow">
+							<h3 class="neo-heading text-2xl mb-1 text-text">Ongoing Care Plans</h3>
+							<p class="neo-heading text-xl mb-4 font-medium" style="color: #365314;">from $150/mo</p>
+							<p class="neo-text mb-6">
+								Because websites don't stop working when you launch them.
+							</p>
+							<div class="space-y-8">
+								<div>
+									<h4 class="font-serif font-bold text-lg mb-3">Essentials Plan – $150/mo</h4>
+									<ul class="space-y-2">
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Site updates + monitoring</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Security + backups</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Monthly performance check</span>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<h4 class="font-serif font-bold text-lg mb-3">Pro Plan – $350/mo</h4>
+									<ul class="space-y-2">
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Everything in Essentials</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">2 hours of dev/design updates</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Quarterly check-ins + priority support</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="border-t-3 border-black py-4 px-6 mt-auto">
+							<StyledLink href="/contact" variant="secondary-lime" className="w-full text-center">Get Website Support</StyledLink>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 		
-		<!-- About Section with Full-Width Background -->
-		<section class="w-full relative py-28">
-			<!-- Full-width background gradient using top-left to bottom-right -->
-			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-blue/10"></div>
-			
-			<div class="page-container relative z-1">
-				<AboutSection
-					title="You won't find a big agency here."
-					description="Just me—working closely with you to build a site that reflects your story, solves real problems, and feels like a true extension of your business."
-					listItems={[
-						"A decade of hands-on hospitality experience",
-						"Fifteen years of professional storytelling experience as an actor, writer, and director for stage and screen.",
-						"Product and full-service marketing experience.",
-						"A sharp eye for design and usability",
-						"The latest in modern web dev (Astro, Next.js, Tailwind, and more)"
-					]}
-					ctaText="More About Me"
-					ctaLink="/about"
-					imagePath="/images/matt-whitfield-bloomsday-2021-400x400.png"
-					color="blue"
-				/>
-			</div>
-		</section>
+		
 		
 		<!-- Contact CTA Section with Full-Width Background -->
-		<section class="w-full relative py-28">
+		<section id="contact-cta" class="w-full relative py-28">
 			<!-- Full-width background gradient that spans the entire section width -->
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
 			
@@ -152,7 +332,7 @@ import AboutSection from '../components/AboutSection.astro';
 				<ContactCTA
 					title="Ready for a website that actually works for your business?"
 					description="No pressure, no sales pitch — just a conversation to see how I can help."
-					ctaText="schedule a call"
+					ctaText="Start a Conversation"
 					ctaLink="/contact"
 					boxTitle="Get in touch"
 					color="primary"

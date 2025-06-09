@@ -2,8 +2,8 @@
 // Import UnoCSS reset to ensure consistent styles across browsers
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
+import RenovationFooter from '../components/RenovationFooter.astro';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -21,15 +21,16 @@ const {
   type = "website"
 } = Astro.props;
 
-// Get current URL for canonical link
-const currentUrl = Astro.url.href;
-
+// Define navigation links
 const navLinks = [
   { href: "/", text: "Home" },
   { href: "/about", text: "About" },
-  { href: "/what-i-do", text: "The Work" },
+  { href: "/work", text: "The Work" },
   { href: "/blog", text: "Blog" },
 ];
+
+// Get current URL for canonical link
+const currentUrl = Astro.url.href;
 ---
 
 <!DOCTYPE html>
@@ -39,13 +40,27 @@ const navLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href="https://mattwhitfield.xyz" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#E25E3E" />
     <meta name="author" content="Matt Whitfield" />
     <meta name="robots" content="index, follow" />
     <title>{title}</title>
+    
+    <!-- Google Fonts - Space Grotesk and Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+     <!-- Google Analytics  -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVC7LM73EY"></script>
+        <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JVC7LM73EY');
+        </script>
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content={title} />
@@ -62,18 +77,92 @@ const navLinks = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site || Astro.url.origin).href} />
     
+       
+    
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-      {
-        JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Matt Whitfield - Web Design & Development",
-          "url": Astro.url.origin,
-          "description": "Matt Whitfield designs and builds custom websites for small businesses that get results."
-        })
-      }
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Matt Whitfield - Web Design & Development",
+      "url": "https://mattwhitfield.xyz",
+      "description": "Matt Whitfield is a Portland-based web designer and creative building custom websites for small businesses want better online results.",
+      "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
+      "potentialAction": {
+        "@type": "ContactAction",
+        "target": "https://mattwhitfield.xyz/contact",
+        "name": "Contact Matt Whitfield"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/matt--whitfield/",
+        "https://www.instagram.com/_mattwhitfield/",
+        "https://www.youtube.com/@mattwhitfield6331",
+        "https://github.com/matt-whitfield"
+      ]
+    })}>
+  </script><script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Matt Whitfield",
+      "jobTitle": "Web Designer & Developer",
+      "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Portland",
+        "addressRegion": "OR",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Portland, OR",
+        "Walla Walla, WA"
+      ],
+      "url": "https://mattwhitfield.xyz",
+      "sameAs": [
+        "https://www.linkedin.com/in/matt--whitfield/",
+        "https://www.instagram.com/_mattwhitfield/",
+        "https://www.youtube.com/@mattwhitfield6331",
+        "https://github.com/matt-whitfield"
+      ],
+      "knowsAbout": [
+        "Web Design", "Web Development", "SEO", "Marketing", "Brand Strategy"
+      ]
+    })}></script><script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Matt Whitfield - Web Design & Development",
+      "image": "https://mattwhitfield.xyz/images/matt-whitfield-bloomsday-2021-400x400.webp",
+      "logo": "https://mattwhitfield.xyz/images/matt-logo-v8-black.webp",
+      "url": "https://mattwhitfield.xyz",
+      "description": "Custom websites, web design, development, SEO, and marketing for small businesses in Portland, OR and Walla Walla, WA.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Portland",
+        "addressRegion": "OR",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Portland, OR",
+        "Walla Walla, WA",
+        "Vancouver, WA",
+        "Beaverton, OR"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/matt--whitfield/",
+        "https://www.instagram.com/_mattwhitfield/",
+        "https://www.youtube.com/@mattwhitfield6331",
+        "https://github.com/matt-whitfield"
+      ],
+      "serviceType": [
+        "Web Design",
+        "Web Development",
+        "SEO",
+        "Marketing",
+        "Brand Strategy",
+        "Content Creation"
+      ],
+      "telephone": "+1-208-512-0705", 
+      "email": "hello@mattwhitfield.xyz" 
+    })}></script>
+
     <style is:global>
       /* Additional global styles */
       html {
@@ -132,14 +221,37 @@ const navLinks = [
         font-weight: bold;
       }
     </style>
+    <link rel="apple-touch-icon" href="/images/matt-logo-v8-black.png" sizes="180x180" />
+    <link rel="manifest" href="/manifest.json" />
   </head>
-  <body class="font-sans min-h-screen bg-background text-text">
+  <body class="bg-background text-text min-h-screen flex flex-col">
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <Header links={navLinks}/>
-    <div id="main-content" class="pt-4">
-      <slot />
-    </div>
     
-    <Footer/>
+    <Header links={navLinks} />
+    <main class="flex-grow">
+      <div id="main-content">
+        <slot />
+      </div>
+    </main>
+    <RenovationFooter />
+    <script>
+      // Hide banner on scroll
+      (function() {
+        const banner = document.getElementById('site-banner-wrapper');
+        function onScroll() {
+          if (!banner) return;
+          if (window.scrollY > 10) {
+            banner.style.transform = 'translateY(-100%)';
+            banner.style.transition = 'transform 0.4s cubic-bezier(.4,0,.2,1)';
+          } else {
+            banner.style.transform = 'translateY(0)';
+            banner.style.transition = 'transform 0.4s cubic-bezier(.4,0,.2,1)';
+          }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Initial state
+        onScroll();
+      })();
+    </script>
   </body>
 </html>

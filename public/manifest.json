@@ -1,0 +1,26 @@
+{
+  "name": "Matt Whitfield - Web Design & Development",
+  "short_name": "Matt Whitfield",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#E25E3E",
+  "description": "Custom websites, web design, and development for small businesses in Portland, OR and beyond.",
+  "icons": [
+    {
+      "src": "/images/matt-logo-v8-black.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/matt-logo-v8-black.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/matt-logo-v8-black.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

@@ -1,10 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import StyledLink from '../components/StyledLink.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import StyledLink from '../components/StyledLink.astro'; // Assuming it might be used by CaseStudyCard or other sub-sections
+import CaseStudyCard from '../components/CaseStudyCard.astro'; // For the projects grid
+import { getCollection } from 'astro:content';
 
-// Get case studies from content collection
+// Get case studies from content collection (similar to work.astro)
 const caseStudies = await getCollection('case-studies');
 
 // Sort case studies by publish date (newest first)
@@ -14,7 +15,7 @@ caseStudies.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
-// Define industry categories based on tags in case studies
+// Define industry categories for filtering (similar to work.astro)
 const industryCategories = [
   { label: "All", value: "all" },
   { label: "Food & Beverage", value: "food" },
@@ -22,162 +23,344 @@ const industryCategories = [
   { label: "E-commerce", value: "ecommerce" },
   { label: "Lead Generation", value: "leads" },
 ];
+
+const pageTitle = "What I Do | Matt Whitfield - Web Designer & Developer";
+const pageDescription = "Comprehensive web design, development, and consulting services. Explore service packages, case studies, my work process, and client testimonials.";
+const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more relevant image for this combined page
 ---
 
 <Layout 
-    title="Work | Matt Whitfield - Web Designer & Developer"
-    description="Portfolio of web design and development projects by Matt Whitfield. See examples of custom websites created for small businesses, restaurants, wineries, and creative teams."
-    image="/images/david-matos-RYPYbRoZp0o-unsplash.jpg"
+	title={pageTitle}
+	description={pageDescription}
+	image={pageImage}
 >
-    <main class="bg-white">
-        <!-- Hero Section with Full-Width Background -->
-        <section class="w-full relative pt-32 pb-20">
-            <!-- Full-width background gradient that spans the entire section width -->
-            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-purple/10"></div>
-            
-            <div class="page-container relative z-1">
-                <h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text">My Work</h1>
-                
-                <div class="neo-card-base py-10 px-8 md:px-12 mt-8 mb-12 relative max-w-prose">
-                    <p class="neo-text text-lg mb-6">
-                        Selected web design and development projects for small businesses, creative teams, and entrepreneurs.
-                    </p>
-                    
-                    <div class="absolute -top-6 -right-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-base uppercase rotate-3">
-                        Portfolio
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Projects Grid -->
-        <section class="w-full relative py-16">
+	<main class="bg-white">
+		<!-- Hero Section (Adapted from services.astro) -->
+		<section class="w-full relative pt-32 pb-20">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			<div class="page-container relative z-1">
+				<h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text">What I Do</h1>
+				<div class="neo-card-base py-10 px-8 md:px-12 mt-8 mb-12 relative max-w-prose">
+					<h3 class="neo-heading text-2xl md:text-3xl mb-6 text-text">Your partner in crafting impactful digital experiences.</h3>
+					<p class="neo-text text-lg mb-6">
+						I combine strategic web design and development with a clear, collaborative process to help small businesses and creative teams thrive online. From initial concept to launch and beyond, I'm here to build a website that not only looks great but also achieves your specific goals.
+					</p>
+					<div class="absolute -top-6 -right-6 p-2 bg-primary border-3 border-black text-white font-serif font-bold text-base uppercase rotate-3">
+						Full Service
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Website Design & Development Section (MVP) -->
+		<section id="web-design-dev" class="w-full relative py-20">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tl from-white via-white to-mint/10"></div>
+			<div class="page-container relative z-1">
+				<div class="relative mb-16">
+					<h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Pricing</h2>
+				</div>
+				<div class="grid grid-cols-1 gap-20 md:grid-cols-3 md:gap-10 lg:gap-10">
+					<!-- Starter Site Card -->
+					<div class="neo-card-base relative neo-service-card-hover-mint flex flex-col h-full">
+						<div class="absolute -top-6 -left-6 p-2 bg-mint border-3 border-black text-black font-serif font-bold text-base uppercase z-10">
+							Entry level
+						</div>
+						<div class="pt-8 pb-4 px-6 flex-grow">
+							<h3 class="neo-heading text-2xl mb-1 text-text">Starter Site</h3>
+							<p class="neo-heading text-xl mb-4 text-mint font-medium">from $2,000</p>
+							<p class="neo-text mb-4">
+								A simple, stylish site to get your business online fast.
+							</p>
+							<p class="neo-text text-sm mb-6">
+								Perfect for new businesses, solo professionals, or those upgrading from DIY.
+							</p>
+							<h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
+							<ul class="space-y-2">
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">3–5 custom-designed pages</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Mobile-friendly, fast, and SEO-ready</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Built on Webflow, WordPress, or Squarespace</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Email/contact form and Google profile help</span>
+								</li>
+							</ul>
+						</div>
+						<div class="border-t-3 border-black py-4 px-6 mt-auto">
+							<StyledLink href="/contact" variant="secondary-mint" className="w-full text-center">Get Quote</StyledLink>
+						</div>
+					</div>
+					
+					<!-- Professional Package Card -->
+					<div class="neo-card-base relative neo-service-card-hover-coral flex flex-col h-full">
+						<div class="absolute -top-6 -left-6 p-2 bg-coral border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
+							Most popular
+						</div>
+						<div class="pt-8 pb-4 px-6 flex-grow">
+							<h3 class="neo-heading text-2xl mb-1 text-text">Professional Package</h3>
+							<p class="neo-heading text-xl mb-4 text-coral font-medium">from $4,500</p>
+							<p class="neo-text mb-4">
+								A more strategic site with content, functionality, and polish.
+							</p>
+							<p class="neo-text text-sm mb-6">
+								Great for growing businesses who want to drive more leads, bookings, or sales.
+							</p>
+							<h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
+							<ul class="space-y-2">
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Up to 8 pages + blog or CMS</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Copywriting support</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Booking, menu, or quote form integrations</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Animations, interactions, and training</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">30-day post-launch support</span>
+								</li>
+							</ul>
+						</div>
+						<div class="border-t-3 border-black py-4 px-6 mt-auto">
+							<StyledLink href="/contact" variant="secondary-coral" className="w-full text-center">Get Quote</StyledLink>
+						</div>
+					</div>
+					
+					<!-- Custom Build Card -->
+					<div class="neo-card-base relative neo-service-card-hover-blue flex flex-col h-full">
+						<div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
+							Enterprise
+						</div>
+						<div class="pt-8 pb-4 px-6 flex-grow">
+							<h3 class="neo-heading text-2xl mb-1 text-text">Custom Build</h3>
+							<p class="neo-heading text-xl mb-4 text-blue font-medium">from $7,500</p>
+							<p class="neo-text mb-4">
+								For teams with technical needs, performance goals, or big ideas.
+							</p>
+							<p class="neo-text text-sm mb-6">
+								Fully custom code and modern frameworks—Astro, Next.js, headless CMS, etc.
+							</p>
+							<h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
+							<ul class="space-y-2">
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">UX design and frontend development</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">CMS or headless content models</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Fast, scalable, SEO-optimized</span>
+								</li>
+								<li class="neo-text flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="flex-grow">Hosting and deployment support</span>
+								</li>
+							</ul>
+						</div>
+						<div class="border-t-3 border-black py-4 px-6 mt-auto">
+							<StyledLink href="/contact" variant="secondary-blue" className="w-full text-center">Get Quote</StyledLink>
+						</div>
+					</div>
+				</div>
+				<p class="neo-text text-sm mt-10 text-muted text-center">* Prices are estimates. Everything is billed at $80/hour.</p>
+			</div>
+		</section>
+
+		<!-- Projects Grid Section -->
+		 <section id="projects-grid-section" class="w-full relative py-16">
             <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
-            
             <div class="page-container relative z-1">
-                <!-- Filter Section -->
-                <div class="flex flex-wrap gap-4 justify-center mb-12">
-                    {industryCategories.map((category) => (
-                        <button 
-                            class="neo-link-base neo-link-secondary font-serif text-sm py-2 px-4" 
-                            data-category={category.value}
-                        >
-                            {category.label}
-                        </button>
-                    ))}
+                <div class="text-center mb-12">
+                    <h2 class="neo-heading text-4xl md:text-5xl mb-4 text-text">See It In Action</h2>
+                    <p class="neo-text text-lg max-w-prose mx-auto">Here are some examples of how I've helped businesses like yours succeed online.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {caseStudies.map((study) => (
-                        <div 
-                            class={`project-card neo-card-base flex flex-col overflow-hidden p-0 neo-service-card-hover-${study.data.color} h-full`}
-                            data-tags={study.data.tags.join(' ').toLowerCase()}
-                        >
-                            <div class="w-full aspect-video overflow-hidden">
-                                <img 
-                                    src={study.data.image} 
-                                    alt={`${study.data.title} website thumbnail`} 
-                                    class="w-full h-full object-cover border-b-3 border-black"
-                                />
-                            </div>
-                            <div class="p-6 flex flex-col flex-grow">
-                                <div class="mb-3 flex flex-wrap gap-2">
-                                    {study.data.tags.slice(0, 1).map((tag) => (
-                                        <span class={`inline-block text-xs font-serif font-medium uppercase tracking-wider py-1 px-2 border-2 border-${study.data.color} bg-${study.data.color} text-${study.data.color === 'highlight' || study.data.color === 'mint' ? 'black' : 'white'}`}>
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                                <h3 class="neo-heading text-xl mb-3">{study.data.title}</h3>
-                                <p class="neo-text mb-6 flex-grow">{study.data.description}</p>
-                                <StyledLink 
-                                    href={`/case-studies/${study.slug}`} 
-                                    variant={`secondary-${study.data.color}`} 
-                                    class="self-start mt-auto"
-                                >
-                                    View Project
-                                </StyledLink>
-                            </div>
+                        <div class="flex flex-col h-full">
+                            <CaseStudyCard
+                                image={study.data.image}
+                                imageAlt={`${study.data.title} case study thumbnail`}
+                                title={study.data.title}
+                                description={study.data.description}
+                                link={`/case-studies/${study.slug}`}
+                                color={study.data.color}
+                            />
                         </div>
                     ))}
                 </div>
-                
-                <!-- Load More Button - Commented out for now as we're showing all case studies 
-                <div class="flex justify-center mt-16">
-                    <button class="neo-link-base neo-link-black">Load More Projects</button>
-                </div>
-                -->
             </div>
         </section>
-        
-        <!-- Process Section -->
+
+		<!-- Support & Consulting Section (from services.astro) -->
+		<section class="w-full relative py-20">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-purple/10"></div>
+			<div class="page-container relative z-1">
+				<div class="relative mb-16">
+					<h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Support & Consulting</h2>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+					<!-- Website Consulting Card -->
+					<div class="neo-card-base relative neo-service-card-hover-purple flex flex-col h-full">
+						<div class="absolute -top-6 -left-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
+							Hourly 
+						</div>
+						<div class="pt-8 pb-4 px-6 flex-grow">
+							<h3 class="neo-heading text-2xl mb-1 text-text">Website Consulting</h3>
+							<p class="neo-heading text-xl mb-4 text-purple font-medium">$100/hr</p>
+							<p class="neo-text mb-6">
+								Need help improving your current site? Want a second opinion before you rebuild?
+								Let's troubleshoot, ideate, and make a plan.
+							</p>
+							<div class="space-y-4">
+								<div class="flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="neo-text flex-grow">UX, performance, or content audits</span>
+								</div>
+								<div class="flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="neo-text flex-grow">Platform guidance and automation tips</span>
+								</div>
+								<div class="flex items-start">
+									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+									<span class="neo-text flex-grow">Small updates or tweaks</span>
+								</div>
+							</div>
+						</div>
+						<div class="border-t-3 border-black py-4 px-6 mt-auto">
+							<StyledLink href="/contact?service=website-consulting" variant="secondary-purple" className="w-full text-center">Schedule a Session</StyledLink>
+						</div>
+					</div>
+					
+					<!-- Ongoing Care Plans Card -->
+					<div class="neo-card-base relative neo-service-card-hover-lime flex flex-col h-full">
+						<div class="absolute -top-6 -left-6 p-2 bg-lime border-3 border-black text-black font-serif font-bold text-base uppercase z-10">
+							Monthly
+						</div>
+						<div class="pt-8 pb-4 px-6 flex-grow">
+							<h3 class="neo-heading text-2xl mb-1 text-text">Ongoing Care Plans</h3>
+							<p class="neo-heading text-xl mb-4 text-lime font-medium">from $150/mo</p>
+							<p class="neo-text mb-6">
+								Because websites don't stop working when you launch them.
+							</p>
+							<div class="space-y-8">
+								<div>
+									<h4 class="font-serif font-bold text-lg mb-3">Essentials Plan – $150/mo</h4>
+									<ul class="space-y-2">
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Site updates + monitoring</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Security + backups</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Monthly performance check</span>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<h4 class="font-serif font-bold text-lg mb-3">Pro Plan – $350/mo</h4>
+									<ul class="space-y-2">
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Everything in Essentials</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">2 hours of dev/design updates</span>
+										</li>
+										<li class="neo-text flex items-start">
+											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
+											<span class="flex-grow">Quarterly check-ins + priority support</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="border-t-3 border-black py-4 px-6 mt-auto">
+							<StyledLink href="/contact?service=ongoing-care" variant="secondary-lime" className="w-full text-center">Get Website Support</StyledLink>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Process Section (from services.astro) -->
+		<section class="w-full relative py-20">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-highlight/10"></div>
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-highlight border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						Working together
+					</div>
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">My Process</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+						<!-- Process Step 1 -->
+                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
+								1
+							</div>
+                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Discovery Call</h3>
+                            <p class="neo-text">Let's chat goals, vibe, and budget</p>
+                        </div>
+                        <!-- Process Step 2 -->
+                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
+								2
+							</div>
+                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Proposal & Timeline</h3>
+                            <p class="neo-text">You'll get a clear scope of work</p>
+                        </div>
+                        <!-- Process Step 3 -->
+                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
+								3
+							</div>
+                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Design & Dev</h3>
+                            <p class="neo-text">I build your site and check in along the way</p>
+                        </div>
+                        <!-- Process Step 4 -->
+                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
+                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
+								4
+							</div>
+                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Launch & Learn</h3>
+                            <p class="neo-text">You'll get support, training, and next steps</p>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		 <!-- Testimonials Section -->
         <section class="w-full relative py-20">
             <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
             
             <div class="page-container relative z-1">
                 <div class="neo-card-base py-12 px-8 md:px-12 relative">
-                    <div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-xl uppercase">
-                        How I work
-                    </div>
-                    
-                    <h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">My Design & Development Process</h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="relative">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
-                                1
-                            </div>
-                            <div class="neo-card-base p-6 border-blue">
-                                <h3 class="font-serif font-bold text-xl mb-2">Discovery</h3>
-                                <p class="neo-text">Understanding your business goals, audience, and technical requirements</p>
-                            </div>
-                        </div>
-                        
-                        <div class="relative">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
-                                2
-                            </div>
-                            <div class="neo-card-base p-6 border-blue">
-                                <h3 class="font-serif font-bold text-xl mb-2">UX & Design</h3>
-                                <p class="neo-text">Wireframes, user flows, and visual designs that engage your audience</p>
-                            </div>
-                        </div>
-                        
-                        <div class="relative">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
-                                3
-                            </div>
-                            <div class="neo-card-base p-6 border-blue">
-                                <h3 class="font-serif font-bold text-xl mb-2">Development</h3>
-                                <p class="neo-text">Clean, efficient code with the right tech for your specific needs</p>
-                            </div>
-                        </div>
-                        
-                        <div class="relative">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black flex items-center justify-center font-serif font-bold">
-                                4
-                            </div>
-                            <div class="neo-card-base p-6 border-blue">
-                                <h3 class="font-serif font-bold text-xl mb-2">Launch & Support</h3>
-                                <p class="neo-text">Thorough testing, smooth deployment, and ongoing maintenance</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12 flex justify-center">
-                        <StyledLink href="/services" variant="secondary-blue">Learn About Services</StyledLink>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonials Section -->
-        <section class="w-full relative py-20">
-            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-highlight/10"></div>
-            
-            <div class="page-container relative z-1">
-                <div class="neo-card-base py-12 px-8 md:px-12 relative">
-                    <div class="absolute -top-6 -left-6 p-2 bg-highlight border-3 border-black text-black font-serif font-bold text-xl uppercase">
+                    <div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-black font-serif font-bold text-xl uppercase">
                         Testimonials
                     </div>
                     
@@ -185,7 +368,7 @@ const industryCategories = [
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Testimonial 1 -->
-                        <div class="neo-card-base p-6 border-highlight">
+                        <div class="neo-card-base p-6 border-blue">
                             <blockquote class="neo-text text-lg italic mb-6">
                                 "Matt transformed our outdated site into a beautiful, functional hub for our restaurant. Online orders increased dramatically, and customers constantly compliment our new website."
                             </blockquote>
@@ -201,7 +384,7 @@ const industryCategories = [
                         </div>
                         
                         <!-- Testimonial 2 -->
-                        <div class="neo-card-base p-6 border-highlight">
+                        <div class="neo-card-base p-6 border-blue">
                             <blockquote class="neo-text text-lg italic mb-6">
                                 "Working with Matt was a breeze. He understood our winery's needs immediately and created a site that perfectly represents our brand while making it easy for guests to book tastings."
                             </blockquote>
@@ -219,69 +402,28 @@ const industryCategories = [
                 </div>
             </div>
         </section>
-        
-        <!-- Contact CTA Section -->
-        <section class="w-full relative py-28">
-            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
-            
-            <div class="page-container relative z-1">
-                <ContactCTA
-                    title="Ready to create something amazing for your business?"
-                    description="Let's talk about your project goals and how I can help you build a website that delivers real results."
-                    ctaText="start a project"
-                    ctaLink="/contact"
-                    boxTitle="Let's create"
-                    color="primary"
-                />
-            </div>
-        </section>
-    </main>
+		
+		<!-- Contact CTA Section (from services.astro) -->
+		<section class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			<div class="page-container relative z-1">
+				<ContactCTA
+					title="Ready to elevate your online presence?"
+					description="Let's discuss your project and how I can help you achieve your business goals."
+					ctaText="Start a Conversation"
+					ctaLink="/contact"
+					boxTitle="Get in Touch"
+					color="primary"
+				/>
+			</div>
+		</section>
+	</main>
 </Layout>
 
 <style>
-    .aspect-video {
+    .aspect-video { /* If CaseStudyCard uses this, and it's not global */
         aspect-ratio: 16/9;
     }
 </style>
 
-<script>
-// Category filtering functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('[data-category]');
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.getAttribute('data-category');
-            
-            // Highlight active button
-            filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-white'));
-            button.classList.add('bg-primary', 'text-white');
-            
-            // If "all" is selected, show all projects
-            if (category === 'all') {
-                projectCards.forEach(card => {
-                    card.style.display = 'flex';
-                });
-                return;
-            }
-            
-            // Otherwise, filter projects by category
-            projectCards.forEach(card => {
-                const tags = card.getAttribute('data-tags')?.toLowerCase() || '';
-                if (tags.includes(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-    
-    // Set "All" as active by default
-    const defaultButton = document.querySelector('[data-category="all"]');
-    if (defaultButton) {
-        defaultButton.classList.add('bg-primary', 'text-white');
-    }
-});
-</script>
+

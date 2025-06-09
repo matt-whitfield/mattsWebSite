@@ -53,18 +53,16 @@ const getButtonVariant = (color: string): 'secondary' | 'secondary-primary' | 's
 const buttonVariant = getButtonVariant(color);
 ---
 
-<section class="w-full my-28">
+<section class="w-full py-0">
   <!-- Use page-container for consistent width with other sections -->
   <div class="page-container relative z-1">
-    <!-- Decorative elements -->
-    <div class={`absolute -top-3 -right-3 h-6 w-6 bg-${color} border-3 border-black`}></div>
-    <div class={`neo-decoration-square bg-${color}`}></div>
+  
     
     <div class="relative mb-16">
       <h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">{title}</h2>
     </div>
     
-    {description && <p class="neo-text text-lg mb-8 max-w-3xl">{description}</p>}
+    {description && <p class="neo-text text-lg mb-6 max-w-3xl">{description}</p>}
     
     <h3 class="neo-subheading text-2xl mb-6">{subtitle}</h3>
     
@@ -81,27 +79,16 @@ const buttonVariant = getButtonVariant(color);
     </div>
     
     {features && features.length > 0 && (
-      <div class="mt-16 mb-12">
-        <div class={`neo-card-base p-8 relative border-${color} bg-${color}/5`}>
-          <div class={`absolute -top-6 -left-6 p-2 bg-${color} border-3 border-black text-black font-serif font-bold text-xl uppercase`}>
-            Every site includes
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
-            {features.map((feature, index) => {
-              // Calculate rotation angle based on index for visual interest
-              const rotation = index % 3 === 0 ? "rotate-0" : 
-                              index % 3 === 1 ? "rotate-45" : "rotate-[135deg]";
-              
-              return (
-                <div class="flex items-start">
-                  <span class={`inline-block h-4 w-4 bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4 transform ${rotation}`} aria-hidden="true"></span>
-                  <span class="neo-text text-lg">{feature.text}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+      <div class="features-box features-gradient mt-12 md:mt-0 md:ml-10 relative">
+        <div class={`absolute -top-6 -left-6 p-2 bg-${color} border-3 border-black text-black font-serif font-bold text-lg uppercase`}>Each site includes</div>
+        <ul class="space-y-4">
+          {features.map((feature) => (
+            <li class="neo-text flex items-start">
+              <span class={`h-4 w-4 transform rotate-45 bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+              <span class="flex-grow">{feature.text}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     )}
     

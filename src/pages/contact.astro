@@ -11,7 +11,7 @@ import Button from '../components/Button.astro';
 >
 	<main class="bg-white">
 		<!-- Hero Section with Full-Width Background -->
-		<section class="w-full relative pt-32 pb-20">
+		<section class="w-full relative pt-48 pb-20">
 			<!-- Full-width background gradient that spans the entire section width -->
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
 			
@@ -51,15 +51,11 @@ import Button from '../components/Button.astro';
 									<div>
 										<h3 class="font-serif font-bold text-lg mb-2">Follow Me</h3>
 										<div class="flex gap-4">
-											<a href="#" class="inline-block p-2 border-3 border-black hover:bg-primary hover:text-white transition-colors duration-200">
-												<span class="i-carbon-logo-twitter w-6 h-6"></span>
-												<span class="sr-only">Twitter</span>
-											</a>
-											<a href="#" class="inline-block p-2 border-3 border-black hover:bg-primary hover:text-white transition-colors duration-200">
+											<a href="https://www.linkedin.com/in/matt--whitfield/" target="_blank" rel="noopener" class="inline-block p-2 border-3 border-black hover:bg-primary hover:text-white transition-colors duration-200">
 												<span class="i-carbon-logo-linkedin w-6 h-6"></span>
 												<span class="sr-only">LinkedIn</span>
 											</a>
-											<a href="#" class="inline-block p-2 border-3 border-black hover:bg-primary hover:text-white transition-colors duration-200">
+											<a href="https://www.instagram.com/_mattwhitfield/" target="_blank" rel="noopener" class="inline-block p-2 border-3 border-black hover:bg-primary hover:text-white transition-colors duration-200">
 												<span class="i-carbon-logo-instagram w-6 h-6"></span>
 												<span class="sr-only">Instagram</span>
 											</a>
@@ -93,7 +89,13 @@ import Button from '../components/Button.astro';
 				<div class="neo-card-base p-8 border-3 border-black bg-white shadow-neo">
 					<h2 id="contact-form" class="neo-heading text-2xl mb-6">Send a Message</h2>
 							
-							<form class="space-y-6" action="https://formspree.io/f/your-form-id" method="POST" aria-labelledby="contact-form">
+							<form class="space-y-6" netlify name="contact" method="POST" aria-labelledby="contact-form">
+								<!-- Honeypot field for spam prevention -->
+								<div style="display:none;">
+									<label for="website">Website</label>
+									<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+								</div>
+								
 								<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 									<div>
 										<label for="name" class="block font-serif font-bold mb-2">Name</label>
@@ -261,7 +263,7 @@ import Button from '../components/Button.astro';
 							<h3 id="calendar-embed-title" class="sr-only">Google Calendar Booking System</h3>
 							<div class="border-3 border-black shadow-neo w-full h-full">
 								<iframe 
-									src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1ZnFy6Q_bTIPWRk8z8z7sBBQ?gv=true" 
+									src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Wm0cD38vsz7dIFtssr6mNS2PXQylNtrnO1P-qZS2dK61tcdtehr6pVD8AhxHAHb6Ekh28sRBJ?gv=true" 
 									style="width:100%; height:100%;" 
 									frameborder="0"
 									title="Schedule an appointment with Matt Whitfield"
@@ -280,25 +282,13 @@ import Button from '../components/Button.astro';
 					<div class="text-center mt-8">
 						<p class="neo-text text-sm">
 							Need a different time? Send me an email at 
-							<a href="mailto:hello@mattwhitfield.com" class="neo-link-base neo-link-primary">hello@mattwhitfield.com</a>
+							<a href="mailto:hello@mattwhitfield.xyz" class="neo-link-base neo-link-primary">hello@mattwhitfield.xyz</a>
 						</p>
 					</div>
 				</div>
 			</div>
 		</section>
 		
-		<!-- Final CTA -->
-		<section class="w-full py-16 md:py-20">
-			<div class="page-container">
-				<ContactCTA 
-					title="Let's Build Something Great Together" 
-					description="From website design to custom development, I'm here to help your business succeed online."
-					ctaText="Let's Talk"
-					boxTitle="Start Now"
-					color="mint"
-				/>
-			</div>
-		</section>
 	</main>
 </Layout>
 

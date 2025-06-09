@@ -1,0 +1,450 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import StyledLink from '../../components/StyledLink.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+
+// Generate pages for all blog posts
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the blog post data for this page
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Add this line to get the featured image
+const featuredImage = entry.data.featuredImage;
+
+// Get other blog posts for the "Related Articles" section
+const allBlogPosts = await getCollection('blog');
+const otherPosts = allBlogPosts
+  .filter(post => post.slug !== entry.slug)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3);
+
+// Format the publish date
+const formattedDate = entry.data.publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Map category to appropriate text color for the badge
+const textColorMap = {
+  mint: 'text-black',
+  lime: 'text-black', 
+  highlight: 'text-black',
+  primary: 'text-white',
+  coral: 'text-white',
+  blue: 'text-white',
+  purple: 'text-white'
+};
+
+const textColor = textColorMap[entry.data.color] || 'text-white';
+---
+
+<Layout 
+  title={entry.data.seo?.title || `${entry.data.title} | Blog | Matt Whitfield - Web Designer & Developer`}
+  description={entry.data.seo?.description || entry.data.description}
+  image={entry.data.image || "/images/mw-headshots-2024.webp"}
+>
+  <!-- Hero Section with Full-Width Background -->
+  <section class="w-full relative pt-32 pb-20 bg-white">
+    <!-- Dynamic background gradient based on blog post color -->
+    <div class={`absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-${entry.data.color}/10`}></div>
+    
+    <div class="page-container relative z-1">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-6 flex items-center gap-4">
+          <span class={`inline-block font-serif text-sm font-medium uppercase tracking-wider bg-${entry.data.color} ${textColor} py-1 px-3 border-3 border-black`}>
+            {entry.data.category}
+          </span>
+          <span class="text-muted">{formattedDate}</span>
+          {entry.data.readTime && (
+            <span class="text-muted">·</span>
+            <span class="text-muted">{entry.data.readTime}</span>
+          )}
+        </div>
+        
+        <h1 class="neo-heading text-4xl md:text-5xl lg:text-6xl mb-8 text-text leading-tight">{entry.data.title}</h1>
+        
+        <!-- Add featured image here, after the title and before the description -->
+        {featuredImage && (
+          <div class="my-8">
+            <img 
+              src={featuredImage} 
+              alt={entry.data.title}
+              class="w-full h-64 md:h-80 object-cover border-3 border-black neo-shadow"
+            />
+          </div>
+        )}
+        
+        <div class="relative mt-8 mb-12 max-w-prose">
+          <div class="neo-card-base p-6">
+            <p class="neo-text text-lg mb-0">
+              {entry.data.description}
+            </p>
+          </div>
+          
+          {entry.data.featured && (
+            <div class={`absolute -top-6 -right-6 p-2 bg-${entry.data.color} border-3 border-black ${textColor} font-serif font-bold text-base uppercase rotate-3`}>
+              Featured
+            </div>
+          )}
+        </div>
+        
+        <div class="mb-8">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-lightgray border-3 border-black overflow-hidden">
+              <img 
+                src="/images/mw-headshots-2024.webp" 
+                alt="Matt Whitfield"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <p class="font-serif font-bold mb-0">By {entry.data.author}</p>
+              <p class="neo-text text-sm text-muted">Web Designer & Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Blog Post Content Section -->
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 lg:gap-12">
+        <!-- Main Content Column -->
+        <main class="min-w-0">
+          <article class="prose prose-lg max-w-none">
+            <Content />
+          </article>
+        </main>
+        
+        <!-- Sticky Sidebar -->
+        <aside class="hidden lg:block">
+          <div class="sticky-sidebar">
+            <div class="neo-card-base p-6">
+              <div class={`inline-block px-3 py-1 bg-${entry.data.color} border-2 border-black ${textColor} font-bold text-sm uppercase mb-4`}>
+                Need Help?
+              </div>
+              
+              <h3 class="neo-card-title mb-3">Struggling with your website?</h3>
+              <p class="neo-text text-sm mb-6">
+                Book a free 30-minute consultation. No sales pitch, just a conversation about your website.
+              </p>
+              
+              <StyledLink href="/contact" variant="primary" size="sm" className="w-full text-center block">
+                Book Free Consultation
+              </StyledLink>
+              
+              <div class="mt-6 pt-6 border-t-2 border-black">
+                <h4 class="font-serif font-bold text-sm uppercase mb-3">In This Article</h4>
+                <p class="neo-text text-xs mb-4">
+                  {entry.data.tags.join(' • ')}
+                </p>
+                <StyledLink href="/blog" variant={`secondary-${entry.data.color}`} size="sm">
+                  ← Back to Blog
+                </StyledLink>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+    
+    <!-- Related Articles Section -->
+    <section class="w-full relative py-16">
+      <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
+      
+      <div class="page-container relative z-1">
+        <h2 class="neo-heading text-3xl md:text-4xl mb-12 text-center">Related Articles</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {otherPosts.map(post => {
+            const postDate = post.data.publishDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            });
+            const postTextColor = textColorMap[post.data.color] || 'text-white';
+            
+            return (
+              <div class={`neo-card-base neo-service-card-hover-${post.data.color} overflow-hidden p-0`}>
+                <div class="p-6">
+                  <div class="mb-3 flex items-center">
+                    <span class={`inline-block bg-${post.data.color} ${postTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+                      {post.data.category}
+                    </span>
+                    <span class="text-sm text-muted">{postDate}</span>
+                  </div>
+                  <h3 class="neo-card-title">{post.data.title}</h3>
+                  <p class="neo-text mb-6">{post.data.description}</p>
+                  <StyledLink 
+                    href={`/blog/${post.slug}`} 
+                    variant={`secondary-${post.data.color}`} 
+                    size="sm"
+                  >
+                    Read Article
+                  </StyledLink>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Newsletter Signup CTA -->
+    <section class="w-full relative py-20">
+      <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+      
+      <div class="page-container relative z-1">
+        <div class="neo-card-base py-12 px-8 md:px-12 relative">
+          <div class="absolute -top-6 -left-6 p-2 bg-primary border-3 border-black text-white font-serif font-bold text-xl uppercase">
+            Stay Updated
+          </div>
+          
+          <div class="flex flex-col md:flex-row gap-12 items-start">
+            <div class="md:w-2/3">
+              <h2 class="neo-heading text-3xl md:text-4xl mb-4 text-text">Get design and development tips in your inbox</h2>
+              <p class="neo-text mb-6">
+                Join my newsletter for practical advice on web design, development, and marketing for small businesses. No spam, just useful content delivered monthly.
+              </p>
+            </div>
+            
+            <div class="md:w-1/3 w-full">
+              <StyledLink href="/contact" variant="primary" size="lg">
+                Get in Touch
+              </StyledLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+
+
+<style is:global>
+  /* Prose styling using native CSS that matches UnoCSS design system */
+  .prose {
+    color: #1a1a1a !important;
+  }
+  
+  .prose h1 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.1 !important;
+    font-size: 3rem !important;
+    margin-bottom: 2rem !important;
+    margin-top: 4rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid #000 !important;
+    display: inline-block !important;
+  }
+  
+  .prose h2 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.1 !important;
+    font-size: 2.25rem !important;
+    margin-bottom: 1.5rem !important;
+    margin-top: 3rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 3px solid #000 !important;
+    display: inline-block !important;
+  }
+  
+  .prose h3 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.2 !important;
+    font-size: 1.875rem !important;
+    margin-bottom: 1rem !important;
+    margin-top: 2rem !important;
+  }
+  
+  .prose h4 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.2 !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    margin-top: 1.5rem !important;
+  }
+  
+  .prose h5, .prose h6 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.2 !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+    margin-top: 1rem !important;
+  }
+  
+  .prose p {
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  .prose ul, .prose ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .prose ul {
+    list-style-type: disc;
+  }
+  
+  .prose ol {
+    list-style-type: decimal;
+  }
+  
+  .prose li {
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+  
+  .prose strong {
+    font-weight: 700;
+  }
+  
+  .prose em {
+    font-style: italic;
+  }
+  
+  .prose blockquote {
+    border-left: 4px solid #FF6B35;
+    padding-left: 1.5rem;
+    font-style: italic;
+    font-size: 1.125rem;
+    margin: 2rem 0;
+    background-color: rgba(221, 221, 221, 0.5);
+    padding: 1rem 1.5rem;
+  }
+  
+  .prose code {
+    background-color: #DDDDDD;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  .prose pre {
+    background-color: #DDDDDD;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border: 2px solid #000;
+  }
+  
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+  }
+  
+  .prose a {
+    color: #FF6B35;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #FF6B35;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+    padding: 0.125rem 0.25rem;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+  
+  .prose a:hover {
+    background-color: #FF6B35;
+    color: white;
+    text-decoration: none;
+    border-color: #000;
+  }
+  
+  .prose hr {
+    border: none;
+    border-top: 2px solid #000;
+    margin: 3rem 0;
+  }
+  
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000;
+    margin: 2rem 0;
+  }
+  
+  .prose th,
+  .prose td {
+    border: 1px solid #000;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .prose th {
+    background-color: #DDDDDD;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .prose h1 {
+      font-size: 2.5rem;
+    }
+    
+    .prose h2 {
+      font-size: 2rem;
+    }
+    
+    .prose h3 {
+      font-size: 1.5rem;
+    }
+    
+    .prose h4 {
+      font-size: 1.25rem;
+    }
+    
+    .prose h5, .prose h6 {
+      font-size: 1.125rem;
+    }
+  }
+  
+  /* Custom sticky sidebar */
+  .sticky-sidebar {
+    position: sticky !important;
+    top: 6rem !important;
+    z-index: 40 !important;
+    align-self: flex-start !important;
+  }
+  
+  @media (max-width: 1023px) {
+    .sticky-sidebar {
+      position: static !important;
+    }
+  }
+</style>
+
+

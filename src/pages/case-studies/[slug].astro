@@ -74,7 +74,7 @@ const otherCaseStudies = allCaseStudies
               <ul class="space-y-4">
                 {entry.data.projectFeatures && entry.data.projectFeatures.map((feature, index) => (
                   <li class="neo-text flex items-start">
-                    <span class={`h-4 w-4 transform rotate-${(index % 4) * 45} bg-${entry.data.color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+                    <span class={`h-4 w-4 transform rotate-45 bg-${entry.data.color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
                     <span class="flex-grow">{feature}</span>
                   </li>
                 ))}
@@ -112,7 +112,7 @@ const otherCaseStudies = allCaseStudies
           <ul class="space-y-4 neo-text text-lg">
             {entry.data.goals && entry.data.goals.map((goal, index) => (
               <li class="neo-text flex items-start">
-                <span class={`h-4 w-4 transform rotate-${(index % 4) * 45} bg-${entry.data.color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+                <span class={`h-4 w-4 transform rotate-45 bg-${entry.data.color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
                 <span class="flex-grow">{goal}</span>
               </li>
             ))}
