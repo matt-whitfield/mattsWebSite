@@ -15,6 +15,7 @@ const blogCollection = defineCollection({
     featured: z.boolean().default(false),
     author: z.string().default('Matt Whitfield'),
     readTime: z.string().optional(),
+    ctaPlacement: z.enum(['after-hero', 'in-content', 'none']).default('after-hero'),
     seo: z.object({
       title: z.string().optional(),
       description: z.string().optional(),

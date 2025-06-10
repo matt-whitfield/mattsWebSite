@@ -1,32 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
-import StyledLink from '../components/StyledLink.astro'; // Assuming it might be used by CaseStudyCard or other sub-sections
-import CaseStudyCard from '../components/CaseStudyCard.astro'; // For the projects grid
-import { getCollection } from 'astro:content';
+import StyledLink from '../components/StyledLink.astro';
+// import CaseStudyCard from '../components/CaseStudyCard.astro'; // Temporarily removed for launch
+// import { getCollection } from 'astro:content'; // Temporarily removed for launch
 
-// Get case studies from content collection (similar to work.astro)
-const caseStudies = await getCollection('case-studies');
+// Case studies temporarily disabled for launch
+// const caseStudies = await getCollection('case-studies');
+// caseStudies.sort((a, b) => {
+//   const dateA = a.data.publishDate ?? new Date(0);
+//   const dateB = b.data.publishDate ?? new Date(0);
+//   return dateB.getTime() - dateA.getTime();
+// });
 
-// Sort case studies by publish date (newest first)
-caseStudies.sort((a, b) => {
-  const dateA = a.data.publishDate ?? new Date(0);
-  const dateB = b.data.publishDate ?? new Date(0);
-  return dateB.getTime() - dateA.getTime();
-});
-
-// Define industry categories for filtering (similar to work.astro)
-const industryCategories = [
-  { label: "All", value: "all" },
-  { label: "Food & Beverage", value: "food" },
-  { label: "Services", value: "services" },
-  { label: "E-commerce", value: "ecommerce" },
-  { label: "Lead Generation", value: "leads" },
-];
+// Industry categories temporarily disabled for launch
+// const industryCategories = [
+//   { label: "All", value: "all" },
+//   { label: "Food & Beverage", value: "food" },
+//   { label: "Services", value: "services" },
+//   { label: "E-commerce", value: "ecommerce" },
+//   { label: "Lead Generation", value: "leads" },
+// ];
 
 const pageTitle = "What I Do | Matt Whitfield - Web Designer & Developer";
-const pageDescription = "Comprehensive web design, development, and consulting services. Explore service packages, case studies, my work process, and client testimonials.";
-const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more relevant image for this combined page
+const pageDescription = "Comprehensive web design, development, and consulting services. Explore service packages, my work process, and ongoing support options.";
+const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
 ---
 
 <Layout 
@@ -185,8 +183,8 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
 			</div>
 		</section>
 
-		<!-- Projects Grid Section -->
-		 <section id="projects-grid-section" class="w-full relative py-16">
+		<!-- Projects Grid Section - Temporarily Hidden for Launch -->
+		<!-- <section id="projects-grid-section" class="w-full relative py-16">
             <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
             <div class="page-container relative z-1">
                 <div class="text-center mb-12">
@@ -209,7 +207,7 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
                     ))}
                 </div>
             </div>
-        </section>
+        </section> -->
 
 		<!-- Support & Consulting Section (from services.astro) -->
 		<section class="w-full relative py-20">
@@ -354,8 +352,8 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
 			</div>
 		</section>
 
-		 <!-- Testimonials Section -->
-        <section class="w-full relative py-20">
+		 <!-- Testimonials Section - Temporarily Hidden for Launch -->
+        <!-- <section class="w-full relative py-20">
             <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
             
             <div class="page-container relative z-1">
@@ -367,8 +365,8 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
                     <h2 class="neo-heading text-3xl md:text-4xl mb-10 text-text">What Clients Are Saying</h2>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Testimonial 1 -->
-                        <div class="neo-card-base p-6 border-blue">
+                        <!-- Testimonial 1 Placeholder -->
+                        <!-- <div class="neo-card-base p-6 border-blue">
                             <blockquote class="neo-text text-lg italic mb-6">
                                 "Matt transformed our outdated site into a beautiful, functional hub for our restaurant. Online orders increased dramatically, and customers constantly compliment our new website."
                             </blockquote>
@@ -381,10 +379,10 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
                                     <p class="text-sm">Fresh Bistro, Owner</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         
-                        <!-- Testimonial 2 -->
-                        <div class="neo-card-base p-6 border-blue">
+                        <!-- Testimonial 2 Placeholder-->
+                        <!-- <div class="neo-card-base p-6 border-blue">
                             <blockquote class="neo-text text-lg italic mb-6">
                                 "Working with Matt was a breeze. He understood our winery's needs immediately and created a site that perfectly represents our brand while making it easy for guests to book tastings."
                             </blockquote>
@@ -401,7 +399,7 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp"; // Or a more 
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 		
 		<!-- Contact CTA Section (from services.astro) -->
 		<section class="w-full relative py-28">
