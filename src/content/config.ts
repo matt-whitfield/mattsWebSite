@@ -31,6 +31,7 @@ const caseStudiesCollection = defineCollection({
     description: z.string(),
     client: z.string(),
     image: z.string(),
+    imageSecondary: z.string().optional(),
     publishDate: z.date().optional(),
     tags: z.array(z.string()),
     color: z.enum(['primary', 'mint', 'coral', 'blue', 'purple', 'lime', 'highlight']),
@@ -39,6 +40,7 @@ const caseStudiesCollection = defineCollection({
     projectFeatures: z.array(z.string()).optional(),
     // New schema properties for enhanced case studies
     challenge: z.string().optional(),
+    caseStudyLink: z.string().optional(),
     goals: z.array(z.string()).optional(),
     solution: z.string().optional(),
     keyFeatures: z.array(

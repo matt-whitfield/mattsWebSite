@@ -42,18 +42,16 @@ const hoverClass = `neo-service-card-hover-${color}`;
 
 <div class={`neo-card-base ${cardColorClass} overflow-hidden flex flex-col h-full ${hoverClass}`}>
   {/* Image section - fixed height, does not shrink */}
-  <div class="w-full h-56 overflow-hidden -mx-6 -mt-6 mb-6 relative flex-shrink-0">
+  <div class="w-full h-56 overflow-hidden relative flex-shrink-0">
     <img 
       src={image} 
       alt={imageAlt} 
       class="w-full h-full object-cover border-b-3 border-black"
     />
-    {/* Decorative elements in card corners */}
-    <div class={`absolute top-0 right-0 w-6 h-6 bg-${color} border-l-3 border-b-3 border-black`}></div>
   </div>
   
   {/* Card content */}
-  <h3 class="neo-card-title">{title}</h3>
+  <h3 class="neo-card-title mt-4">{title}</h3>
   {/* Description - takes available space */}
   <p class="neo-text mb-8 line-clamp-3 flex-grow">{description}</p>
   

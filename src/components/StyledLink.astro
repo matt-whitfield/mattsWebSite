@@ -46,6 +46,6 @@ const sizeClasses = {
 const linkClass = `neo-link-base ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 ---
 
-<a href={href} class={linkClass}>
+<a {...Astro.props} href={href} class={linkClass}>
   <slot />
 </a>

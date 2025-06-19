@@ -2,16 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import StyledLink from '../components/StyledLink.astro';
-// import CaseStudyCard from '../components/CaseStudyCard.astro'; // Temporarily removed for launch
-// import { getCollection } from 'astro:content'; // Temporarily removed for launch
+import CaseStudyCard from '../components/CaseStudyCard.astro'; // Temporarily removed for launch
+import { getCollection } from 'astro:content'; // Temporarily removed for launch
 
 // Case studies temporarily disabled for launch
-// const caseStudies = await getCollection('case-studies');
-// caseStudies.sort((a, b) => {
-//   const dateA = a.data.publishDate ?? new Date(0);
-//   const dateB = b.data.publishDate ?? new Date(0);
-//   return dateB.getTime() - dateA.getTime();
-// });
+const caseStudies = await getCollection('case-studies');
+caseStudies.sort((a, b) => {
+  const dateA = a.data.publishDate ?? new Date(0);
+  const dateB = b.data.publishDate ?? new Date(0);
+  return dateB.getTime() - dateA.getTime();
+});
 
 // Industry categories temporarily disabled for launch
 // const industryCategories = [
@@ -184,7 +184,7 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
 		</section>
 
 		<!-- Projects Grid Section - Temporarily Hidden for Launch -->
-		<!-- <section id="projects-grid-section" class="w-full relative py-16">
+		<section id="projects-grid-section" class="w-full relative py-16">
             <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
             <div class="page-container relative z-1">
                 <div class="text-center mb-12">
@@ -207,7 +207,7 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
                     ))}
                 </div>
             </div>
-        </section> -->
+        </section>
 
 		<!-- Support & Consulting Section (from services.astro) -->
 		<section class="w-full relative py-20">
