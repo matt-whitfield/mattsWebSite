@@ -12,9 +12,12 @@ featuredImage: /images/blogs/ali-inay-y3aP9oo9Pjc-unsplash.jpg
 ctaPlacement: in-content
 ---
 
-> **Summary Block:** A website shouldn't be another hassle. It should work in the background to assist all of your marketing efforts in one place. These days, most people use their phones to find the next place they want to eat.
+> **Summary Block:** A website shouldn't be another hassle. It should work in the background to assist all of your marketing efforts in one place. 
+These days, most people use their phones to find the next place they want to eat.
 
-**Note:** This blog is targeted at restaurant and bar owners but the basic principles apply for any hospitality or service-based business.  
+**Note:** This blog is targeted at restaurant and bar owners but the basic principles apply for any hospitality or service-based business.
+
+## The Purpose of a Website
 
 Your website is an extension of your business, making it the digital equivalent of your storefront window. If done right, your website makes it easier for people to discover and interact with you – both online and in-person. And unlike Google, Yelp, social-media, and reservation systems, your website is something you control and own. 
 
@@ -42,10 +45,10 @@ Sixty percent of diners browse menus on phones. This means two major things for 
 
 ### Have a Clear, Updated Menu
 
-Keep the PDF, it’s a usability nightmare on mobile and it’s probably hurting your SEO.
+Your PDF menu is a usability nightmare on mobile and it’s probably hurting your SEO.
 
-1. PDF menus are a UX (user experience) nightmare. They ask people to pinch to zoom on their mobile phones, and have no interactivity. These menus were designed to be held by a human hand, not displayed on a digital screen.
-    1. That being said, people are used to this format, making it a kind of standard. I recommend keeping a PDF menu, but clearly labeling it in the way [Kachka does here.](https://www.kachkapdx.com/dinner-menu) 
+1. PDF menus ask people to pinch to zoom on their mobile phones, and have no interactivity. These menus were designed to be held by a human hand, not displayed on a digital screen.
+    That being said, people are used to this format, making it a kind of standard. I recommend keeping a PDF menu in a secondary capacity, labeling it in the way [Kachka does here.](https://www.kachkapdx.com/dinner-menu) 
 2. Knowing what’s on your menu is a primary driver of web traffic for your business. Don’t ask customers to sleuth through Google’s many photos to find out which menu is the most current. Make it easy for the hungry/thirsty people.
 3. PDF menus aren’t as good for SEO. If someone is searching for a menu item that you have and your menu is uploaded as a PDF, it’s less likely they’ll find your restaurant in their search results.
 4. PDF and image-based menus can slow your website down, especially if you’re using a DIY Platform like Wordpress or Squarespace. Remember priority number one? It’s all about speed!

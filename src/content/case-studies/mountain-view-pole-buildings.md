@@ -1,6 +1,6 @@
 ---
 title: Mountain View Pole Buildings
-description: A simple website for a small contracting business in North Idaho
+description: An elegant website for a small contracting business in North Idaho
 client: Mountain View Pole Buildings
 image: /images/case-studys/mountain-view-pb-hero.webp
 imageSecondary: /images/case-studys/mountain-view-pb-gallery.webp
@@ -17,7 +17,7 @@ goals:
   - Establish a Google Business Profile
   - Showcase projects with a clickable image gallery
   - Improve quote request form UX and submission logic
-solution: "I created a simple, easy to maintain, professional website with rich SEO content, clear service and service area information, and a more efficient form submission profess. Mountain View Pole buildings now has a Google Business profile and matching website local schema. "
+solution: "I created a simple, easy to maintain, professional website with rich SEO content, clear service and service area information, and a more efficient form submission process. Mountain View Pole buildings now has a Google Business profile and local business schema for improved search results. "
 keyFeatures:
   - title: Balanced Design
     color: coral

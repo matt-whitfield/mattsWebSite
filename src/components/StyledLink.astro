@@ -7,14 +7,18 @@ interface Props {
            'secondary-purple' | 'secondary-blue' | 'secondary-lime' | 'secondary-highlight' | 
            'black' | 'mint' | 'coral' | 'purple' | 'blue' | 'lime';
   size?: 'sm' | 'md' | 'lg';
-  className?: string;
+  class?: string;
+  target?: string;
+  rel?: string;
 }
 
 const { 
   href, 
   variant = 'black', 
   size = 'md',
-  className = ''
+  class: className = '',
+  target,
+  rel
 } = Astro.props;
 
 // Map variants to their corresponding classes
@@ -46,6 +50,6 @@ const sizeClasses = {
 const linkClass = `neo-link-base ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 ---
 
-<a {...Astro.props} href={href} class={linkClass}>
+<a href={href} class={linkClass} target={target} rel={rel}>
   <slot />
 </a>
