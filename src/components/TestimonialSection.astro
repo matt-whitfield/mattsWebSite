@@ -1,0 +1,60 @@
+---
+// TestimonialSection.astro
+const testimonials = [
+  {
+    quote: "Matt is adept at navigating ambiguity and adapting to evolving project requirements",
+    initials: "ED",
+    name: "Emily Dobson",
+    title: "Project Manager",
+    color: "highlight"
+  },
+  {
+    quote: "Matt’s exceptional communication and leadership abilities has left a truly lasting impression on me.",
+    initials: "ML",
+    name: "Michelle Leong",
+    title: "Small Business Growth Consultant",
+    color: "coral"
+  },
+  {
+    quote: "We just didn’t know where to start, but Matt made things simple and delivered within our budget. The new image gallery and updated form make it easier for customers to reach out—and easier for us to respond. We’re really happy with the results.",
+    initials: "DS",
+    name: "Donnie Smathers",
+    title: "Owner, Mountain View Pole Buildings",
+    color: "blue"
+  }
+];
+---
+<section class="w-full relative py-20">
+  <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
+  <div class="page-container relative z-1">
+    <div class="neo-card-base py-12 px-8 md:px-12 relative">
+      <div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-black font-serif font-bold text-xl uppercase">
+        Testimonials
+      </div>
+      <h2 class="neo-heading text-3xl md:text-4xl mb-10 text-text">What Clients Are Saying</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {testimonials.map((t) => (
+          <div class="neo-card-base pt-12 pb-8 px-8 border-black hover:shadow-neo-blue transition-all duration-200 relative">
+            <div class="absolute -top-6 -left-6 p-3 bg-blue border-3 border-black flex items-center justify-center">
+              <span class="text-3xl i-carbon-quotes text-white"></span>
+            </div>
+            <blockquote class="neo-text text-lg  font-mono italic mb-8">
+              {t.quote}
+            </blockquote>
+            <div class="flex items-center mt-6">
+              <div class="w-14 h-14 mr-4">
+                <div class={"w-full h-full bg-" + t.color + " border-3 border-black flex items-center justify-center font-serif font-extrabold text-xl uppercase tracking-widest shadow-neo-sm square-initials"}>
+                  {t.initials}
+                </div>
+              </div>
+              <div>
+                <p class="font-serif font-bold uppercase text-base mb-1">{t.name}</p>
+                <p class="text-sm neo-text">{t.title}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import StyledLink from '../components/StyledLink.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro'; // Temporarily removed for launch
+import TestimonialSection from '../components/TestimonialSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
 import { getCollection } from 'astro:content'; // Temporarily removed for launch
 
 // Case studies temporarily disabled for launch
@@ -185,29 +187,29 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
 
 		<!-- Projects Grid Section - Temporarily Hidden for Launch -->
 		<section id="projects-grid-section" class="w-full relative py-16">
-            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
-            <div class="page-container relative z-1">
-                <div class="text-center mb-12">
-                    <h2 class="neo-heading text-4xl md:text-5xl mb-4 text-text">See It In Action</h2>
-                    <p class="neo-text text-lg max-w-prose mx-auto">Here are some examples of how I've helped businesses like yours succeed online.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    {caseStudies.map((study) => (
-                        <div class="flex flex-col h-full">
-                            <CaseStudyCard
-                                image={study.data.image}
-                                imageAlt={`${study.data.title} case study thumbnail`}
-                                title={study.data.title}
-                                description={study.data.description}
-                                link={`/case-studies/${study.slug}`}
-                                color={study.data.color}
-                            />
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
+			<div class="page-container relative z-1">
+				<div class="text-center mb-12">
+					<h2 class="neo-heading text-4xl md:text-5xl mb-4 text-text">See It In Action</h2>
+					<p class="neo-text text-lg max-w-prose mx-auto">Here are some examples of how I've helped businesses like yours succeed online.</p>
+				</div>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+					{caseStudies.map((study) => (
+						<div class="flex flex-col h-full">
+							<CaseStudyCard
+								image={study.data.image}
+								imageAlt={`${study.data.title} case study thumbnail`}
+								title={study.data.title}
+								description={study.data.description}
+								link={`/case-studies/${study.slug}`}
+								color={study.data.color}
+							/>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
 
 		<!-- Support & Consulting Section (from services.astro) -->
 		<section class="w-full relative py-20">
@@ -305,102 +307,12 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
 			</div>
 		</section>
 
-		<!-- Process Section (from services.astro) -->
-		<section class="w-full relative py-20">
-			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-highlight/10"></div>
-			<div class="page-container relative z-1">
-				<div class="neo-card-base py-12 px-8 md:px-12 relative">
-					<div class="absolute -top-6 -left-6 p-2 bg-highlight border-3 border-black text-black font-serif font-bold text-xl uppercase">
-						Working together
-					</div>
-					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">My Process</h2>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-						<!-- Process Step 1 -->
-                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
-								1
-							</div>
-                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Discovery Call</h3>
-                            <p class="neo-text">Let's chat goals, vibe, and budget</p>
-                        </div>
-                        <!-- Process Step 2 -->
-                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
-								2
-							</div>
-                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Proposal & Timeline</h3>
-                            <p class="neo-text">You'll get a clear scope of work</p>
-                        </div>
-                        <!-- Process Step 3 -->
-                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
-								3
-							</div>
-                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Design & Dev</h3>
-                            <p class="neo-text">I build your site and check in along the way</p>
-                        </div>
-                        <!-- Process Step 4 -->
-                        <div class="group relative p-6 border-3 border-black bg-white shadow-neo-sm neo-service-card-hover-highlight">
-                            <div class="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-white border-3 border-black group-hover:border-highlight transition-colors duration-200 flex items-center justify-center font-serif font-bold text-text">
-								4
-							</div>
-                            <h3 class="font-serif font-bold text-xl mb-2 text-text">Launch & Learn</h3>
-                            <p class="neo-text">You'll get support, training, and next steps</p>
-                        </div>
-					</div>
-				</div>
-			</div>
-		</section>
+	   <!-- Process Section -->
+	   <ProcessSection />
 
-		 <!-- Testimonials Section - Temporarily Hidden for Launch -->
-        <!-- <section class="w-full relative py-20">
-            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
-            
-            <div class="page-container relative z-1">
-                <div class="neo-card-base py-12 px-8 md:px-12 relative">
-                    <div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-black font-serif font-bold text-xl uppercase">
-                        Testimonials
-                    </div>
-                    
-                    <h2 class="neo-heading text-3xl md:text-4xl mb-10 text-text">What Clients Are Saying</h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Testimonial 1 Placeholder -->
-                        <!-- <div class="neo-card-base p-6 border-blue">
-                            <blockquote class="neo-text text-lg italic mb-6">
-                                "Matt transformed our outdated site into a beautiful, functional hub for our restaurant. Online orders increased dramatically, and customers constantly compliment our new website."
-                            </blockquote>
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                                    <div class="w-full h-full bg-highlight flex items-center justify-center font-serif font-bold text-xl">JD</div>
-                                </div>
-                                <div>
-                                    <p class="font-serif font-bold">Jamie Davis</p>
-                                    <p class="text-sm">Fresh Bistro, Owner</p>
-                                </div>
-                            </div>
-                        </div> -->
-                        
-                        <!-- Testimonial 2 Placeholder-->
-                        <!-- <div class="neo-card-base p-6 border-blue">
-                            <blockquote class="neo-text text-lg italic mb-6">
-                                "Working with Matt was a breeze. He understood our winery's needs immediately and created a site that perfectly represents our brand while making it easy for guests to book tastings."
-                            </blockquote>
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                                    <div class="w-full h-full bg-coral flex items-center justify-center font-serif font-bold text-xl">MR</div>
-                                </div>
-                                <div>
-                                    <p class="font-serif font-bold">Melissa Roberts</p>
-                                    <p class="text-sm">Coastal Winery, Marketing Director</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-		
+		<!-- Testimonials Section -->
+		<TestimonialSection />
+
 		<!-- Contact CTA Section (from services.astro) -->
 		<section class="w-full relative py-28">
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
@@ -419,9 +331,9 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
 </Layout>
 
 <style>
-    .aspect-video { /* If CaseStudyCard uses this, and it's not global */
-        aspect-ratio: 16/9;
-    }
+	.aspect-video { /* If CaseStudyCard uses this, and it's not global */
+		aspect-ratio: 16/9;
+	}
 </style>
 
 

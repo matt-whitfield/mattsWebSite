@@ -27,7 +27,7 @@ keyFeatures:
     description: Traditional form submission for website visitors and improved experience for owners, allowing them to respond faster to requests. 
   - title: Project Galleries
     color: mint
-    description: A fatured project gallery highlights specific projects, and a general purpose gallery allows users to click and scroll through past project images
+    description: A fatured project gallery highlights specific projects, and a general purpose gallery allows users to click and scroll through past project images.
   - title: Clean and Simple Branding
     color: purple
     description: Clean branding and simple information architecture makes the website easy to navigate, update and maintain.

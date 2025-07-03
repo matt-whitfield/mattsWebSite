@@ -173,14 +173,18 @@ const otherCaseStudies = allCaseStudies
             </p>
           </div>
           
-          <!-- Results metrics in cards -->
+          <!-- Results metrics in cards (responsive for long text) -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
-            {entry.data.resultsMetrics && entry.data.resultsMetrics.map(metric => (
-              <div class={`neo-card-base bg-${metric.color} ${metric.color === 'mint' ? 'text-black' : 'text-white'} shadow-neo-${metric.color} p-6 flex flex-col items-center justify-center text-center`}>
-                <span class="text-5xl font-serif font-bold mb-2">{metric.value}</span>
-                <span class="neo-text">{metric.label}</span>
-              </div>
-            ))}
+            {entry.data.resultsMetrics && entry.data.resultsMetrics.map(metric => {
+              // Determine font size for value based on length
+              const isLong = metric.value && metric.value.length > 12;
+              return (
+                <div class={`neo-card-base bg-${metric.color} ${metric.color === 'mint' ? 'text-black' : 'text-white'} shadow-neo-${metric.color} p-6 flex flex-col gap-2 text-left break-words min-h-0`}>
+                  <span class={`font-serif font-bold mb-1 ${isLong ? 'text-2xl' : 'text-5xl'}`}>{metric.value}</span>
+                  <span class="neo-text">{metric.label}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
         
@@ -219,7 +223,7 @@ const otherCaseStudies = allCaseStudies
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {otherCaseStudies.map(study => (
             <div class={`neo-card-base neo-service-card-hover-${study.data.color} overflow-hidden p-0`}>
-              <div class="h-52 w-full overflow-hidden">
+              <div class="w-full aspect-video overflow-hidden">
                 <img 
                   src={study.data.image}
                   alt={`${study.data.title} website thumbnail`}

@@ -186,6 +186,7 @@ export default defineConfig({
     'neo-link-highlight': 'bg-highlight text-black hover:bg-white hover:text-highlight',
     
     // Neo Brutalist card styles
+    // Updated: Process step cards now have a rotating highlight square on hover, with the number staying upright. See .process-step-square usage in work.astro.
     'neo-card-base': 'bg-white p-2 border-3 border-black shadow-neo transition-all duration-200 hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px]',
     'neo-service-card': 'neo-card-base transform-gpu transition-all duration-300',
     'neo-service-card-hover-primary': 'hover:shadow-[4px_4px_0px_0px_rgba(255,107,53,1)]',
