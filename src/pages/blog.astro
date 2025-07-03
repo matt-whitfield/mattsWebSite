@@ -81,7 +81,7 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 					<div class="grid grid-cols-1 md:grid-cols-2">
 						<div class="aspect-ratio-16/9 md:aspect-auto overflow-hidden">
 							<img 
-								src={featuredPost.data.image || "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg"}
+								src={featuredPost.data.featuredImage || featuredPost.data.image || "/images/matt-whitfield-rpf-on-set-2024-1200x1500.jpg"}
 								alt={`Featured post: ${featuredPost.data.title}`}
 								class="w-full h-full object-cover"
 							/>
@@ -102,7 +102,7 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 									{featuredPost.data.readTime}
 								</p>
 							)}
-							<StyledLink href={`/blog-post/${featuredPost.slug}`} variant={`secondary-${featuredPost.data.color}`} className="self-start">
+							<StyledLink href={`/blog/${featuredPost.slug}`} variant={`secondary-${featuredPost.data.color}`} className="self-start">
 								Read Article
 							</StyledLink>
 						</div>
@@ -168,8 +168,8 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 			</div>
 		</section>
 		
-		<!-- Newsletter Signup Section -->
-		<section class="w-full relative py-20">
+		<!-- Newsletter Signup Section Future Feature -->
+		<!-- <section class="w-full relative py-20">
 			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
 			
 			<div class="page-container relative z-1">
@@ -203,7 +203,7 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 	</main>
 </Layout>
 

@@ -1,0 +1,47 @@
+---
+// ProcessSection.astro
+const steps = [
+  {
+    number: 1,
+    title: 'Discovery Call',
+    description: `Let's chat goals, vibe, and budget`,
+  },
+  {
+    number: 2,
+    title: 'Proposal & Timeline',
+    description: `You'll get a clear scope of work`,
+  },
+  {
+    number: 3,
+    title: 'Design & Dev',
+    description: `I build your site and check in along the way`,
+  },
+  {
+    number: 4,
+    title: 'Launch & Learn',
+    description: `You'll get support, training, and next steps`,
+  },
+];
+---
+<section class="w-full relative py-20">
+  <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-highlight/10"></div>
+  <div class="page-container relative z-1">
+    <div class="neo-card-base py-12 px-8 md:px-12 relative">
+      <div class="absolute -top-6 -left-6 p-2 bg-highlight border-3 border-black text-black font-serif font-bold text-xl uppercase tracking-widest">
+        Working together
+      </div>
+      <h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">My Process</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {steps.map((step) => (
+          <div class="group relative p-0 border-3 border-black bg-white neo-service-card-hover-highlight flex flex-col h-full px-6 py-7 md:px-7 md:py-10 transition-all duration-200">
+            <div class="process-step-square absolute -top-3 -left-3 px-5 py-3 bg-highlight text-black border-3 border-black font-mono font-extrabold text-2xl uppercase tracking-widest shadow-neo-sm z-10 transition-transform duration-300 group-hover:-rotate-12">
+              <span class="inline-block transition-transform duration-300 group-hover:rotate-12">{step.number}</span>
+            </div>
+            <h3 class="font-serif font-black text-2xl mb-4 text-text uppercase tracking-wider mt-16">{step.title}</h3>
+            <p class="neo-text text-base">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
