@@ -89,13 +89,15 @@ import Button from '../components/Button.astro';
 				<div class="neo-card-base p-8 border-3 border-black bg-white shadow-neo">
 					<h2 id="contact-form" class="neo-heading text-2xl mb-6">Send a Message</h2>
 							
-				<form
-				class="space-y-6"
-				name="contact"
-				method="POST"
-				action="/.netlify/functions/submit-contact"
-				aria-labelledby="contact-form"
-				>
+<form
+  class="space-y-6"
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="website"
+  aria-labelledby="contact-form"
+  action="#form-success"
+>
 								<!-- Honeypot field for spam prevention -->
 								<div style="display:none;">
 									<label for="website">Website</label>
@@ -163,30 +165,33 @@ import Button from '../components/Button.astro';
 								</div>
 								
 								<!-- Google reCAPTCHA widget -->
-								<div class="flex justify-end flex-col items-end gap-4">
-									<div class="g-recaptcha" data-sitekey="6LeHknUrAAAAADQ9F9xi8byVS7krVgTQ8qgvviT4"></div>
-									<button type="submit" class="inline-block font-serif font-bold uppercase tracking-wider border-3 border-black bg-primary text-white py-2 px-6 shadow-neo hover:bg-white hover:text-primary hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200">
-										Send Message
-									</button>
-								</div>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</form>
-							
-							<!-- Success message (hidden by default) -->
-							<div id="form-success" class="hidden mt-6 p-4 border-3 border-black bg-mint/20">
-								<p class="font-serif font-bold text-lg mb-2">Message Sent!</p>
-								<p class="neo-text">Thank you for your message. I'll get back to you within 1 business day.</p>
-							</div>
-							
-							<!-- Error message (hidden by default) -->
-							<div id="form-error" class="hidden mt-6 p-4 border-3 border-black bg-primary/20">
-								<p class="font-serif font-bold text-lg mb-2">Oops! Something went wrong.</p>
-								<p class="neo-text">Please try again or email me directly at <a href="mailto:hello@mattwhitfield.com" class="neo-link-base neo-link-primary">hello@mattwhitfield.com</a>.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-		</section>
+<div class="flex justify-end flex-col items-end gap-4">
+	<button id="submit-btn" type="submit" class="inline-block font-serif font-bold uppercase tracking-wider border-3 border-black bg-primary text-white py-2 px-6 shadow-neo hover:bg-white hover:text-primary hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200">
+		Send Message
+	</button>
+</div>
+<!-- No reCAPTCHA or custom JS: Netlify will handle the form submission directly. -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+	if (window.location.hash === '#form-success') {
+	  var form = document.querySelector('form[name="contact"]');
+	  var success = document.getElementById('form-success');
+	  if (form) (form as HTMLFormElement).style.display = 'none';
+	  if (success) success.classList.remove('hidden');
+	}
+  });
+</script>
+	</form>
+	<!-- Success message (hidden by default) -->
+	<div id="form-success" class="hidden mt-6 p-4 border-3 border-black bg-mint/20">
+		<p class="font-serif font-bold text-lg mb-2">Message Sent!</p>
+		<p class="neo-text">Thank you for your message. I'll get back to you within 1 business day.</p>
+	</div>
+	<!-- Error message (hidden by default) -->
+	<div id="form-error" class="hidden mt-6 p-4 border-3 border-black bg-primary/20">
+		<p class="font-serif font-bold text-lg mb-2">Oops! Something went wrong.</p>
+		<p class="neo-text">Please try again or email me directly at <a href="mailto:hello@mattwhitfield.com" class="neo-link-base neo-link-primary">hello@mattwhitfield.com</a>.</p>
+	</div>
 
 		<!-- Next Steps Section -->
 		<section class="w-full py-12 md:py-16 relative">
@@ -353,102 +358,3 @@ form input, form textarea, form button {
   }
 </script>
 
-<script>
-  // Handle form submission
-  document.addEventListener('DOMContentLoaded', () => {
-	const contactForm = document.querySelector('form') as HTMLFormElement;
-	const successMessage = document.getElementById('form-success');
-	const errorMessage = document.getElementById('form-error');
-	
-	if (contactForm) {
-	  contactForm.addEventListener('submit', async (e) => {
-		e.preventDefault();
-		
-		// Client-side validation
-		const nameInput = document.getElementById('name') as HTMLInputElement;
-		const emailInput = document.getElementById('email') as HTMLInputElement;
-		const subjectInput = document.getElementById('subject') as HTMLInputElement;
-		const messageInput = document.getElementById('message') as HTMLTextAreaElement;
-		
-		const nameError = document.getElementById('name-error');
-		const emailError = document.getElementById('email-error');
-		const subjectError = document.getElementById('subject-error');
-		const messageError = document.getElementById('message-error');
-		
-		// Reset error messages
-		document.querySelectorAll('.error-message').forEach(el => {
-		  el.classList.add('hidden');
-		});
-		
-		// Validate form
-		let isValid = true;
-		
-		if (!nameInput.value.trim() || nameInput.value.length < 2) {
-		  if (nameError) nameError.classList.remove('hidden');
-		  isValid = false;
-		}
-		
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
-		  if (emailError) emailError.classList.remove('hidden');
-		  isValid = false;
-		}
-		
-		if (!subjectInput.value.trim()) {
-		  if (subjectError) subjectError.classList.remove('hidden');
-		  isValid = false;
-		}
-		
-		if (!messageInput.value.trim() || messageInput.value.length < 10) {
-		  if (messageError) messageError.classList.remove('hidden');
-		  isValid = false;
-		}
-		
-		if (!isValid) return;
-		
-		try {
-		  const formData = new FormData(contactForm);
-		  const response = await fetch(contactForm.action, {
-			method: 'POST',
-			body: formData,
-			headers: {
-			  'Accept': 'application/json'
-			}
-		  });
-		  
-		  if (response.ok) {
-			// Show success message
-			contactForm.reset();
-			contactForm.style.display = 'none';
-			if (successMessage) successMessage.classList.remove('hidden');
-		  } else {
-			// Show error message
-			if (errorMessage) errorMessage.classList.remove('hidden');
-		  }
-		} catch (error) {
-		  // Show error message
-		  if (errorMessage) errorMessage.classList.remove('hidden');
-		}
-	  });
-	}
-	
-	// Smooth scroll for internal links
-	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-	  anchor.addEventListener('click', function(this: HTMLAnchorElement, e: Event) {
-		e.preventDefault();
-		
-		const targetId = this.getAttribute('href');
-		if (targetId) {
-		  const targetElement = document.querySelector(targetId);
-		  
-		  if (targetElement) {
-			targetElement.scrollIntoView({
-			  behavior: 'smooth',
-			  block: 'start'
-			});
-		  }
-		}
-	  });
-	});
-  });
-</script>
