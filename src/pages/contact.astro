@@ -89,7 +89,13 @@ import Button from '../components/Button.astro';
 				<div class="neo-card-base p-8 border-3 border-black bg-white shadow-neo">
 					<h2 id="contact-form" class="neo-heading text-2xl mb-6">Send a Message</h2>
 							
-<form class="space-y-6" netlify name="contact" method="POST" aria-labelledby="contact-form">
+				<form
+				class="space-y-6"
+				name="contact"
+				method="POST"
+				action="/.netlify/functions/submit-contact"
+				aria-labelledby="contact-form"
+				>
 								<!-- Honeypot field for spam prevention -->
 								<div style="display:none;">
 									<label for="website">Website</label>
