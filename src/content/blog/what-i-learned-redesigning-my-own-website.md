@@ -1,5 +1,5 @@
 ---
-title: What I Learned from Redesigning My Own Website
+title: What I Learned Redesigning My Own Website
 description: Redesigning my personal website taught me hard lessons about UX, visual design, and development. In this post, I share what went wrong, what worked, and how it’s reshaped my client work. Perfect for designers, freelancers, and business owners planning a website revamp.
 publishDate: 2025-07-28
 category: Web Design
@@ -15,7 +15,7 @@ ctaPlacement: in-content
 ---
 
 
-# **What I Learned from Redesigning My Own Website**
+# **What I Learned Redesigning My Own Website**
 
 *Designing for yourself is 10x harder than designing for clients. Here’s why—and what I learned in the process.*
 
@@ -56,6 +56,15 @@ That question led me to outline content first, map user journeys, and define my 
 Lesson learned: strategy beats aesthetics every time.
 
 ## **The Design Process**
+
+<figure class="mb-3">
+<img src="/images/blogs/redesigning-my-website.webp" alt="Two mid-fidelity wireframes display the hero section of a homepage and several card-style components, arranged on a digital workspace. The wireframes use simple shapes and muted colors to emphasize layout and branding choices. No visible text is present. The overall tone is focused and methodical, highlighting an early stage in the web design process." />
+    <figcaption class="text-sm p-3">
+        *Caption: Early Figma wireframes focused on branding basics and left flexibility for later adjustments. Instead of perfecting visuals up front, I prioritized user flows and information architecture to drive better UX outcomes.*
+    </figcaption>
+</figure>
+
+Early wireframes were mid-fidelity, emphasizing simple branding and visual design decisions. This made it easy to streamline the development process by leveraging modern AI coding techniques to achieve pixel-perfect design without the need to overthink high-fidelity mockups and prototypes.
 
 Once I had the content and tech stack nailed down, I made a deliberate decision not to over-design. I’ve built pixel-perfect prototypes in Figma before, but for this project, I intentionally kept things loose.
 
