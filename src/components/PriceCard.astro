@@ -1,0 +1,60 @@
+---
+
+import StyledLink from './StyledLink.astro';
+// Atomic price card for pricing/service plans
+interface Feature {
+  text: string;
+}
+
+interface Props {
+  title: string;
+  price: string;
+  label?: string;
+  description: string;
+  features: Feature[];
+  color?: 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'primary';
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const {
+  title,
+  price,
+  label,
+  description,
+  features = [],
+  color = 'mint',
+  ctaText = 'Get Quote',
+  ctaLink = '/contact',
+} = Astro.props;
+
+const cardClass = `neo-card-base relative neo-service-card-hover-${color} flex flex-col h-full`;
+const labelClass = `absolute -top-6 -left-6 p-2 bg-${color} border-3 border-black text-${color === 'mint' || color === 'lime' ? 'black' : 'white'} font-serif font-bold text-base uppercase z-10`;
+const priceClass = `neo-heading text-xl mb-4 text-${color} font-medium`;
+---
+
+<div class={cardClass}>
+  {label && <div class={labelClass}>{label}</div>}
+  <div class="pt-8 pb-4 px-6 flex-grow">
+    <h3 class="neo-heading text-2xl mb-1 text-text">{title}</h3>
+    <p class={priceClass}>{price}</p>
+    <p class="neo-text mb-4">{description}</p>
+    {features.length > 0 && (
+      <>
+        <h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
+        <ul class="space-y-2">
+          {features.map((feature) => (
+            <li class="neo-text flex items-start">
+              <span class={`h-4 w-4 transform rotate-45 bg-${color} border-2 border-black flex-shrink-0 mt-1.5 mr-4`} aria-hidden="true"></span>
+              <span class="flex-grow">{feature.text}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+  </div>
+  <div class="border-t-3 border-black py-4 px-6 mt-auto">
+    <StyledLink href={ctaLink} variant={`secondary-${color}`} class="w-full text-center block">{ctaText}</StyledLink>
+  </div>
+
+</div>
