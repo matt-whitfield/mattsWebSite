@@ -1,5 +1,5 @@
 ---
-// ServiceCard component that displays a card with an icon, title, and description with Neo-Brutalist styling
+// ServiceCard component with improved responsive design
 interface Props {
   icon: string;  // Icon class name (for example, using UnoCSS icon classes)
   title: string; // Service title
@@ -10,31 +10,30 @@ interface Props {
 const { icon, title, description, color = 'mint' } = Astro.props;
 
 const cardClass = `neo-service-card-hover-${color}`;
-const borderClass = `border-${color}`;
 const bgClass = `bg-${color}`;
-const iconHoverClass = `group-hover:icon-${color}`;
 
 // Decorative element classes
-const decoClass = `corner-spin ${bgClass} border-3 border-black transition-all duration-300`;
+const decoClass = `absolute -top-2 -right-2 w-6 h-6 ${bgClass} border-3 border-black transition-all duration-300`;
 const decoRotateClass = 'group-hover:rotate-45';
 ---
 
-<div class={`neo-card-base relative flex flex-col h-full group ${cardClass}`} data-color={color}>
+<div class={`bg-white border-3 border-black shadow-neo relative h-full group transition-all duration-200 hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px] ${cardClass}`} data-color={color}>
   <!-- Decorative corner element -->
   <div class={`${decoClass} ${decoRotateClass}`}></div>
-  <div class="p-6 flex-grow">
-    <div class="flex items-start mb-4">
-      <!-- Neo Brutalist styled icon without border -->
-      <div class="neo-icon-container">
-        <div class={`${icon} w-6 h-6 icon-color-change ${iconHoverClass}`}></div>
+  
+  <!-- Card Content -->
+  <div class="p-4 md:p-6 h-full flex flex-col">
+    <!-- Icon -->
+    <div class="flex justify-center mb-4">
+      <div class="w-12 h-12 flex items-center justify-center border-3 border-black bg-white transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+        <div class={`${icon} w-6 h-6 transition-colors duration-300 group-hover:text-${color}`}></div>
       </div>
-      <h3 class="neo-heading text-xl ml-3 pt-2">{title}</h3>
     </div>
-    <p class="neo-text">{description}</p>
+    
+    <!-- Title -->
+    <h3 class="neo-heading text-lg md:text-xl mb-3 text-center text-text">{title}</h3>
+    
+    <!-- Description -->
+    <p class="neo-text text-sm md:text-base leading-relaxed text-center flex-grow">{description}</p>
   </div>
 </div>
-
-<!--
-  All styling is now handled by UnoCSS shortcuts and theme.
-  The only exception is the .neo-icon-container and .icon-color-change classes, which are now also in the design system.
--->

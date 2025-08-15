@@ -1,0 +1,588 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import TestimonialSection from '../components/TestimonialSection.astro';
+import CalloutSection from '../components/CalloutSection.astro';
+---
+
+<Layout 
+	title="White Label Web Development | Partner with Matt Whitfield for Client Projects"
+	description="White label web development services for agencies and freelancers. Custom Astro, Next.js, and modern web development that you can confidently present to your clients."
+	image="/images/matt-whitfield-rpf-on-set-2024-1200x1500.webp"
+>
+	<main class="bg-white lg:pr-64">
+		<!-- Side Navigation Panel -->
+		<nav id="side-nav" class="fixed top-1/2 right-6 transform -translate-y-1/2 z-50 hidden lg:block">
+			<div class="bg-white border-3 border-black shadow-neo p-4 max-w-xs">
+				<!-- Navigation Header -->
+				<div class="bg-coral border-2 border-black px-3 py-2 mb-4 transform -rotate-1">
+					<span class="font-serif font-bold text-white text-sm uppercase tracking-wide">Page Navigation</span>
+				</div>
+				
+				<!-- Navigation Links -->
+				<ul class="space-y-2 text-sm">
+					<li>
+						<a href="#hero" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-coral hover:text-white border-2 border-transparent hover:border-black" data-section="hero">
+							White Label Development
+						</a>
+					</li>
+					<li>
+						<a href="#why-partner" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-blue hover:text-white border-2 border-transparent hover:border-black" data-section="why-partner">
+							Why Partner
+						</a>
+					</li>
+					<li>
+						<a href="#ideal-partners" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-mint hover:text-black border-2 border-transparent hover:border-black" data-section="ideal-partners">
+							Ideal Partners
+						</a>
+					</li>
+					<li>
+						<a href="#services" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-purple hover:text-white border-2 border-transparent hover:border-black" data-section="services">
+							Technical Expertise
+						</a>
+					</li>
+					<li>
+						<a href="#process" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-lime hover:text-black border-2 border-transparent hover:border-black" data-section="process">
+							Partnership Process
+						</a>
+					</li>
+					<li>
+						<a href="#why-different" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-blue hover:text-white border-2 border-transparent hover:border-black" data-section="why-different">
+							Why Choose Me
+						</a>
+					</li>
+					<li>
+						<a href="#pricing" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-coral hover:text-white border-2 border-transparent hover:border-black" data-section="pricing">
+							Pricing & Terms
+						</a>
+					</li>
+					<li>
+						<a href="#faq" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-purple hover:text-white border-2 border-transparent hover:border-black" data-section="faq">
+							FAQ
+						</a>
+					</li>
+					<li>
+						<a href="#contact" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-primary hover:text-white border-2 border-transparent hover:border-black" data-section="contact">
+							Get Started
+						</a>
+					</li>
+				</ul>
+				
+				<!-- Progress Indicator -->
+				<div class="mt-4 pt-4 border-t-2 border-black">
+					<div class="text-xs font-serif font-bold uppercase tracking-wide mb-2 text-center">Reading Progress</div>
+					<div class="w-full bg-lightgray border-2 border-black h-3">
+						<div id="progress-bar" class="bg-coral h-full border-r-2 border-black transition-all duration-300" style="width: 0%;"></div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- Hero Section -->
+		<section id="hero" class="w-full relative py-20 md:py-32 overflow-hidden">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
+			
+			<!-- Decorative Elements -->
+			<div class="absolute top-16 right-16 w-14 h-14 bg-purple border-3 border-black -rotate-12 hidden md:block"></div>
+			<div class="absolute top-32 left-16 w-10 h-10 bg-mint border-3 border-black rotate-45 hidden lg:block"></div>
+			<div class="absolute bottom-16 right-32 w-18 h-18 bg-lime border-3 border-black rotate-12 hidden lg:block"></div>
+			
+			<div class="page-container relative z-10">
+				<div class="max-w-4xl">
+					<!-- Category Badge -->
+					<div class="inline-block mb-6">
+						<div class="bg-coral border-3 border-black px-6 py-3 transform rotate-2 shadow-neo">
+							<span class="font-serif font-bold text-white uppercase tracking-wider text-sm">Agency Partnership</span>
+						</div>
+					</div>
+					
+					<!-- Main Title -->
+					<h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text leading-tight">
+						<span class="block">White Label</span>
+						<span class="block text-coral">Web Development</span>
+						<span class="block">That Makes You Look Great</span>
+					</h1>
+					
+					<!-- Description -->
+					<div class="bg-white border-3 border-black p-6 md:p-8 shadow-neo mb-8 max-w-2xl">
+						<p class="neo-text text-lg md:text-xl leading-relaxed">
+							Partner with a developer who understands agency life. I provide <strong>custom web development for your client projects</strong>—clean code, modern frameworks, and seamless collaboration that lets you focus on what you do best.
+						</p>
+					</div>
+					
+					<!-- CTA Button -->
+					<div class="flex flex-col sm:flex-row gap-4 items-start">
+						<a href="/contact" class="neo-link-base neo-link-coral text-lg px-8 py-4">
+							Discuss Partnership
+						</a>
+						<div class="bg-highlight border-3 border-black px-4 py-2 transform -rotate-2 shadow-neo-sm">
+							<span class="font-serif font-bold text-black text-sm">$80/Hour</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Why White Label Section -->
+		<section id="why-partner" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-blue/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative mb-16">
+					<div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-xl uppercase">
+						Why Partner
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">What does successful white label development actually look like?</h2>
+					
+					<div class="grid md:grid-cols-2 gap-8 text-lg">
+						<div class="space-y-6">
+							<p class="neo-text">
+								<strong>You're great at strategy, design, or client relationships—but development isn't your core strength.</strong> Or maybe you're booked solid and need a reliable development partner who can deliver quality work under your brand.
+							</p>
+							
+							<p class="neo-text">
+								The challenge with white label development? Finding someone who understands that your reputation is on the line. You need code that's not just functional, but elegant. Communication that's professional. Timelines that are realistic and met consistently.
+							</p>
+						</div>
+						
+						<div class="space-y-6">
+							<div class="p-6 bg-coral/5 border-2 border-coral/20 rounded-lg">
+								<h3 class="font-bold text-xl mb-3 text-text">What makes white label work:</h3>
+								<ul class="space-y-2 text-base">
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Clear project scoping and transparent pricing</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Regular communication without overwhelming you</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Clean, documented code your team can maintain</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Flexibility to work with your existing tools and processes</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Professional client presentation materials</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Who I Work With Section -->
+		<section id="ideal-partners" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-mint/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-mint border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						Ideal Partners
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">Who Benefits from White Label Development?</h2>
+					
+					<div class="grid md:grid-cols-3 gap-8 mb-8">
+						<div class="p-6 bg-white border-2 border-black">
+							<h3 class="font-bold text-xl mb-4 text-mint">Design Agencies</h3>
+							<p class="text-base mb-4">You create beautiful designs and manage client relationships. I turn those designs into fast, functional websites with modern frameworks.</p>
+							<div class="text-sm text-gray-600">
+								<strong>Perfect for:</strong> Agencies with 2-10 employees who need reliable development capacity
+							</div>
+						</div>
+						
+						<div class="p-6 bg-white border-2 border-black">
+							<h3 class="font-bold text-xl mb-4 text-mint">Marketing Agencies</h3>
+							<p class="text-base mb-4">You drive strategy and results. I build the high-performance websites that support your campaigns and convert your traffic.</p>
+							<div class="text-sm text-gray-600">
+								<strong>Perfect for:</strong> Performance-focused agencies needing technical expertise
+							</div>
+						</div>
+						
+						<div class="p-6 bg-white border-2 border-black">
+							<h3 class="font-bold text-xl mb-4 text-mint">Freelance Designers</h3>
+							<p class="text-base mb-4">Expand your service offering without learning to code. Partner with me to deliver complete design-to-development projects.</p>
+							<div class="text-sm text-gray-600">
+								<strong>Perfect for:</strong> Solo designers ready to offer full-service solutions
+							</div>
+						</div>
+					</div>
+					
+					<div class="p-6 bg-mint/10 border-2 border-mint/30 rounded-lg">
+						<h3 class="font-bold text-lg mb-3 text-text">What they all have in common:</h3>
+						<p class="neo-text">Strong client relationships, clear project processes, and the need for reliable technical execution. You handle the front-end client work, I handle the development work—seamlessly.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Technical Expertise Section -->
+		<section id="services" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-purple/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ServiceSection
+					title="Technical Expertise & Development Services"
+					subtitle="Modern frameworks and tools for your client projects:"
+					description="I specialize in modern web development that's fast, scalable, and maintainable. From simple brochure sites to complex applications, I choose the right tool for each project."
+					ctaLink="/contact"
+					ctaText="Discuss Your Needs"
+					services={[
+						{
+							icon: "i-carbon-rocket",
+							title: "Astro & Static Site Generation",
+							description: "Lightning-fast websites with Astro, perfect for marketing sites, blogs, and content-heavy projects."
+						},
+						{
+							icon: "i-carbon-application-web",
+							title: "Next.js & React Development",
+							description: "Interactive web applications, e-commerce sites, and complex user interfaces with modern React."
+						},
+						{
+							icon: "i-carbon-mobile",
+							title: "Responsive & Performance",
+							description: "Mobile-first design implementation with optimal performance scores and Core Web Vitals."
+						},
+						{
+							icon: "i-carbon-data-base",
+							title: "CMS & Content Management",
+							description: "Headless CMS integration with Sanity, Contentful, or custom solutions for easy content management."
+						},
+						{
+							icon: "i-carbon-shopping-cart",
+							title: "E-commerce Development",
+							description: "Custom e-commerce solutions with Shopify, Stripe integration, and modern checkout experiences."
+						},
+						{
+							icon: "i-carbon-cloud-service",
+							title: "Deployment & Hosting",
+							description: "Modern hosting solutions with Vercel, Netlify, and cloud platforms for reliable, scalable delivery."
+						}
+					]}
+				/>
+			</div>
+		</section>
+
+		<!-- How It Works Section -->
+		<section id="process" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-lime/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-lime border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						Partnership Process
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">How White Label Development Works</h2>
+					
+					<div class="space-y-8">
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-lime border-2 border-black flex items-center justify-center font-bold text-black text-xl flex-shrink-0">1</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Project Handoff & Discovery</h3>
+								<p class="neo-text text-lg">You provide designs, requirements, and client context. I ask clarifying questions and provide a detailed scope and timeline.</p>
+							</div>
+						</div>
+						
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-lime border-2 border-black flex items-center justify-center font-bold text-black text-xl flex-shrink-0">2</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Development & Regular Updates</h3>
+								<p class="neo-text text-lg">I build the project according to specs, providing regular progress updates and staging environments for review.</p>
+							</div>
+						</div>
+						
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-lime border-2 border-black flex items-center justify-center font-bold text-black text-xl flex-shrink-0">3</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Review & Revisions</h3>
+								<p class="neo-text text-lg">You review with your client, I implement feedback efficiently. Clean handoff with documentation and training if needed.</p>
+							</div>
+						</div>
+						
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-lime border-2 border-black flex items-center justify-center font-bold text-black text-xl flex-shrink-0">4</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Launch & Optional Support</h3>
+								<p class="neo-text text-lg">Smooth launch with all technical details handled. Optional ongoing maintenance and support plans available.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- What Makes Me Different -->
+		<section id="why-different" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-blue/10"></div>
+			
+			<div class="page-container relative z-1">
+				<CalloutSection
+					title="Why Agencies Choose to Partner with Me"
+					content="I've been on both sides of the client relationship. I understand the pressure of deadlines, the importance of clear communication, and what it takes to make clients happy. You get modern technical expertise plus someone who actually understands how agencies work."
+					ctaText="Start a Partnership"
+					ctaLink="/contact"
+					color="blue"
+				/>
+			</div>
+		</section>
+
+		<!-- Pricing & Process -->
+		<section id="pricing" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-coral/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-coral border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						Pricing & Terms
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">Transparent Pricing for Agency Partners</h2>
+					
+					<div class="grid md:grid-cols-2 gap-8">
+						<div class="space-y-6">
+							<div>
+								<h3 class="font-bold text-xl mb-3 text-text">How I Price White Label Projects</h3>
+								<p class="neo-text text-lg mb-4">
+									All development work is billed at <strong>$80/hour</strong> with detailed project estimates provided upfront. No surprises, no scope creep—just clear expectations and professional execution.
+								</p>
+								
+								<ul class="space-y-2 text-base">
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Fixed-scope projects with clear deliverables</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Weekly progress reports and time tracking</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-coral rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Net 15 payment terms for established partners</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="space-y-6">
+							<div class="p-6 bg-white border-2 border-black">
+								<h3 class="font-bold text-lg mb-3 text-coral">Typical Project Ranges</h3>
+								<div class="space-y-3 text-sm">
+									<div class="flex justify-between">
+										<span>Marketing/Brochure Sites</span>
+										<span class="font-medium">$3,000 - $8,000</span>
+									</div>
+									<div class="flex justify-between">
+										<span>E-commerce Development</span>
+										<span class="font-medium">$8,000 - $20,000</span>
+									</div>
+									<div class="flex justify-between">
+										<span>Custom Web Applications</span>
+										<span class="font-medium">$15,000 - $40,000+</span>
+									</div>
+									<div class="flex justify-between">
+										<span>CMS & Content Sites</span>
+										<span class="font-medium">$5,000 - $15,000</span>
+									</div>
+								</div>
+								<p class="text-xs text-gray-600 mt-4">*Estimates based on complexity and requirements</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section id="faq" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-purple/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-xl uppercase">
+						FAQ
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">Common Questions About White Label Development</h2>
+					
+					<div class="space-y-8">
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">How do you handle client communication during projects?</h3>
+							<p class="neo-text text-lg">All client communication goes through you. I provide you with regular updates, staging environments, and any materials you need to keep your clients informed—but I stay behind the scenes.</p>
+						</div>
+						
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">What happens if a project needs changes or goes over scope?</h3>
+							<p class="neo-text text-lg">I provide detailed change estimates for any scope additions. Minor tweaks are usually included, but significant changes are clearly outlined with time and cost estimates before proceeding.</p>
+						</div>
+						
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">Can you work with our existing design files and brand guidelines?</h3>
+							<p class="neo-text text-lg">Absolutely. I work with Figma, Sketch, Adobe XD, or whatever format you provide. I follow brand guidelines precisely and ask questions when clarification is needed.</p>
+						</div>
+						
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">Do you provide ongoing maintenance after project completion?</h3>
+							<p class="neo-text text-lg">Yes, I offer maintenance packages for white label partners. You can offer ongoing support to your clients while I handle the technical implementation behind the scenes.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact CTA Section -->
+		<section id="contact" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ContactCTA
+					title="Ready to Partner on Your Next Project?"
+					description="Let's discuss how white label development can help you deliver better projects, meet deadlines consistently, and grow your agency without hiring full-time developers."
+					ctaText="Start the Conversation"
+					ctaLink="/contact"
+					boxTitle="Let's Partner Up"
+					color="primary"
+				/>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<script>
+	// Side Navigation Scroll Tracking
+	document.addEventListener('DOMContentLoaded', function() {
+		const navLinks = document.querySelectorAll('.nav-link');
+		const sections = document.querySelectorAll('section[id]');
+		const progressBar = document.getElementById('progress-bar');
+		
+		// Smooth scrolling for navigation links
+		navLinks.forEach(link => {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				const targetId = this.getAttribute('href').substring(1);
+				const targetSection = document.getElementById(targetId);
+				
+				if (targetSection) {
+					targetSection.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			});
+		});
+		
+		// Scroll tracking for active states and progress
+		function updateActiveSection() {
+			const scrollY = window.pageYOffset;
+			const windowHeight = window.innerHeight;
+			const documentHeight = document.documentElement.scrollHeight;
+			
+			// Update progress bar
+			const scrollPercent = (scrollY / (documentHeight - windowHeight)) * 100;
+			progressBar.style.width = Math.min(100, Math.max(0, scrollPercent)) + '%';
+			
+			// Find current section
+			let currentSection = '';
+			sections.forEach(section => {
+				const sectionTop = section.offsetTop - 100; // Offset for header
+				const sectionHeight = section.offsetHeight;
+				
+				if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+					currentSection = section.getAttribute('id');
+				}
+			});
+			
+			// Update active nav link
+			navLinks.forEach(link => {
+				const isActive = link.getAttribute('data-section') === currentSection;
+				
+				if (isActive) {
+					// Add active styles
+					link.classList.remove('border-transparent');
+					link.classList.add('border-black', 'font-bold');
+					
+					// Add color-specific active background based on hover color
+					if (link.classList.contains('hover:bg-coral')) {
+						link.classList.add('bg-coral', 'text-white');
+					} else if (link.classList.contains('hover:bg-blue')) {
+						link.classList.add('bg-blue', 'text-white');
+					} else if (link.classList.contains('hover:bg-mint')) {
+						link.classList.add('bg-mint', 'text-black');
+					} else if (link.classList.contains('hover:bg-purple')) {
+						link.classList.add('bg-purple', 'text-white');
+					} else if (link.classList.contains('hover:bg-lime')) {
+						link.classList.add('bg-lime', 'text-black');
+					} else if (link.classList.contains('hover:bg-primary')) {
+						link.classList.add('bg-primary', 'text-white');
+					}
+				} else {
+					// Remove active styles
+					link.classList.add('border-transparent');
+					link.classList.remove('border-black', 'font-bold');
+					link.classList.remove('bg-coral', 'bg-blue', 'bg-mint', 'bg-purple', 'bg-lime', 'bg-primary', 'text-white', 'text-black');
+				}
+			});
+		}
+		
+		// Throttle scroll events for performance
+		let ticking = false;
+		function requestTick() {
+			if (!ticking) {
+				requestAnimationFrame(updateActiveSection);
+				ticking = true;
+			}
+		}
+		
+		window.addEventListener('scroll', function() {
+			requestTick();
+			ticking = false;
+		});
+		
+		// Initial call
+		updateActiveSection();
+	});
+</script>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	"name": "White Label Web Development Services",
+	"description": "Professional white label web development for agencies and freelancers. Custom development services you can confidently present to your clients.",
+	"url": "https://mattwhitfield.xyz/white-label-web-development",
+	"isPartOf": {
+		"@type": "WebSite",
+		"name": "Matt Whitfield - Web Design & Development",
+		"url": "https://mattwhitfield.xyz"
+	},
+	"about": {
+		"@type": "Service",
+		"name": "White Label Web Development",
+		"description": "Custom web development services for agencies and freelance designers",
+		"provider": {
+			"@type": "Person",
+			"name": "Matt Whitfield",
+			"jobTitle": "Web Designer & Developer",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Portland",
+				"addressRegion": "OR",
+				"addressCountry": "US"
+			}
+		},
+		"serviceType": [
+			"White Label Web Development",
+			"Agency Development Services",
+			"Custom Web Applications",
+			"Modern Frontend Development"
+		]
+	}
+})}></script>
