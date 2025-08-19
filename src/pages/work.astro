@@ -1,10 +1,12 @@
 ---
+
 import Layout from '../layouts/Layout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import StyledLink from '../components/StyledLink.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro'; // Temporarily removed for launch
 import TestimonialSection from '../components/TestimonialSection.astro';
 import ProcessSection from '../components/ProcessSection.astro';
+import PriceSection from '../components/PriceSection.astro';
 import { getCollection } from 'astro:content'; // Temporarily removed for launch
 
 // Case studies temporarily disabled for launch
@@ -52,138 +54,6 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
 			</div>
 		</section>
 
-		<!-- Website Design & Development Section (MVP) -->
-		<section id="web-design-dev" class="w-full relative py-20">
-			<div class="absolute inset-0 w-full h-full bg-gradient-to-tl from-white via-white to-mint/10"></div>
-			<div class="page-container relative z-1">
-				<div class="relative mb-16">
-					<h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Pricing</h2>
-				</div>
-				<div class="grid grid-cols-1 gap-20 md:grid-cols-3 md:gap-10 lg:gap-10">
-					<!-- Starter Site Card -->
-					<div class="neo-card-base relative neo-service-card-hover-mint flex flex-col h-full">
-						<div class="absolute -top-6 -left-6 p-2 bg-mint border-3 border-black text-black font-serif font-bold text-base uppercase z-10">
-							Entry level
-						</div>
-						<div class="pt-8 pb-4 px-6 flex-grow">
-							<h3 class="neo-heading text-2xl mb-1 text-text">Starter Site</h3>
-							<p class="neo-heading text-xl mb-4 text-mint font-medium">from $2,000</p>
-							<p class="neo-text mb-4">
-								A simple, stylish site to get your business online fast.
-							</p>
-							<p class="neo-text text-sm mb-6">
-								Perfect for new businesses, solo professionals, or those upgrading from DIY.
-							</p>
-							<h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
-							<ul class="space-y-2">
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">3–5 custom-designed pages</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Mobile-friendly, fast, and SEO-ready</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Built on Webflow, WordPress, or Squarespace</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-mint border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Email/contact form and Google profile help</span>
-								</li>
-							</ul>
-						</div>
-						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/contact" variant="secondary-mint" class="w-full text-center">Get Quote</StyledLink>
-						</div>
-					</div>
-					
-					<!-- Professional Package Card -->
-					<div class="neo-card-base relative neo-service-card-hover-coral flex flex-col h-full">
-						<div class="absolute -top-6 -left-6 p-2 bg-coral border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
-							Most popular
-						</div>
-						<div class="pt-8 pb-4 px-6 flex-grow">
-							<h3 class="neo-heading text-2xl mb-1 text-text">Professional Package</h3>
-							<p class="neo-heading text-xl mb-4 text-coral font-medium">from $4,500</p>
-							<p class="neo-text mb-4">
-								A more strategic site with content, functionality, and polish.
-							</p>
-							<p class="neo-text text-sm mb-6">
-								Great for growing businesses who want to drive more leads, bookings, or sales.
-							</p>
-							<h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
-							<ul class="space-y-2">
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Up to 8 pages + blog or CMS</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Copywriting support</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Booking, menu, or quote form integrations</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Animations, interactions, and training</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-coral border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">30-day post-launch support</span>
-								</li>
-							</ul>
-						</div>
-						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/contact" variant="secondary-coral" class="w-full text-center">Get Quote</StyledLink>
-						</div>
-					</div>
-					
-					<!-- Custom Build Card -->
-					<div class="neo-card-base relative neo-service-card-hover-blue flex flex-col h-full">
-						<div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
-							Enterprise
-						</div>
-						<div class="pt-8 pb-4 px-6 flex-grow">
-							<h3 class="neo-heading text-2xl mb-1 text-text">Custom Build</h3>
-							<p class="neo-heading text-xl mb-4 text-blue font-medium">from $7,500</p>
-							<p class="neo-text mb-4">
-								For teams with technical needs, performance goals, or big ideas.
-							</p>
-							<p class="neo-text text-sm mb-6">
-								Fully custom code and modern frameworks—Astro, Next.js, headless CMS, etc.
-							</p>
-							<h4 class="font-serif font-bold text-lg mb-3">Includes:</h4>
-							<ul class="space-y-2">
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">UX design and frontend development</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">CMS or headless content models</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Fast, scalable, SEO-optimized</span>
-								</li>
-								<li class="neo-text flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-blue border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="flex-grow">Hosting and deployment support</span>
-								</li>
-							</ul>
-						</div>
-						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/contact" variant="secondary-blue" class="w-full text-center">Get Quote</StyledLink>
-						</div>
-					</div>
-				</div>
-				<p class="neo-text text-sm mt-10 text-muted text-center">* Prices are estimates. Everything is billed at $80/hour.</p>
-			</div>
-		</section>
 
 		<!-- Projects Grid Section - Temporarily Hidden for Launch -->
 		<section id="projects-grid-section" class="w-full relative py-16">
@@ -211,107 +81,125 @@ const pageImage = "/images/matt-b-and-rbd-oregon-coast-2024.webp";
 			</div>
 		</section>
 
-		<!-- Support & Consulting Section (from services.astro) -->
-		<section class="w-full relative py-20">
-			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-purple/10"></div>
-			<div class="page-container relative z-1">
-				<div class="relative mb-16">
-					<h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">Support & Consulting</h2>
-				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-					<!-- Website Consulting Card -->
-					<div class="neo-card-base relative neo-service-card-hover-purple flex flex-col h-full">
-						<div class="absolute -top-6 -left-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-base uppercase z-10">
-							Hourly 
-						</div>
-						<div class="pt-8 pb-4 px-6 flex-grow">
-							<h3 class="neo-heading text-2xl mb-1 text-text">Website Consulting</h3>
-							<p class="neo-heading text-xl mb-4 text-purple font-medium">$100/hr</p>
-							<p class="neo-text mb-6">
-								Need help improving your current site? Want a second opinion before you rebuild?
-								Let's troubleshoot, ideate, and make a plan.
-							</p>
-							<div class="space-y-4">
-								<div class="flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="neo-text flex-grow">UX, performance, or content audits</span>
-								</div>
-								<div class="flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="neo-text flex-grow">Platform guidance and automation tips</span>
-								</div>
-								<div class="flex items-start">
-									<span class="h-4 w-4 transform rotate-45 bg-purple border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-									<span class="neo-text flex-grow">Small updates or tweaks</span>
-								</div>
-							</div>
-						</div>
-						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/contact?service=website-consulting" variant="secondary-purple" class="w-full text-center">Schedule a Session</StyledLink>
-						</div>
-					</div>
-					
-					<!-- Ongoing Care Plans Card -->
-					<div class="neo-card-base relative neo-service-card-hover-lime flex flex-col h-full">
-						<div class="absolute -top-6 -left-6 p-2 bg-lime border-3 border-black text-black font-serif font-bold text-base uppercase z-10">
-							Monthly
-						</div>
-						<div class="pt-8 pb-4 px-6 flex-grow">
-							<h3 class="neo-heading text-2xl mb-1 text-text">Ongoing Care Plans</h3>
-							<p class="neo-heading text-xl mb-4 text-lime font-medium">from $150/mo</p>
-							<p class="neo-text mb-6">
-								Because websites don't stop working when you launch them.
-							</p>
-							<div class="space-y-8">
-								<div>
-									<h4 class="font-serif font-bold text-lg mb-3">Essentials Plan – $150/mo</h4>
-									<ul class="space-y-2">
-										<li class="neo-text flex items-start">
-											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-											<span class="flex-grow">Site updates + monitoring</span>
-										</li>
-										<li class="neo-text flex items-start">
-											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-											<span class="flex-grow">Security + backups</span>
-										</li>
-										<li class="neo-text flex items-start">
-											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-											<span class="flex-grow">Monthly performance check</span>
-										</li>
-									</ul>
-								</div>
-								<div>
-									<h4 class="font-serif font-bold text-lg mb-3">Pro Plan – $350/mo</h4>
-									<ul class="space-y-2">
-										<li class="neo-text flex items-start">
-											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-											<span class="flex-grow">Everything in Essentials</span>
-										</li>
-										<li class="neo-text flex items-start">
-											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-											<span class="flex-grow">2 hours of dev/design updates</span>
-										</li>
-										<li class="neo-text flex items-start">
-											<span class="h-4 w-4 transform rotate-45 bg-lime border-2 border-black flex-shrink-0 mt-1.5 mr-4" aria-hidden="true"></span>
-											<span class="flex-grow">Quarterly check-ins + priority support</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="border-t-3 border-black py-4 px-6 mt-auto">
-							<StyledLink href="/contact?service=ongoing-care" variant="secondary-lime" class="w-full text-center">Get Website Support</StyledLink>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+
 
 	   <!-- Process Section -->
 	   <ProcessSection />
 
-		<!-- Testimonials Section -->
-		<TestimonialSection />
+	   <!-- Working Together Section -->
+	   <section class="w-full relative py-20">
+		   <div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-blue/10"></div>
+		   <div class="page-container relative z-1">
+			   <div class="neo-card-base py-12 px-8 md:px-12 relative">
+				   <div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-xl uppercase">
+					   Working Together
+				   </div>
+				   
+				   <h2 class="neo-heading text-3xl md:text-4xl mb-6 text-text">What's It Actually Like?</h2>
+				   <p class="neo-text text-lg mb-6">
+					   Curious about my collaborative approach and what you can expect throughout our project? I believe transparency builds trust.
+				   </p>
+				   
+				   <StyledLink href="/working-with-matt" variant="secondary-blue">
+					   See My Full Process
+				   </StyledLink>
+			   </div>
+		   </div>
+	   </section>
+
+	   <!-- Testimonials Section -->
+	   <TestimonialSection />
+
+	   <!-- Pricing Section (reusable component) -->
+	   <PriceSection
+		 title="Pricing"
+		 subtitle="Website Design & Development"
+		 cards={[
+		   {
+			 title: 'Starter Site',
+			 price: 'from $2,000',
+			 label: 'Entry level',
+			 description: 'A simple, stylish site to get your business online fast. Perfect for new businesses, solo professionals, or those upgrading from DIY.',
+			 features: [
+			   { text: '3–5 custom-designed pages' },
+			   { text: 'Mobile-friendly, fast, and SEO-ready' },
+			   { text: 'Built on Webflow, WordPress, or Squarespace' },
+			   { text: 'Email/contact form and Google profile help' },
+			 ],
+			 color: 'mint',
+			 ctaText: 'Get Quote',
+			 ctaLink: '/contact',
+		   },
+		   {
+			 title: 'Professional Package',
+			 price: 'from $4,500',
+			 label: 'Most popular',
+			 description: 'A more strategic site with content, functionality, and polish. Great for growing businesses who want to drive more leads, bookings, or sales.',
+			 features: [
+			   { text: 'Up to 8 pages + blog or CMS' },
+			   { text: 'Copywriting support' },
+			   { text: 'Booking, menu, or quote form integrations' },
+			   { text: 'Animations, interactions, and training' },
+			   { text: '30-day post-launch support' },
+			 ],
+			 color: 'coral',
+			 ctaText: 'Get Quote',
+			 ctaLink: '/contact',
+		   },
+		   {
+			 title: 'Custom Build',
+			 price: 'from $7,500',
+			 label: 'Enterprise',
+			 description: 'For teams with technical needs, performance goals, or big ideas. Fully custom code and modern frameworks—Astro, Next.js, headless CMS, etc.',
+			 features: [
+			   { text: 'UX design and frontend development' },
+			   { text: 'CMS or headless content models' },
+			   { text: 'Fast, scalable, SEO-optimized' },
+			   { text: 'Hosting and deployment support' },
+			 ],
+			 color: 'blue',
+			 ctaText: 'Get Quote',
+			 ctaLink: '/contact',
+		   },
+		 ]}
+		 note="* Prices are estimates. Everything is billed at $80/hour."
+	   />
+
+	   <!-- Support & Consulting Section (reusable component) -->
+	   <PriceSection
+		 title="Support & Consulting"
+		 subtitle="Ongoing help for your website and business"
+		 bgGradient="bg-gradient-to-tr from-white via-white to-purple/10"
+		 cards={[
+		   {
+			 title: 'Website Consulting',
+			 price: '$100/hr',
+			 label: 'Hourly',
+			 description: "Need help improving your current site? Want a second opinion before you rebuild? Let's troubleshoot, ideate, and make a plan.",
+			 features: [
+			   { text: 'UX, performance, or content audits' },
+			   { text: 'Platform guidance and automation tips' },
+			   { text: 'Small updates or tweaks' },
+			 ],
+			 color: 'purple',
+			 ctaText: 'Schedule a Session',
+			 ctaLink: '/contact?service=website-consulting',
+		   },
+		   {
+			 title: 'Ongoing Care Plans',
+			 price: 'from $150/mo',
+			 label: 'Monthly',
+			 description: "Because websites don't stop working when you launch them.",
+			 features: [
+			   { text: 'Essentials Plan – $150/mo: Site updates + monitoring, security + backups, monthly performance check' },
+			   { text: 'Pro Plan – $350/mo: Everything in Essentials, 2 hours of dev/design updates, quarterly check-ins + priority support' },
+			 ],
+			 color: 'lime',
+			 ctaText: 'Get Website Support',
+			 ctaLink: '/contact?service=ongoing-care',
+		   },
+		 ]}
+	   />
 
 		<!-- Contact CTA Section (from services.astro) -->
 		<section class="w-full relative py-28">

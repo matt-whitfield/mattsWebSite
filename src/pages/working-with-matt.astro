@@ -1,0 +1,400 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import CalloutSection from '../components/CalloutSection.astro';
+import PageNavigation from '../components/PageNavigation.astro';
+import ContentSection from '../components/ContentSection.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import ComparisonGrid from '../components/ComparisonGrid.astro';
+import TimelineSteps from '../components/TimelineSteps.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+// Navigation links data
+const navLinks = [
+  { href: "#hero", label: "Working with Me", color: "primary" },
+  { href: "#my-approach", label: "My Approach", color: "blue" },
+  { href: "#communication", label: "Communication", color: "coral" },
+  { href: "#right-fit", label: "Right Fit", color: "mint" },
+  { href: "#working-style", label: "Working Style", color: "purple" },
+  { href: "#what-to-expect", label: "What to Expect", color: "lime" },
+  { href: "#why-this-works", label: "Why This Works", color: "blue" },
+  { href: "#faq", label: "Common Questions", color: "coral" },
+  { href: "#contact", label: "Get Started", color: "primary" }
+];
+
+// Communication features
+const communicationFeatures = [
+  {
+    title: "Proactive Updates",
+    description: "You'll know where your project stands without having to ask. I provide regular progress updates, flag potential issues early, and keep you informed of important decisions."
+  },
+  {
+    title: "Clear Explanations", 
+    description: "No confusing technical jargon. I explain what I'm building, why I'm making specific recommendations, and how it connects to your business goals."
+  },
+  {
+    title: "Responsive Support",
+    description: "Questions get answered promptly. Urgent issues get immediate attention. You're never left wondering what's happening with your project."
+  }
+];
+
+// Working style features
+const workingStyleFeatures = [
+  {
+    title: "Systems Thinking",
+    description: "I don't just build isolated websites—I think about how your site fits into your larger business ecosystem. How does it connect to your marketing? Your sales process? Your customer service? I consider the big picture."
+  },
+  {
+    title: "Outcome Focused", 
+    description: "Every decision gets evaluated against your business goals. Beautiful design matters, but only if it helps you achieve what you're trying to accomplish. I optimize for results, not just aesthetics."
+  },
+  {
+    title: "Process Driven",
+    description: "I've developed clear processes that reduce stress and improve outcomes. You'll know what to expect at each stage, what I need from you, and how we'll handle common challenges that arise."
+  },
+  {
+    title: "Collaborative Problem Solving",
+    description: "When challenges come up (and they always do), I bring solutions, not just problems. I'll explain what's happening, why it matters, and present options for moving forward."
+  },
+  {
+    title: "Professional Standards",
+    description: "Clean code, documented processes, proper testing, and reliable timelines. I treat your project with the same professionalism I'd want for my own business."
+  },
+  {
+    title: "Honest Communication",
+    description: "I'll tell you when something isn't a good idea, when timelines need to shift, or when there's a better approach. Honest feedback makes for better projects."
+  }
+];
+
+// Timeline steps
+const timelineSteps = [
+  {
+    title: "Week 1-2: Discovery",
+    description: "Deep dive into your business, goals, and constraints. I ask lots of questions and provide a detailed project plan with clear deliverables and timelines."
+  },
+  {
+    title: "Week 3-6: Design & Build",
+    description: "Regular progress updates, staging environments for review, and collaborative refinement. You see the work evolving and provide feedback along the way."
+  },
+  {
+    title: "Week 7-8: Launch & Optimize", 
+    description: "Final testing, launch preparation, and post-launch optimization. Plus training and documentation so you can manage your site confidently."
+  }
+];
+
+// FAQ data
+const faqs = [
+  {
+    question: "How involved do I need to be in the project?",
+    answer: "More involved than with a typical contractor, less than if you were doing it yourself. I need your input on goals, content, and major decisions, but I handle all the technical implementation and strategic recommendations."
+  },
+  {
+    question: "What if I don't like something you've built?",
+    answer: "We'll fix it. I include reasonable revisions in all projects, and I'd rather spend time getting it right than launching something you're not excited about. Clear communication upfront prevents most issues."
+  },
+  {
+    question: "How do you handle projects that go over scope or timeline?",
+    answer: "I'm transparent about any scope changes or timeline adjustments as soon as I see them coming. We discuss options and impacts before making changes, not after."
+  },
+  {
+    question: "What happens after the website launches?",
+    answer: "I provide training, documentation, and optional ongoing support. You'll be able to manage basic updates yourself, but I'm available for bigger changes, maintenance, and strategic improvements."
+  }
+];
+
+// Comparison data
+const positiveItems = [
+  "See your website as an investment in your business growth",
+  "Value strategic thinking and collaborative problem-solving", 
+  "Want to be involved in the process and provide timely feedback",
+  "Understand that quality work takes appropriate time",
+  "Are open to recommendations that might improve your outcomes",
+  "Communicate clearly about your needs and constraints"
+];
+
+const negativeItems = [
+  "Just want the cheapest option available",
+  "Need everything done by next week",
+  "Prefer to hand off projects and not be involved",
+  "Are looking for someone to just execute without strategic input",
+  "Don't see the value in professional web development",
+  "Expect unlimited revisions or scope changes"
+];
+---
+
+<Layout 
+	title="Working with Matt Whitfield | Collaborative Web Development Process"
+	description="What it's like to work with Matt Whitfield on your web project. Systems-driven, outcome-focused collaboration for clients and partners ready to invest in their digital success."
+	image="/images/matt-whitfield-rpf-on-set-2024-1200x1500.webp"
+>
+	<main class="bg-white lg:pr-64">
+		<PageNavigation 
+			title="Page Navigation"
+			progressColor="primary" 
+			links={navLinks}
+		/>
+
+		<!-- Hero Section -->
+		<section id="hero" class="w-full relative py-20 md:py-32 overflow-hidden">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<!-- Decorative Elements -->
+			<div class="absolute top-12 left-12 w-16 h-16 bg-primary border-3 border-black rotate-12 hidden md:block"></div>
+			<div class="absolute top-24 right-24 w-12 h-12 bg-purple border-3 border-black -rotate-45 hidden lg:block"></div>
+			<div class="absolute bottom-24 left-24 w-20 h-20 bg-mint border-3 border-black rotate-12 hidden lg:block"></div>
+			
+			<div class="page-container relative z-10">
+				<div class="max-w-4xl">
+					<!-- Category Badge -->
+					<div class="inline-block mb-6">
+						<div class="bg-primary border-3 border-black px-6 py-3 transform -rotate-1 shadow-neo">
+							<span class="font-serif font-bold text-white uppercase tracking-wider text-sm">Collaboration</span>
+						</div>
+					</div>
+					
+					<!-- Main Title -->
+					<h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text leading-tight">
+						<span class="block">What It's Like</span>
+						<span class="block text-primary">to Work with Me</span>
+					</h1>
+					
+					<!-- Description -->
+					<div class="bg-white border-3 border-black p-6 md:p-8 shadow-neo mb-8 max-w-2xl">
+						<p class="neo-text text-lg md:text-xl leading-relaxed">
+							I believe great web projects happen when the right people work together toward shared goals. If you're ready to <strong>invest in your digital presence and collaborate</strong> on something meaningful, here's what you can expect.
+						</p>
+					</div>
+					
+					<!-- CTA Button -->
+					<div class="flex flex-col sm:flex-row gap-4 items-start">
+						<a href="/contact" class="neo-link-base neo-link-primary text-lg px-8 py-4">
+							Start a Conversation
+						</a>
+						<div class="bg-highlight border-3 border-black px-4 py-2 transform rotate-1 shadow-neo-sm">
+							<span class="font-serif font-bold text-black text-sm">Systems Thinking</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- My Approach Section -->
+		<ContentSection 
+			id="my-approach"
+			label="My Approach" 
+			title="How do I approach web projects differently?"
+			color="blue"
+		>
+			<div class="grid md:grid-cols-2 gap-8 text-lg">
+				<div class="space-y-6">
+					<p class="neo-text">
+						<strong>I'm not just building websites—I'm helping you solve business problems.</strong> Whether you're a healthcare practice wanting more patient bookings, an agency needing reliable development support, or a winery looking to increase direct-to-consumer sales, I start with understanding your goals.
+					</p>
+					
+					<p class="neo-text">
+						This means asking questions that matter: Who are your customers? What's working in your current process? What's frustrating you? How will we know this project succeeded? I bring systems thinking to every project because the best websites don't just look good—they work strategically for your business.
+					</p>
+				</div>
+				
+				<div class="space-y-6">
+					<div class="p-6 bg-blue/5 border-2 border-blue/20 rounded-lg">
+						<h3 class="font-bold text-xl mb-3 text-text">What makes our collaboration successful:</h3>
+						<ul class="space-y-2 text-base">
+							<li class="flex items-start">
+								<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+								<span>Clear communication about goals, timelines, and expectations</span>
+							</li>
+							<li class="flex items-start">
+								<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+								<span>Mutual investment in the project's success</span>
+							</li>
+							<li class="flex items-start">
+								<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+								<span>Openness to strategic recommendations and feedback</span>
+							</li>
+							<li class="flex items-start">
+								<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+								<span>Realistic timelines that allow for quality work</span>
+							</li>
+							<li class="flex items-start">
+								<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+								<span>Collaborative problem-solving when challenges arise</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</ContentSection>
+
+		<!-- Communication Style Section -->
+		<ContentSection 
+			id="communication"
+			label="Communication" 
+			title="How I Communicate During Projects"
+			color="coral"
+		>
+			<FeatureGrid 
+				features={communicationFeatures}
+				color="coral"
+				columns={3}
+			/>
+			
+			<div class="p-6 bg-coral/10 border-2 border-coral/30 rounded-lg">
+				<h3 class="font-bold text-lg mb-3 text-text">What good communication looks like in practice:</h3>
+				<p class="neo-text mb-4">Weekly progress emails with screenshots and staging links. Quick Slack or email responses to questions. Honest conversations when something isn't working as planned, along with solutions and alternatives.</p>
+				<p class="neo-text text-sm italic">I've learned that most project stress comes from poor communication, not technical challenges. I prioritize keeping you informed and confident in our progress.</p>
+			</div>
+		</ContentSection>
+
+		<!-- Ideal Partnership Section -->
+		<ContentSection 
+			id="right-fit"
+			label="Right Fit" 
+			title="Who I Work Best With"
+			color="mint"
+		>
+			<ComparisonGrid 
+				positiveTitle="✅ We're a great match if you:"
+				positiveItems={positiveItems}
+				negativeTitle="❌ We might not be the right fit if you:"
+				negativeItems={negativeItems}
+				summary="<strong>In summary:</strong> I work best with people who value collaboration, quality, and strategic thinking. If you're looking to improve your business through better digital presence and you're willing to invest the time and resources to do it right, we'll probably work great together."
+				positiveColor="mint"
+			/>
+		</ContentSection>
+
+		<!-- My Working Style Section -->
+		<ContentSection 
+			id="working-style"
+			label="Working Style" 
+			title="My Professional Approach"
+			color="purple"
+		>
+			<FeatureGrid 
+				features={workingStyleFeatures}
+				color="purple"
+				columns={2}
+			/>
+		</ContentSection>
+
+		<!-- What to Expect Section -->
+		<ContentSection 
+			id="what-to-expect"
+			label="What to Expect" 
+			title="What Working Together Actually Looks Like"
+			color="lime"
+		>
+			<TimelineSteps 
+				steps={timelineSteps}
+				color="lime"
+				timelineNote="<strong>Timeline Note:</strong> The 8-week timeframe below is an estimate for comprehensive projects. Simple landing pages or smaller websites often take 3-4 weeks, while complex applications may require 10-12 weeks. We'll establish a realistic timeline based on your specific project scope during our discovery phase."
+			/>
+			
+			<div class="p-6 bg-lime/10 border-2 border-lime/30 rounded-lg">
+				<h3 class="font-bold text-lg mb-3 text-text">Throughout the entire process:</h3>
+				<ul class="grid md:grid-cols-2 gap-2 text-sm">
+					<li class="flex items-start">
+						<span class="h-1.5 w-1.5 bg-lime rounded-full flex-shrink-0 mt-2 mr-2"></span>
+						<span>Weekly progress emails with visual updates</span>
+					</li>
+					<li class="flex items-start">
+						<span class="h-1.5 w-1.5 bg-lime rounded-full flex-shrink-0 mt-2 mr-2"></span>
+						<span>Staging environments for real-time review</span>
+					</li>
+					<li class="flex items-start">
+						<span class="h-1.5 w-1.5 bg-lime rounded-full flex-shrink-0 mt-2 mr-2"></span>
+						<span>Quick responses to questions and concerns</span>
+					</li>
+					<li class="flex items-start">
+						<span class="h-1.5 w-1.5 bg-lime rounded-full flex-shrink-0 mt-2 mr-2"></span>
+						<span>Strategic recommendations based on what I'm learning</span>
+					</li>
+					<li class="flex items-start">
+						<span class="h-1.5 w-1.5 bg-lime rounded-full flex-shrink-0 mt-2 mr-2"></span>
+						<span>Transparent communication about any challenges</span>
+					</li>
+					<li class="flex items-start">
+						<span class="h-1.5 w-1.5 bg-lime rounded-full flex-shrink-0 mt-2 mr-2"></span>
+						<span>Documentation and training for long-term success</span>
+					</li>
+				</ul>
+			</div>
+		</ContentSection>
+
+		<!-- Investment & Commitment Section -->
+		<section id="why-this-works" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-blue/10"></div>
+			
+			<div class="page-container relative z-1">
+				<CalloutSection
+					title="Why This Approach Works"
+					content="Great web projects happen when both sides are invested in the outcome. I bring professional expertise, strategic thinking, and reliable execution. You bring industry knowledge, clear communication, and the commitment to see it through. Together, we create something that actually moves your business forward."
+					ctaText="Let's See If We're a Good Match"
+					ctaLink="/contact"
+					color="blue"
+				/>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<ContentSection 
+			id="faq"
+			label="Common Questions" 
+			title="What People Usually Want to Know"
+			color="coral"
+		>
+			<FAQSection faqs={faqs} />
+		</ContentSection>
+
+		<!-- Contact CTA Section -->
+		<section id="contact" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ContactCTA
+					title="Does This Sound Like the Kind of Partnership You Want?"
+					description="If you're looking for strategic collaboration, professional execution, and someone who genuinely cares about your project's success, let's talk about working together."
+					ctaText="Start the Conversation"
+					ctaLink="/contact"
+					boxTitle="Let's Connect"
+					color="primary"
+				/>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<script src="../scripts/pageNavigation.js"></script>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	"name": "Working with Matt Whitfield - Collaborative Web Development",
+	"description": "Learn about Matt Whitfield's collaborative approach to web development projects. Professional, systems-focused partnership for businesses ready to invest in digital success.",
+	"url": "https://mattwhitfield.xyz/working-with-matt",
+	"isPartOf": {
+		"@type": "WebSite",
+		"name": "Matt Whitfield - Web Design & Development",
+		"url": "https://mattwhitfield.xyz"
+	},
+	"about": {
+		"@type": "Person",
+		"name": "Matt Whitfield",
+		"jobTitle": "Web Designer & Developer",
+		"description": "Systems-thinking web developer focused on collaborative partnerships and business outcomes",
+		"knowsAbout": [
+			"Web Development",
+			"Systems Thinking", 
+			"Business Strategy",
+			"Client Collaboration",
+			"Project Management"
+		],
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Portland",
+			"addressRegion": "OR",
+			"addressCountry": "US"
+		}
+	}
+})}></script>

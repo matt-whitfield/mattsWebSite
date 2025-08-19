@@ -1,0 +1,33 @@
+---
+interface Props {
+  features: Array<{
+    title: string;
+    description: string;
+    subtitle?: string;
+  }>;
+  color?: 'primary' | 'coral' | 'blue' | 'mint' | 'purple' | 'lime';
+  columns?: number;
+}
+
+const {
+  features,
+  color = 'coral',
+  columns = 3
+} = Astro.props;
+
+const gridClass = columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3';
+---
+
+<div class={`grid ${gridClass} gap-8 mb-8`}>
+  {features.map((feature) => (
+    <div class="p-6 bg-white border-2 border-black">
+      <h3 class={`font-bold text-xl mb-4 text-${color}`}>{feature.title}</h3>
+      <p class="text-base mb-4">{feature.description}</p>
+      {feature.subtitle && (
+        <div class="text-sm text-gray-600">
+          <strong>Perfect for:</strong> {feature.subtitle}
+        </div>
+      )}
+    </div>
+  ))}
+</div>

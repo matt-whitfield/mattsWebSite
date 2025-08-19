@@ -1,0 +1,54 @@
+---
+// Section component for grouping PriceCard components
+import PriceCard from './PriceCard.astro';
+
+interface Feature {
+  text: string;
+}
+
+interface Card {
+  title: string;
+  price: string;
+  label?: string;
+  description: string;
+  features: Feature[];
+  color?: 'mint' | 'coral' | 'blue' | 'purple' | 'lime' | 'primary';
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  cards: Card[];
+  note?: string;
+  bgGradient?: string;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  cards = [],
+  note,
+  bgGradient = 'bg-gradient-to-tl from-white via-white to-mint/10',
+} = Astro.props;
+---
+
+<section class="w-full relative py-20">
+  <div class={`absolute inset-0 w-full h-full ${bgGradient}`}></div>
+  <div class="page-container relative z-1">
+    <div class="relative mb-16">
+      <h2 class="neo-heading text-4xl md:text-5xl mb-8 text-text inline-block bg-white px-5 py-3 shadow-neo border-3 border-black">{title}</h2>
+      {subtitle && <h3 class="neo-subheading text-2xl mb-6">{subtitle}</h3>}
+      {description && <p class="neo-text text-lg mb-6 max-w-3xl">{description}</p>}
+    </div>
+    <div class="grid grid-cols-1 gap-20 md:grid-cols-3 md:gap-10 lg:gap-10">
+      {cards.map((card) => (
+        <PriceCard {...card} />
+      ))}
+    </div>
+    {note && <p class="neo-text text-sm mt-10 text-muted text-center">{note}</p>}
+  </div>
+</section>

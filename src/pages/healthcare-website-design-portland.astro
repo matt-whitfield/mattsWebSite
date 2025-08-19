@@ -1,0 +1,517 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import TestimonialSection from '../components/TestimonialSection.astro';
+import CalloutSection from '../components/CalloutSection.astro';
+---
+
+<Layout 
+	title="Healthcare Website Design Portland Oregon | HIPAA-Compliant Medical Websites"
+	description="Portland healthcare website design that builds trust and drives appointments. HIPAA-compliant, patient-focused websites for medical practices, wellness centers, and healthcare providers in Portland, OR."
+	image="/images/matt-whitfield-rpf-on-set-2024-1200x1500.webp"
+>
+	<main class="bg-white lg:pr-64">
+		<!-- Side Navigation Panel -->
+		<nav id="side-nav" class="fixed top-1/2 right-6 transform -translate-y-1/2 z-50 hidden lg:block">
+			<div class="bg-white border-3 border-black shadow-neo p-4 max-w-xs">
+				<!-- Navigation Header -->
+				<div class="bg-blue border-2 border-black px-3 py-2 mb-4 transform -rotate-1">
+					<span class="font-serif font-bold text-white text-sm uppercase tracking-wide">Page Navigation</span>
+				</div>
+				
+				<!-- Navigation Links -->
+				<ul class="space-y-2 text-sm">
+					<li>
+						<a href="#hero" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-blue hover:text-white border-2 border-transparent hover:border-black" data-section="hero">
+							Healthcare Websites
+						</a>
+					</li>
+					<li>
+						<a href="#why-it-matters" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-mint hover:text-black border-2 border-transparent hover:border-black" data-section="why-it-matters">
+							Why It Matters
+						</a>
+					</li>
+					<li>
+						<a href="#portland-focus" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-coral hover:text-white border-2 border-transparent hover:border-black" data-section="portland-focus">
+							Portland Focus
+						</a>
+					</li>
+					<li>
+						<a href="#services" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-purple hover:text-white border-2 border-transparent hover:border-black" data-section="services">
+							Services
+						</a>
+					</li>
+					<li>
+						<a href="#hipaa-compliance" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-lime hover:text-black border-2 border-transparent hover:border-black" data-section="hipaa-compliance">
+							HIPAA Compliance
+						</a>
+					</li>
+					<li>
+						<a href="#process" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-blue hover:text-white border-2 border-transparent hover:border-black" data-section="process">
+							Process
+						</a>
+					</li>
+					<li>
+						<a href="#faq" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-purple hover:text-white border-2 border-transparent hover:border-black" data-section="faq">
+							FAQ
+						</a>
+					</li>
+					<li>
+						<a href="#contact" class="nav-link block px-3 py-2 font-serif font-medium transition-all duration-200 hover:bg-primary hover:text-white border-2 border-transparent hover:border-black" data-section="contact">
+							Get Started
+						</a>
+					</li>
+				</ul>
+				
+				<!-- Progress Indicator -->
+				<div class="mt-4 pt-4 border-t-2 border-black">
+					<div class="text-xs font-serif font-bold uppercase tracking-wide mb-2 text-center">Reading Progress</div>
+					<div class="w-full bg-lightgray border-2 border-black h-3">
+						<div id="progress-bar" class="bg-blue h-full border-r-2 border-black transition-all duration-300" style="width: 0%;"></div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- Hero Section -->
+		<section id="hero" class="w-full relative py-20 md:py-32 overflow-hidden">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-blue/10"></div>
+			
+			<!-- Decorative Elements -->
+			<div class="absolute top-10 left-10 w-16 h-16 bg-mint border-3 border-black rotate-12 hidden md:block"></div>
+			<div class="absolute top-20 right-20 w-12 h-12 bg-coral border-3 border-black rotate-45 hidden lg:block"></div>
+			<div class="absolute bottom-20 left-20 w-20 h-20 bg-lime border-3 border-black -rotate-12 hidden lg:block"></div>
+			
+			<div class="page-container relative z-10">
+				<div class="max-w-4xl">
+					<!-- Category Badge -->
+					<div class="inline-block mb-6">
+						<div class="bg-blue border-3 border-black px-6 py-3 transform -rotate-2 shadow-neo">
+							<span class="font-serif font-bold text-white uppercase tracking-wider text-sm">Healthcare Websites</span>
+						</div>
+					</div>
+					
+					<!-- Main Title -->
+					<h1 class="neo-heading text-5xl md:text-6xl lg:text-7xl mb-8 text-text leading-tight">
+						<span class="block">Healthcare Websites</span>
+						<span class="block text-blue">That Build Trust &</span>
+						<span class="block">Drive Appointments</span>
+					</h1>
+					
+					<!-- Description -->
+					<div class="bg-white border-3 border-black p-6 md:p-8 shadow-neo mb-8 max-w-2xl">
+						<p class="neo-text text-lg md:text-xl leading-relaxed">
+							Portland healthcare providers need websites that work as hard as they do. I create <strong>HIPAA-compliant, patient-focused websites</strong> that help medical practices, wellness centers, and healthcare providers connect with patients and grow their practice.
+						</p>
+					</div>
+					
+					<!-- CTA Button -->
+					<div class="flex flex-col sm:flex-row gap-4 items-start">
+						<a href="/contact" class="neo-link-base bg-blue text-white hover:bg-white hover:text-blue text-lg px-8 py-4">
+							Schedule a Consultation
+						</a>
+						<div class="bg-highlight border-3 border-black px-4 py-2 transform rotate-2 shadow-neo-sm">
+							<span class="font-serif font-bold text-black text-sm">HIPAA Compliant</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Why Healthcare Websites Matter Section -->
+		<section id="why-it-matters" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-mint/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative mb-16">
+					<div class="absolute -top-6 -left-6 p-2 bg-mint border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						Why It Matters
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">What makes a healthcare website actually work for patients?</h2>
+					
+					<div class="grid md:grid-cols-2 gap-8 text-lg">
+						<div class="space-y-6">
+							<p class="neo-text">
+								<strong>77% of patients research healthcare providers online before booking appointments.</strong> In Portland's competitive healthcare market, your website is often the first impression potential patients have of your practice.
+							</p>
+							
+							<p class="neo-text">
+								But here's the challenge: healthcare websites need to do more than look professional. They need to build trust, comply with strict privacy regulations, and guide patients toward taking action—whether that's booking an appointment, understanding a procedure, or finding your location.
+							</p>
+						</div>
+						
+						<div class="space-y-6">
+							<div class="p-6 bg-blue/5 border-2 border-blue/20 rounded-lg">
+								<h3 class="font-bold text-xl mb-3 text-text">What patients actually need:</h3>
+								<ul class="space-y-2 text-base">
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Clear information about services and specialties</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Easy online appointment scheduling</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Insurance and payment information</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Provider credentials and experience</span>
+									</li>
+									<li class="flex items-start">
+										<span class="h-2 w-2 bg-blue rounded-full flex-shrink-0 mt-2 mr-3"></span>
+										<span>Patient portal access</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Portland Healthcare Landscape -->
+		<section id="portland-focus" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-coral/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-coral border-3 border-black text-black font-serif font-bold text-xl uppercase">
+						Portland Focus
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">Healthcare Web Design for Portland Providers</h2>
+					
+					<div class="max-w-prose space-y-6 text-lg mb-8">
+						<p class="neo-text">
+							Portland's healthcare landscape is unique. From OHSU's world-class research facilities to neighborhood wellness centers in Alberta Arts District, our city values both cutting-edge medicine and holistic care approaches.
+						</p>
+						
+						<p class="neo-text">
+							I understand what Portland patients expect: transparency, accessibility, and a personal touch. Whether you're a family practice in Hawthorne, a specialty clinic in the Pearl District, or an alternative medicine provider in Southeast Portland, your website should reflect Portland values while meeting strict healthcare compliance standards.
+						</p>
+					</div>
+					
+					<div class="grid md:grid-cols-3 gap-6">
+						<div class="p-6 bg-white border-2 border-black">
+							<h3 class="font-bold text-lg mb-3 text-coral">Family Practices</h3>
+							<p class="text-base">Comprehensive care websites that help families find and connect with their ideal primary care provider.</p>
+						</div>
+						<div class="p-6 bg-white border-2 border-black">
+							<h3 class="font-bold text-lg mb-3 text-coral">Specialty Clinics</h3>
+							<p class="text-base">Focused, educational websites that clearly explain specialized treatments and build provider authority.</p>
+						</div>
+						<div class="p-6 bg-white border-2 border-black">
+							<h3 class="font-bold text-lg mb-3 text-coral">Wellness Centers</h3>
+							<p class="text-base">Holistic health websites that communicate your approach and help patients understand integrative care options.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Services Section -->
+		<section id="services" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-purple/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ServiceSection
+					title="Healthcare Website Services"
+					subtitle="What I provide for Portland healthcare practices:"
+					description="Your practice deserves a website that works as professionally as you do. From HIPAA compliance to patient experience optimization, I handle the technical details so you can focus on patient care."
+					ctaLink="/contact"
+					ctaText="Discuss Your Project"
+					services={[
+						{
+							icon: "i-carbon-security",
+							title: "HIPAA Compliance",
+							description: "Built-in privacy protection, secure forms, and compliance with Oregon's additional healthcare privacy requirements."
+						},
+						{
+							icon: "i-carbon-calendar",
+							title: "Appointment Scheduling",
+							description: "Integrated booking systems that work with your practice management software and reduce no-shows."
+						},
+						{
+							icon: "i-carbon-user-identification",
+							title: "Patient Portal Integration",
+							description: "Seamless connections to patient portals, lab results, and secure messaging systems."
+						},
+						{
+							icon: "i-carbon-location",
+							title: "Local SEO for Healthcare",
+							description: "Help Portland patients find your practice with location-based optimization and Google Business profile management."
+						},
+						{
+							icon: "i-carbon-mobile",
+							title: "Mobile-First Design",
+							description: "Responsive, fast-loading websites that work perfectly on phones—where most patients search for healthcare."
+						},
+						{
+							icon: "i-carbon-accessibility",
+							title: "ADA Accessibility",
+							description: "Websites designed for all patients, including those with disabilities, meeting accessibility standards."
+						}
+					]}
+				/>
+			</div>
+		</section>
+
+		<!-- HIPAA & Compliance Section -->
+		<section id="hipaa-compliance" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-lime/10"></div>
+			
+			<div class="page-container relative z-1">
+				<CalloutSection
+					title="HIPAA Compliance You Can Trust"
+					content="Healthcare websites can't just look good—they need to protect patient information. I build websites with HIPAA compliance built-in from day one, plus Oregon's additional privacy requirements. Secure contact forms, encrypted data transmission, and business associate agreements included."
+					ctaText="Learn About Compliance"
+					ctaLink="/contact"
+					color="lime"
+				/>
+			</div>
+		</section>
+
+		<!-- Process Section -->
+		<section id="process" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-blue/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-blue border-3 border-black text-white font-serif font-bold text-xl uppercase">
+						How We Work
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">My Healthcare Website Process</h2>
+					
+					<div class="space-y-8">
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-blue border-2 border-black flex items-center justify-center font-bold text-white text-xl flex-shrink-0">1</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Discovery & Compliance Review</h3>
+								<p class="neo-text text-lg">We start by understanding your practice, patient needs, and compliance requirements. I review your current systems and identify integration opportunities.</p>
+							</div>
+						</div>
+						
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-blue border-2 border-black flex items-center justify-center font-bold text-white text-xl flex-shrink-0">2</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Patient Journey Mapping</h3>
+								<p class="neo-text text-lg">I map out how patients find, research, and choose your practice, then design the website to support that journey from first visit to appointment booking.</p>
+							</div>
+						</div>
+						
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-blue border-2 border-black flex items-center justify-center font-bold text-white text-xl flex-shrink-0">3</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Design & Development</h3>
+								<p class="neo-text text-lg">Clean, professional design that builds trust, plus secure, fast-loading development with all necessary integrations and compliance features.</p>
+							</div>
+						</div>
+						
+						<div class="flex items-start space-x-6">
+							<div class="w-12 h-12 bg-blue border-2 border-black flex items-center justify-center font-bold text-white text-xl flex-shrink-0">4</div>
+							<div>
+								<h3 class="font-bold text-xl mb-2 text-text">Training & Launch</h3>
+								<p class="neo-text text-lg">I provide training for your staff, ensure everything works smoothly, and offer ongoing support to keep your website secure and up-to-date.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section id="faq" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-white via-white to-purple/10"></div>
+			
+			<div class="page-container relative z-1">
+				<div class="neo-card-base py-12 px-8 md:px-12 relative">
+					<div class="absolute -top-6 -left-6 p-2 bg-purple border-3 border-black text-white font-serif font-bold text-xl uppercase">
+						FAQ
+					</div>
+					
+					<h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">Common Questions About Healthcare Websites</h2>
+					
+					<div class="space-y-8">
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">How long does it take to build a healthcare website?</h3>
+							<p class="neo-text text-lg">Most healthcare websites take 6-10 weeks from start to launch. This includes time for compliance review, content creation, design, development, and thorough testing of all security features.</p>
+						</div>
+						
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">What makes a healthcare website HIPAA compliant?</h3>
+							<p class="neo-text text-lg">HIPAA compliance requires secure data transmission, encrypted contact forms, proper hosting infrastructure, business associate agreements, and staff training. I handle all technical requirements and provide documentation.</p>
+						</div>
+						
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">Can you integrate with our existing practice management software?</h3>
+							<p class="neo-text text-lg">Yes, I work with most major practice management systems to integrate appointment scheduling, patient portals, and other features directly into your website.</p>
+						</div>
+						
+						<div>
+							<h3 class="font-bold text-xl mb-3 text-text">Do you provide ongoing website maintenance for healthcare sites?</h3>
+							<p class="neo-text text-lg">Absolutely. Healthcare websites require regular security updates and compliance monitoring. I offer maintenance plans specifically designed for medical practices.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact CTA Section -->
+		<section id="contact" class="w-full relative py-28">
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-primary/10"></div>
+			
+			<div class="page-container relative z-1">
+				<ContactCTA
+					title="Ready to Build Trust with Your Healthcare Website?"
+					description="Let's discuss how a professional, HIPAA-compliant website can help your Portland practice connect with more patients and grow your practice."
+					ctaText="Schedule a Consultation"
+					ctaLink="/contact"
+					boxTitle="Let's Talk Healthcare"
+					color="primary"
+				/>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<script>
+	// Side Navigation Scroll Tracking
+	document.addEventListener('DOMContentLoaded', function() {
+		const navLinks = document.querySelectorAll('.nav-link');
+		const sections = document.querySelectorAll('section[id]');
+		const progressBar = document.getElementById('progress-bar');
+		
+		// Smooth scrolling for navigation links
+		navLinks.forEach(link => {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				const targetId = this.getAttribute('href').substring(1);
+				const targetSection = document.getElementById(targetId);
+				
+				if (targetSection) {
+					targetSection.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			});
+		});
+		
+		// Scroll tracking for active states and progress
+		function updateActiveSection() {
+			const scrollY = window.pageYOffset;
+			const windowHeight = window.innerHeight;
+			const documentHeight = document.documentElement.scrollHeight;
+			
+			// Update progress bar
+			const scrollPercent = (scrollY / (documentHeight - windowHeight)) * 100;
+			progressBar.style.width = Math.min(100, Math.max(0, scrollPercent)) + '%';
+			
+			// Find current section
+			let currentSection = '';
+			sections.forEach(section => {
+				const sectionTop = section.offsetTop - 100; // Offset for header
+				const sectionHeight = section.offsetHeight;
+				
+				if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+					currentSection = section.getAttribute('id');
+				}
+			});
+			
+			// Update active nav link
+			navLinks.forEach(link => {
+				const isActive = link.getAttribute('data-section') === currentSection;
+				
+				if (isActive) {
+					// Add active styles
+					link.classList.remove('border-transparent');
+					link.classList.add('border-black', 'font-bold');
+					
+					// Add color-specific active background based on hover color
+					if (link.classList.contains('hover:bg-blue')) {
+						link.classList.add('bg-blue', 'text-white');
+					} else if (link.classList.contains('hover:bg-mint')) {
+						link.classList.add('bg-mint', 'text-black');
+					} else if (link.classList.contains('hover:bg-coral')) {
+						link.classList.add('bg-coral', 'text-white');
+					} else if (link.classList.contains('hover:bg-purple')) {
+						link.classList.add('bg-purple', 'text-white');
+					} else if (link.classList.contains('hover:bg-lime')) {
+						link.classList.add('bg-lime', 'text-black');
+					} else if (link.classList.contains('hover:bg-primary')) {
+						link.classList.add('bg-primary', 'text-white');
+					}
+				} else {
+					// Remove active styles
+					link.classList.add('border-transparent');
+					link.classList.remove('border-black', 'font-bold');
+					link.classList.remove('bg-blue', 'bg-mint', 'bg-coral', 'bg-purple', 'bg-lime', 'bg-primary', 'text-white', 'text-black');
+				}
+			});
+		}
+		
+		// Throttle scroll events for performance
+		let ticking = false;
+		function requestTick() {
+			if (!ticking) {
+				requestAnimationFrame(updateActiveSection);
+				ticking = true;
+			}
+		}
+		
+		window.addEventListener('scroll', function() {
+			requestTick();
+			ticking = false;
+		});
+		
+		// Initial call
+		updateActiveSection();
+	});
+</script>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	"name": "Healthcare Website Design Portland Oregon",
+	"description": "HIPAA-compliant healthcare website design for Portland medical practices, wellness centers, and healthcare providers.",
+	"url": "https://mattwhitfield.xyz/healthcare-website-design-portland",
+	"isPartOf": {
+		"@type": "WebSite",
+		"name": "Matt Whitfield - Web Design & Development",
+		"url": "https://mattwhitfield.xyz"
+	},
+	"about": {
+		"@type": "Service",
+		"name": "Healthcare Website Design",
+		"description": "Professional website design and development for healthcare providers",
+		"provider": {
+			"@type": "Person",
+			"name": "Matt Whitfield",
+			"jobTitle": "Web Designer & Developer",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Portland",
+				"addressRegion": "OR",
+				"addressCountry": "US"
+			}
+		},
+		"areaServed": {
+			"@type": "City",
+			"name": "Portland",
+			"addressRegion": "OR",
+			"addressCountry": "US"
+		},
+		"serviceType": [
+			"Healthcare Website Design",
+			"HIPAA Compliant Websites",
+			"Medical Practice Websites",
+			"Healthcare SEO"
+		]
+	}
+})}></script>
