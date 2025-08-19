@@ -30,6 +30,7 @@ const {
   description,
   services = [],
   features = [],
+  preCTAText,
   ctaText = "View All Services",
   ctaLink = "/services",
   color = 'coral' // Default theme color for this section
@@ -91,10 +92,13 @@ const buttonVariant = getButtonVariant(color);
         </ul>
       </div>
     )}
-    
-    <div class="flex justify-center mt-12">
-      <StyledLink href={ctaLink} variant={buttonVariant} size="md">{ctaText}</StyledLink>
-    </div>
+      <div class="page-container relative z-1">
+          <div class="text-center">
+            <p class="neo-text text-lg mb-4">Curious about my collaborative approach?</p>
+            <StyledLink  href={ctaLink} variant={buttonVariant} size="md">{ctaText}
+            </StyledLink>
+          </div>
+      </div>
   </div>
 </section>
 

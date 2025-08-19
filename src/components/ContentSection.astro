@@ -1,0 +1,37 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  color?: 'primary' | 'coral' | 'blue' | 'mint' | 'purple' | 'lime';
+  backgroundGradient?: boolean;
+  id?: string;
+}
+
+const {
+  label,
+  title,
+  color = 'blue',
+  backgroundGradient = true,
+  id
+} = Astro.props;
+
+const textColor = color === 'mint' || color === 'lime' ? 'text-black' : 'text-white';
+---
+
+<section id={id} class="w-full relative py-28">
+  {backgroundGradient && (
+    <div class={`absolute inset-0 w-full h-full bg-gradient-to-tr from-white via-white to-${color}/10`}></div>
+  )}
+  
+  <div class="page-container relative z-1">
+    <div class="neo-card-base py-12 px-8 md:px-12 relative">
+      <div class={`absolute -top-6 -left-6 p-2 bg-${color} border-3 border-black ${textColor} font-serif font-bold text-xl uppercase`}>
+        {label}
+      </div>
+      
+      <h2 class="neo-heading text-3xl md:text-4xl mb-8 text-text">{title}</h2>
+      
+      <slot />
+    </div>
+  </div>
+</section>

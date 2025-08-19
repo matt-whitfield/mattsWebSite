@@ -1,0 +1,37 @@
+---
+interface Props {
+  steps: Array<{
+    title: string;
+    description: string;
+  }>;
+  color?: 'primary' | 'coral' | 'blue' | 'mint' | 'purple' | 'lime';
+  timelineNote?: string;
+}
+
+const {
+  steps,
+  color = 'lime',
+  timelineNote
+} = Astro.props;
+---
+
+<div class="space-y-8">
+  {timelineNote && (
+    <div class={`p-4 bg-${color}/10 border-2 border-${color}/30 rounded-lg mb-6`}>
+      <p class="text-sm font-medium text-text" set:html={timelineNote}></p>
+    </div>
+  )}
+  
+  <div class="grid md:grid-cols-3 gap-6">
+    {steps.map((step) => (
+      <div class="bg-white border-2 border-black overflow-hidden">
+        <div class={`bg-${color} px-6 py-3 border-b-2 border-black`}>
+          <h3 class="font-bold text-lg text-black">{step.title}</h3>
+        </div>
+        <div class="p-6">
+          <p class="text-sm">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

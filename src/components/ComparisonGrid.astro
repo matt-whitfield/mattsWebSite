@@ -1,0 +1,55 @@
+---
+interface Props {
+  positiveTitle: string;
+  positiveItems: string[];
+  negativeTitle: string;
+  negativeItems: string[];
+  summary?: string;
+  positiveColor?: 'primary' | 'coral' | 'blue' | 'mint' | 'purple' | 'lime';
+  negativeColor?: string;
+}
+
+const {
+  positiveTitle,
+  positiveItems,
+  negativeTitle,
+  negativeItems,
+  summary,
+  positiveColor = 'mint',
+  negativeColor = 'red-500'
+} = Astro.props;
+---
+
+<div class="space-y-8">
+  <div class="grid md:grid-cols-2 gap-8">
+    <div>
+      <h3 class="font-bold text-xl mb-4 text-text">{positiveTitle}</h3>
+      <ul class="space-y-3 text-base">
+        {positiveItems.map((item) => (
+          <li class="flex items-start">
+            <span class={`h-2 w-2 bg-${positiveColor} rounded-full flex-shrink-0 mt-2 mr-3`}></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <div>
+      <h3 class="font-bold text-xl mb-4 text-text">{negativeTitle}</h3>
+      <ul class="space-y-3 text-base">
+        {negativeItems.map((item) => (
+          <li class="flex items-start">
+            <span class={`h-2 w-2 bg-${negativeColor} rounded-full flex-shrink-0 mt-2 mr-3`}></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  
+  {summary && (
+    <div class={`p-6 bg-${positiveColor}/10 border-2 border-${positiveColor}/30 rounded-lg`}>
+      <p class="neo-text text-lg" set:html={summary}></p>
+    </div>
+  )}
+</div>
