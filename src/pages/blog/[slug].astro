@@ -63,7 +63,7 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
     <!-- Dynamic background gradient based on blog post color -->
     <div class={`absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-${entry.data.color}/10`}></div>
     
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 xl:px-16 relative z-1">
+    <div class="page-container relative z-1">
       <div class="max-w-4xl">
         <div class="mb-6 flex items-center gap-4">
           <span class={`inline-block font-serif text-sm font-medium uppercase tracking-wider bg-${entry.data.color} ${textColor} py-1 px-3 border-3 border-black`}>
@@ -78,13 +78,21 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
         
         <h1 class="neo-heading text-4xl md:text-5xl lg:text-6xl mb-8 text-text leading-tight">{entry.data.title}</h1>
         
+           <div class="mt-8 mb-12 w-full">
+          <p class="neo-text text-lg mb-0">
+            {entry.data.description}
+          </p>
+        </div>
+
         <!-- Add featured image here, after the title and before the description -->
         {featuredImage && (
           <div class="my-8">
             <img 
               src={featuredImage} 
               alt={entry.data.featuredImageAlt || entry.data.title}
-              class="w-full h-64 md:h-80 object-cover border-3 border-black neo-shadow"
+              loading="lazy"
+              class="w-full h-auto max-h-[60vh] object-contain border-3 border-black neo-shadow"
+              style="display:block; margin-left:auto; margin-right:auto;"
             />
             {entry.data.featuredImageCaption && (
               <figcaption class="neo-text text-xs text-muted mt-2 text-center">{entry.data.featuredImageCaption}</figcaption>
@@ -92,11 +100,7 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
           </div>
         )}
         
-        <div class="mt-8 mb-12 w-full">
-          <p class="neo-text text-lg mb-0">
-            {entry.data.description}
-          </p>
-        </div>
+     
         
         <div class="mb-8">
           <div class="flex items-center gap-4">
@@ -126,7 +130,7 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
 
   <!-- Blog Post Content Section -->
   <section class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 xl:px-16 py-16">
+    <div class="page-container py-20">
       <div class="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-8 lg:gap-12">
         <!-- Main Content Column -->
         <main class="min-w-0">
@@ -199,11 +203,11 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
   </div>
     
     <!-- Related Articles Section -->
-    <section class="w-full relative py-16">
+    <section class="w-full relative py-20">
       <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-coral/10"></div>
       
       <div class="page-container relative z-1">
-        <h2 class="neo-heading text-3xl md:text-4xl mb-12 text-center">Related Articles</h2>
+        <h2 class="neo-heading text-3xl md:text-4xl mb-16 text-center">Related Articles</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {otherPosts.map(post => {
@@ -245,76 +249,77 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
 
 
 <style is:global>
-  /* Prose styling using native CSS that matches UnoCSS design system */
+  /* Prose styling using proper CSS values */
   .prose {
-    color: #1a1a1a !important;
+    color: #1a1a1a;
   }
   
   .prose h1 {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.5px !important;
-    line-height: 1.1 !important;
-    font-size: 3rem !important;
-    margin-bottom: 2rem !important;
-    margin-top: 4rem !important;
-    padding-bottom: 1rem !important;
-    border-bottom: 3px solid #000 !important;
-    display: inline-block !important;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid #000;
+    display: inline-block;
   }
   
   .prose h2 {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.5px !important;
-    line-height: 1.1 !important;
-    font-size: 2.25rem !important;
-    margin-bottom: 1.5rem !important;
-    margin-top: 3rem !important;
-    padding-bottom: 1rem !important;
-    border-bottom: 3px solid #000 !important;
-    display: inline-block !important;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid #000;
+    display: inline-block;
   }
   
   .prose h3 {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 500 !important;
-    letter-spacing: -0.5px !important;
-    line-height: 1.2 !important;
-    font-size: 1.875rem !important;
-    margin-bottom: 1rem !important;
-    margin-top: 2rem !important;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    font-size: 1.875rem;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
   }
   
   .prose h4 {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 500 !important;
-    letter-spacing: -0.5px !important;
-    line-height: 1.2 !important;
-    font-size: 1.5rem !important;
-    margin-bottom: 0.75rem !important;
-    margin-top: 1.5rem !important;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
   }
   
   .prose h5, .prose h6 {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 500 !important;
-    letter-spacing: -0.5px !important;
-    line-height: 1.2 !important;
-    font-size: 1.25rem !important;
-    margin-bottom: 0.75rem !important;
-    margin-top: 1rem !important;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
   }
   
   .prose p {
     font-family: 'Manrope', sans-serif;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
   }
   
   .prose ul, .prose ol {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
   }
   
   .prose ul {
@@ -327,8 +332,8 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
   
   .prose li {
     font-family: 'Manrope', sans-serif;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
   }
   
   .prose strong {
@@ -340,13 +345,87 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
   }
   
   .prose blockquote {
-    border-left: 4px solid #FF6B35;
-    padding-left: 1.5rem;
+    position: relative;
+    border-left: 6px solid #FF6B35;
+    padding: 1.5rem 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    margin: 3rem 0;
+    background-color: rgba(255, 107, 53, 0.06);
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    color: #1a1a1a;
+    transform: rotate(-0.5deg);
+    overflow: visible;
+  }
+  
+  .prose blockquote::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    background-color: #5CECC6;
+    border: 3px solid #000;
+    border-radius: 50%;
+    transform: rotate(15deg);
+  }
+  
+  .prose blockquote::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    background-color: #F15BB5;
+    border: 2px solid #000;
+    transform: rotate(-45deg);
+  }
+  
+  /* Custom aside elements in markdown */
+  .prose aside {
+    position: relative;
+    margin: 3rem 0;
+    padding: 1.5rem 2rem;
+    background-color: rgba(92, 236, 198, 0.08);
+    border: 3px solid #000;
+    border-left: 6px solid #5CECC6;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
     font-style: italic;
-    font-size: 1.125rem;
-    margin: 2rem 0;
-    background-color: rgba(221, 221, 221, 0.5);
-    padding: 1rem 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    transform: rotate(0.5deg);
+    overflow: visible;
+  }
+  
+  .prose aside::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 14px;
+    height: 14px;
+    background-color: #F15BB5;
+    border: 2px solid #000;
+    transform: rotate(45deg);
+  }
+  
+  .prose aside::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 12px;
+    height: 12px;
+    background-color: #FEE440;
+    border: 2px solid #000;
+    border-radius: 50%;
+    transform: rotate(-15deg);
   }
   
   .prose code {
@@ -360,10 +439,10 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
   
   .prose pre {
     background-color: #DDDDDD;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 0.25rem;
     overflow-x: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     border: 2px solid #000;
   }
   
@@ -395,27 +474,125 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
   
   .prose hr {
     border: none;
-    border-top: 2px solid #000;
-    margin: 3rem 0;
+    border-top: 3px solid #000;
+    margin: 4rem 0;
   }
   
   .prose table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid #000;
-    margin: 2rem 0;
+    border: 3px solid #000;
+    margin: 3rem 0;
+    background: white;
+    overflow: hidden;
+    display: block;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    -webkit-overflow-scrolling: touch;
   }
   
   .prose th,
   .prose td {
     border: 1px solid #000;
-    padding: 0.75rem;
+    padding: 1rem;
     text-align: left;
   }
   
   .prose th {
-    background-color: #DDDDDD;
+    background-color: #FF6B35;
+    color: white;
     font-weight: 700;
+  }
+
+  .prose table::-webkit-scrollbar { 
+    height: 8px; 
+  }
+
+  /* Sidebar styling */
+  aside.blog-sidebar-cta {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  aside.blog-sidebar-cta .neo-card-base {
+    padding: 1.25rem;
+  }
+
+  /* Callout block - embedded in markdown content */
+  .prose .neo-callout {
+    margin: 3rem 0;
+  }
+
+  .prose .neo-callout .neo-card-base {
+    display: block;
+    border-left: 6px solid #FF6B35;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(180deg, rgba(255,107,53,0.04), rgba(255,255,255,0.0));
+    border: 3px solid #000;
+    border-radius: 6px;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.03);
+  }
+
+  .prose .neo-callout h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 0 0 1rem 0;
+    color: #1a1a1a;
+  }
+
+  .prose .neo-callout .neo-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .prose .neo-callout .neo-text li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .prose .neo-callout ul {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 640px) {
+    .prose .neo-callout .neo-card-base {
+      padding: 1rem;
+    }
+  }
+
+  /* Figure / image treatment - embedded in markdown content */
+  .prose .neo-figure {
+    margin: 3rem 0;
+  }
+  
+  .prose .neo-figure .neo-figure-inner {
+    display: block;
+    overflow: hidden;
+  }
+  
+  .prose .neo-figure-img {
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .prose .neo-figure-caption {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    color: #666666;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .prose .neo-figure-img {
+      max-height: 48vh;
+    }
   }
 
   @media (max-width: 768px) {
@@ -437,19 +614,20 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
     
     .prose h5, .prose h6 {
       font-size: 1.125rem;
-    }  }
+    }
+  }
   
-  /* Blog sidebar sticky positioning - using higher specificity to override UnoCSS */
+  /* Blog sidebar sticky positioning */
   aside.blog-sidebar-cta {
     align-self: flex-start;
-    position: static; /* Default for mobile */
+    position: static;
   }
   
   @media (min-width: 1024px) {
     aside.blog-sidebar-cta {
-      position: sticky !important;
-      top: 6rem !important; /* 24 in UnoCSS units = 6rem */
-      z-index: 10 !important;
+      position: sticky;
+      top: 6rem;
+      z-index: 10;
     }
   }
 </style>
