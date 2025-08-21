@@ -1,7 +1,7 @@
 ---
 title: "Looking Back: What I’ve learned Since Then FOOD FRIENDLY"
 description: How I learned systems thinking the hard way. A UX designer's journey from cascading complexity to focused problem-solving in the age of AI tools.
-publishDate: 2025-08-20
+publishDate: 2025-08-21
 category: Web Design
 color: blue
 tags: [Systems Thinking, Web Development, User Experience, Marketing, AI]
@@ -101,11 +101,10 @@ Here’s what I should have done with Food Friendly: Started with the outcome. I
 
 Here’s an example of the rewritten prompt:
 
-> **Original prompt:** “*Design an app that streamlines the communication workflow for front of house restaurant employees and simplifies allergy checks, pre-shift meetings, and food inventory.*”
+> **Original prompt:** “*Design an app that streamlines the communication workflow for front of house restaurant employees and simplifies allergy checks, pre-shift meetings, and food inventory.*” <br><br>**Systems-thinking prompt:** “*Design an app for restaurant servers to check and communicate dish allergens while placing orders.*”
 > 
 
-> **Systems-thinking prompt:** “*Design an app for restaurant servers to check and communicate dish allergens while placing orders.*”
-> 
+
 
 The prompt works because it builds on existing architecture. Every POS system has order-taking functionality—that’s table stakes. Notice that I’m just adding ONE feature to an existing workflow—allergen checking during order-taking.
 
