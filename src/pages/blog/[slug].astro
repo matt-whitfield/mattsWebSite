@@ -28,7 +28,12 @@ const ctaPlacement = entry.data.ctaPlacement || 'after-hero';
 // Get other blog posts for the "Related Articles" section
 const allBlogPosts = await getCollection('blog');
 const otherPosts = allBlogPosts
-  .filter(post => post.slug !== entry.slug)
+  .filter(post => {
+    if (post.slug === entry.slug) return false;
+    const postCategories = Array.isArray(post.data.category) ? post.data.category : [post.data.category];
+    const entryCategories = Array.isArray(entry.data.category) ? entry.data.category : [entry.data.category];
+    return postCategories.some(cat => entryCategories.includes(cat));
+  })
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
   .slice(0, 3);
 
@@ -66,19 +71,26 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
     <div class="page-container relative z-1">
       <div class="max-w-4xl">
         <div class="mb-6 flex items-center gap-4">
-          <span class={`inline-block font-serif text-sm font-medium uppercase tracking-wider bg-${entry.data.color} ${textColor} py-1 px-3 border-3 border-black`}>
-            {entry.data.category}
-          </span>
+          {Array.isArray(entry.data.category)
+            ? entry.data.category.map(cat => (
+                <span class={`inline-block font-serif text-sm font-medium uppercase tracking-wider bg-${entry.data.color} ${textColor} py-1 px-3 border-3 border-black mr-2`}>
+                  {cat}
+                </span>
+              ))
+            : (
+                <span class={`inline-block font-serif text-sm font-medium uppercase tracking-wider bg-${entry.data.color} ${textColor} py-1 px-3 border-3 border-black`}>
+                  {entry.data.category}
+                </span>
+              )
+          }
           <span class="text-muted">{formattedDate}</span>
           {entry.data.readTime && (
             <span class="text-muted">·</span>
             <span class="text-muted">{entry.data.readTime}</span>
           )}
         </div>
-        
         <h1 class="neo-heading text-4xl md:text-5xl lg:text-6xl mb-8 text-text leading-tight">{entry.data.title}</h1>
-        
-           <div class="mt-8 mb-12 w-full">
+        <div class="mt-8 mb-12 w-full">
           <p class="neo-text text-lg mb-0">
             {entry.data.description}
           </p>
@@ -100,8 +112,6 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
           </div>
         )}
         
-     
-        
         <div class="mb-8">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-full bg-lightgray border-3 border-black overflow-hidden">
@@ -121,17 +131,19 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
     </div>
   </section>
   
-
-
-  <!-- Blog Post Content Section with Two-Column Layout -->
-  <section class="bg-white relative" id="blog-content">
-    <div class="page-container py-20 relative">
-      <div class="lg:grid lg:grid-cols-10 lg:gap-12">
-        <!-- Main Content Column (70%) -->
-        <main class="lg:col-span-7 min-w-0">
+  <!-- Blog Content Section -->
+  <section class="w-full relative py-16" id="blog-content">
+    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-white to-lightgray/10"></div>
+    
+    <div class="page-container relative z-1">
+      <div class="grid grid-cols-1 lg:grid-cols-10 gap-12">
+        <!-- Main Content Column -->
+        <main class="lg:col-span-7">
+          <!-- Blog Content -->
           <article class="prose prose-lg max-w-none">
             <Content />
           </article>
+          <!-- End Blog Content -->
           
           <!-- Back to Blog Link -->
           <div class="mt-12 pt-6 border-t-2 border-black">
@@ -222,14 +234,22 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
               day: 'numeric'
             });
             const postTextColor = textColorMap[post.data.color] || 'text-white';
-            
             return (
               <div class={`neo-card-base neo-service-card-hover-${post.data.color} overflow-hidden p-0`}>
                 <div class="p-6">
                   <div class="mb-3 flex items-center">
-                    <span class={`inline-block bg-${post.data.color} ${postTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
-                      {post.data.category}
-                    </span>
+                    {Array.isArray(post.data.category)
+                      ? post.data.category.map(cat => (
+                          <span class={`inline-block bg-${post.data.color} ${postTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+                            {cat}
+                          </span>
+                        ))
+                      : (
+                          <span class={`inline-block bg-${post.data.color} ${postTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+                            {post.data.category}
+                          </span>
+                        )
+                    }
                     <span class="text-sm text-muted">{postDate}</span>
                   </div>
                   <h3 class="neo-card-title">{post.data.title}</h3>

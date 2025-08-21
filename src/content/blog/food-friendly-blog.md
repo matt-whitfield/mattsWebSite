@@ -2,7 +2,7 @@
 title: "Looking Back: What I’ve learned Since Then FOOD FRIENDLY"
 description: How I learned systems thinking the hard way. A UX designer's journey from cascading complexity to focused problem-solving in the age of AI tools.
 publishDate: 2025-08-21
-category: Web Design
+category: [AI, Web Design]
 color: blue
 tags: [Systems Thinking, Web Development, User Experience, Marketing, AI]
 featured: true

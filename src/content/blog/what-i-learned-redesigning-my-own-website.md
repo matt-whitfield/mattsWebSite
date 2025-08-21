@@ -2,7 +2,7 @@
 title: What I Learned Redesigning My Own Website
 description: Redesigning my personal website taught me hard lessons about UX, visual design, and development. In this post, I share what went wrong, what worked, and how it’s reshaped my client work. Perfect for designers, freelancers, and business owners planning a website revamp.
 publishDate: 2025-07-28
-category: Web Design
+category: [Web Design, AI]
 color: primary
 tags: [Web Frameworks, Web Development, User Experience, Marketing, Vibe Coding]
 featured: true

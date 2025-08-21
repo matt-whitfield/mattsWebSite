@@ -2,7 +2,7 @@
 title: Building Restaurant Websites That Actually Work
 description: Restaurant websites need to prioritize specific features. This guide covers what to include (and what to avoid) when building a restaurant site.
 publishDate: 2025-06-30
-category: Web Design
+category: [Web Design]
 color: lime
 tags: [Restaurant Websites, Web Design, User Experience, Local Business]
 featured: true

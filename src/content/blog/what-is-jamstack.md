@@ -2,7 +2,7 @@
 title: What is JAMstack and Why Does It Matter?
 description: Exploring the fundamentals of JAMstack — a modern web development architecture built on JavaScript, APIs, and Markup. This beginner-friendly guide explains how JAMstack differs from traditional stacks like WordPress, explores rendering methods (CSR, SSR, SSG), and helps you decide which architecture is right for your next website or app.
 publishDate: 2025-07-24
-category: Development
+category: [Development]
 color: coral
 tags: [Web Frameworks, Web Development, User Experience, SEO, JavaScript, HTML, APIs]
 featured: false

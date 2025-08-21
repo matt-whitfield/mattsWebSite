@@ -7,7 +7,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     publishDate: z.date(),
-    category: z.enum(['Web Design', 'Development', 'Marketing', 'Updates']),
+    category: z.array(z.enum(['Web Design', 'AI', 'UX Design', 'Development', 'Marketing', 'Updates'])),
     color: z.enum(['primary', 'mint', 'coral', 'blue', 'purple', 'lime', 'highlight']),
     tags: z.array(z.string()),
     image: z.string().optional(),

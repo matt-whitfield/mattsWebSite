@@ -18,8 +18,13 @@ const featuredPost = blogPosts.find(post => post.data.featured) || blogPosts[0];
 // Get other posts for the grid (excluding featured post)
 const otherPosts = blogPosts.filter(post => post.slug !== featuredPost.slug);
 
-// Get unique categories for filters
-const categories = [...new Set(blogPosts.map(post => post.data.category))];
+// Get unique categories for filters (flatten arrays, dedupe)
+const categories = [
+	...new Set(
+		blogPosts
+			.flatMap(post => Array.isArray(post.data.category) ? post.data.category : [post.data.category])
+	)
+];
 
 // Format featured post date
 const featuredDate = featuredPost.data.publishDate.toLocaleDateString('en-US', {
@@ -87,12 +92,21 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 							/>
 						</div>
 						<div class="p-8 md:p-10 flex flex-col">
-							<div class="mb-4">
-								<span class={`inline-block bg-${featuredPost.data.color} ${featuredTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
-									{featuredPost.data.category}
-								</span>
-								<span class="text-sm text-muted">{featuredDate}</span>
-							</div>
+											<div class="mb-4">
+												{Array.isArray(featuredPost.data.category)
+													? featuredPost.data.category.map(cat => (
+															<span class={`inline-block bg-${featuredPost.data.color} ${featuredTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+																{cat}
+															</span>
+														))
+													: (
+															<span class={`inline-block bg-${featuredPost.data.color} ${featuredTextColor} text-sm font-bold py-1 px-3 border-2 border-black mr-2`}>
+																{featuredPost.data.category}
+															</span>
+														)
+												}
+												<span class="text-sm text-muted">{featuredDate}</span>
+											</div>
 							<h3 class="neo-heading text-2xl md:text-3xl mb-4">{featuredPost.data.title}</h3>
 							<p class="neo-text mb-6 flex-grow">
 								{featuredPost.data.description}
