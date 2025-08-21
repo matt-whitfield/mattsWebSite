@@ -134,10 +134,18 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 					<h2 class="neo-heading text-3xl md:text-4xl mb-6 md:mb-0 text-text">Latest Articles</h2>
 					
 					<!-- Blog Category Filters -->
-					<div class="flex flex-wrap gap-3">
-						<button class="py-2 px-4 bg-black text-white border-3 border-black font-serif font-bold text-sm">All</button>
+					<div class="flex flex-wrap gap-3" id="category-filters">
+						<button 
+							class="filter-btn py-2 px-4 bg-black text-white border-3 border-black font-serif font-bold text-sm active"
+							data-category="all"
+						>
+							All
+						</button>
 						{categories.map(category => (
-							<button class="py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm">
+							<button 
+								class="filter-btn py-2 px-4 bg-white text-text border-3 border-black font-serif font-bold text-sm"
+								data-category={category}
+							>
 								{category}
 							</button>
 						))}
@@ -145,18 +153,26 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 				</div>
 				
 				<!-- Blog Post Grid -->
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{otherPosts.map(post => (
-						<BlogCard
-							title={post.data.title}
-							description={post.data.description}
-							publishDate={post.data.publishDate}
-							category={post.data.category}
-							color={post.data.color}
-							slug={post.slug}
-							readTime={post.data.readTime}
-						/>
-					))}
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+					{otherPosts.map(post => {
+						const postCategories = Array.isArray(post.data.category) ? post.data.category : [post.data.category];
+						return (
+							<div 
+								class="blog-post-item"
+								data-categories={postCategories.join(',')}
+							>
+								<BlogCard
+									title={post.data.title}
+									description={post.data.description}
+									publishDate={post.data.publishDate}
+									category={post.data.category}
+									color={post.data.color}
+									slug={post.slug}
+									readTime={post.data.readTime}
+								/>
+							</div>
+						);
+					})}
 				</div>
 				
 				<!-- Pagination -->
@@ -221,8 +237,87 @@ const featuredTextColor = textColorMap[featuredPost.data.color] || 'text-white';
 	</main>
 </Layout>
 
+<script>
+	// Blog category filtering functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const filterButtons = document.querySelectorAll('.filter-btn');
+		const blogItems = document.querySelectorAll('.blog-post-item');
+		
+		// Add click event listeners to filter buttons
+		filterButtons.forEach(button => {
+			button.addEventListener('click', function() {
+				const selectedCategory = this.getAttribute('data-category');
+				
+				// Update active button state
+				filterButtons.forEach(btn => {
+					btn.classList.remove('active', 'bg-black', 'text-white');
+					btn.classList.add('bg-white', 'text-text');
+				});
+				
+				// Set active state for clicked button
+				this.classList.add('active', 'bg-black', 'text-white');
+				this.classList.remove('bg-white', 'text-text');
+				
+				// Filter blog posts
+				filterBlogPosts(selectedCategory);
+			});
+		});
+		
+		function filterBlogPosts(category) {
+			blogItems.forEach(item => {
+				const itemCategories = item.getAttribute('data-categories').split(',');
+				
+				if (category === 'all' || itemCategories.includes(category)) {
+					// Show the item with animation
+					item.style.display = 'block';
+					item.style.opacity = '0';
+					item.style.transform = 'translateY(20px)';
+					
+					// Animate in
+					setTimeout(() => {
+						item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+						item.style.opacity = '1';
+						item.style.transform = 'translateY(0)';
+					}, 50);
+				} else {
+					// Hide the item with animation
+					item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+					item.style.opacity = '0';
+					item.style.transform = 'translateY(-20px)';
+					
+					// Hide after animation
+					setTimeout(() => {
+						item.style.display = 'none';
+					}, 300);
+				}
+			});
+		}
+	});
+</script>
+
 <style>
 	.aspect-ratio-16\/9 {
 		aspect-ratio: 16/9;
+	}
+	
+	/* Filter button styles */
+	.filter-btn {
+		transition: all 0.2s ease;
+		cursor: pointer;
+	}
+	
+	.filter-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 2px 6px 0px 0px rgba(0,0,0,1);
+	}
+	
+	.filter-btn.active {
+		transform: translateY(0);
+		box-shadow: 2px 4px 0px 0px rgba(0,0,0,1);
+	}
+	
+	/* Blog post item animation */
+	.blog-post-item {
+		transition: opacity 0.3s ease, transform 0.3s ease;
 	}
 </style>

@@ -1,8 +1,9 @@
 ---
-title: "Looking Back: What I’ve learned Since Then FOOD FRIENDLY"
+title: "Looking Back: What I Learned From My First UX Case Study"
 description: How I learned systems thinking the hard way. A UX designer's journey from cascading complexity to focused problem-solving in the age of AI tools.
 publishDate: 2025-08-21
-category: [AI, Web Design]
+# Category Options: 'Web Design', 'AI', 'UX Design', 'Development', 'Marketing', 'Updates'
+category: [AI, Web Design] 
 color: blue
 tags: [Systems Thinking, Web Development, User Experience, Marketing, AI]
 featured: true
@@ -15,8 +16,8 @@ ctaPlacement: in-content
 ---
 
 <!-- ### **Looking Back: What I Learned From My First UX Case Study** -->
-
-*Food Friendly* was my very first portfolio project—a restaurant POS system I designed as part of the Google UX Design Certificate. It was ambitious, scrappy, and full of good intentions. My approach was like trying to renovate a house by starting with the doorknobs—technically possible, but backwards and exhausting.
+## My Very First UX Design Project
+**Food Friendly**—a restaurant POS system I designed as part of the Google UX Design Certificate. It was ambitious, scrappy, and full of good intentions. My approach was like trying to renovate a house by starting with the doorknobs—technically possible, but backwards and exhausting.
 
 This is the story of how I learned that in design—especially now with AI tools that can generate interfaces in seconds—the hardest part isn't creating solutions. It's knowing which problems deserve solving and how to leverage a systems-thinking mindset to truly harness the power of AI in the design process.
 
@@ -34,11 +35,8 @@ This is the story of how I learned that in design—especially now with AI tools
 
 ### **The Project: Ambition Meets Inexperience**
 
-Oftentimes new designers will use a tool like [Sharpen.design](http://Sharpen.design) to generate a design challenge (known as a prompt) that they can solve as an early portfolio project. This was the case for me when I was working through Google’s UX design certificate, only the instructors gave me a list of prompts to choose from. A few examples include: 
-
-**“Design an app and a responsive website that enable doctors and nurses to document, store, and reference patient records at a local primary care office.”**
-
-And 
+Oftentimes new designers will use a tool like [Sharpen.design](http://Sharpen.design) to generate a design challenge (known as a prompt) that they can solve as an early portfolio project. This was the case for me when I was working through Google’s UX design certificate, only the instructors gave me a list of prompts to choose from. Here's one example: 
+ 
 
 **“Design an app and a responsive website for people to find, dispute, and pay their parking tickets.”**
 
@@ -66,7 +64,7 @@ I started trying to solve the allergy checks and quickly realized I needed a way
     <div class="neo-card-base neo-figure-inner">
         <img src="/images/blogs/treadmills-dalle2.webp" alt="A black and white painting of a hallway of treadmills." class="neo-figure-img" />
         <figcaption class="neo-figure-caption text-sm p-3">
-            *Caption: In my original case study I used this image to liken my paralysis (over-ambition) to running on multiple treadmills at varying speeds, noting that I bit off more than I could chew. I think the design math makes more sense for most people.*
+            Caption: In my original case study I used this image to liken my paralysis (over-ambition) to running on multiple treadmills at varying speeds, noting that I bit off more than I could chew. I think the design math makes more sense for most people.
         </figcaption>
     </div>
 </figure>
@@ -133,7 +131,7 @@ If this was just a story about my mistakes, it would be a footnote. But this pat
 
 ## **Why This Matters More Than Ever**
 
-In the age of AI, product development has become dangerously easy. Claude builds applications in minutes. ChatGPT writes websites in seconds. Teams are "supercharged"—but here's the problem: velocity without vision creates the same cascading complexity I faced, just faster.
+In the age of AI, product development has become remarkably easy. Claude builds applications in minutes. ChatGPT writes websites in seconds. Teams are "supercharged"—but here's the problem: velocity without vision creates the same cascading complexity I faced, just faster.
 
 The question becomes: Are we designing products, or just assembling parts?
 
