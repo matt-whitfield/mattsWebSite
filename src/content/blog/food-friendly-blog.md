@@ -21,7 +21,7 @@ ctaPlacement: in-content
 This is the story of how I learned that in design—especially now with AI tools that can generate interfaces in seconds—the hardest part isn't creating solutions. It's knowing which problems deserve solving and how to leverage a systems-thinking mindset to truly harness the power of AI in the design process.
 
 <aside class="neo-callout" role="complementary" aria-labelledby="callout-key-takeaways">
-    <div class="neo-card-base" aria-hidden="false">
+    <div aria-hidden="false">
         <h3 id="callout-key-takeaways" class="font-serif font-bold text-lg mb-2">Key Takeaways</h3>
         <ul class="neo-text text-base">
             <li class="mb-2"><strong>The Problem:</strong> Trying to design everything at once creates cascading complexity—each feature spawns 3+ new problems.</li>
