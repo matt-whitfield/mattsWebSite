@@ -189,6 +189,23 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
       <MobileCTA color={entry.data.color} textColor={textColor} />
     </div>
   )}
+
+  <!-- Fixed Bottom CTA for Mobile -->
+  <div id="mobile-bottom-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t-3 border-black shadow-neo opacity-0 translate-y-full transition-all duration-500 ease-out">
+    <div class="max-w-sm mx-auto">
+      <div class="flex items-center gap-3">
+        <div class="flex-1">
+          <div class={`inline-block px-2 py-1 bg-${entry.data.color} border-2 border-black ${textColor} font-bold text-xs uppercase mb-2`}>
+            Need Help?
+          </div>
+          <p class="neo-text text-sm font-bold mb-0">Free website consultation</p>
+        </div>
+        <StyledLink href="/contact" variant="primary" size="sm" class="flex-shrink-0">
+          Book Call
+        </StyledLink>
+      </div>
+    </div>
+  </div>
     
     <!-- Related Articles Section -->
     <section class="w-full relative py-20" id="related-articles">
@@ -238,11 +255,15 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
   // Scroll-triggered CTA functionality
   document.addEventListener('DOMContentLoaded', function() {
     const desktopCta = document.getElementById('desktop-cta');
+    const mobileBottomCta = document.getElementById('mobile-bottom-cta');
     const blogContentSection = document.getElementById('blog-content');
     
-    if (!desktopCta || !blogContentSection) return;
+    if (!blogContentSection) return;
     
     function positionCta() {
+      // Only position desktop CTA if it exists
+      if (!desktopCta) return;
+      
       // Calculate where the right column should be positioned
       const pageContainer = document.querySelector('.page-container');
       const mainContent = document.querySelector('main.lg\\:col-span-7');
@@ -288,13 +309,26 @@ const textColor = textColorMap[entry.data.color] || 'text-white';
         hideCta = scrollY >= relatedArticlesTop - 200;
       }
       
-      // Show CTA when in blog content area and hide when reaching related articles
-      if (showCta && !hideCta) {
-        desktopCta.classList.remove('opacity-0', 'translate-y-4');
-        desktopCta.classList.add('opacity-100', 'translate-y-0');
-      } else {
-        desktopCta.classList.add('opacity-0', 'translate-y-4');
-        desktopCta.classList.remove('opacity-100', 'translate-y-0');
+      // Control Desktop CTA
+      if (desktopCta) {
+        if (showCta && !hideCta) {
+          desktopCta.classList.remove('opacity-0', 'translate-y-4');
+          desktopCta.classList.add('opacity-100', 'translate-y-0');
+        } else {
+          desktopCta.classList.add('opacity-0', 'translate-y-4');
+          desktopCta.classList.remove('opacity-100', 'translate-y-0');
+        }
+      }
+      
+      // Control Mobile Bottom CTA
+      if (mobileBottomCta) {
+        if (showCta) {
+          mobileBottomCta.classList.remove('opacity-0', 'translate-y-full');
+          mobileBottomCta.classList.add('opacity-100', 'translate-y-0');
+        } else {
+          mobileBottomCta.classList.add('opacity-0', 'translate-y-full');
+          mobileBottomCta.classList.remove('opacity-100', 'translate-y-0');
+        }
       }
     }
     
