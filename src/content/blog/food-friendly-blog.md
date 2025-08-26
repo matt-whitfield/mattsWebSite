@@ -10,7 +10,7 @@ featured: true
 author: Matt Whitfield
 readTime: 7 min read
 featuredImage: /images/blogs/food-friendly-hero-1920.webp
-featuredImageCaption: The original case study hero-image. This exemplifies how my marketing instincts we’re in the drivers seat early on in my design career. 
+featuredImageCaption: The original case study hero-image. This exemplifies how my marketing instincts were in the drivers seat early on in my design career. 
 featuredImageAlt: A photo of the imaginary app, food friendly. An all-in-one platform for restaurants. 
 ctaPlacement: in-content
 ---
